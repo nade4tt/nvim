@@ -1,0 +1,49 @@
+# NeoVim general ignores
+*.swp
+*.swo
+*.swpx
+*.bak
+*.old
+*.tmp
+*.un~
+Session.vim
+*.backup
+*.autosave
+local.vim
+
+# Lua specific
+# Compiled Lua files
+*.luac
+
+# Node.js
+# Dependency directories (node_modules/)
+node_modules/
+# Optional: yarn.lock file if you're using Yarn
+# yarn.lock
+# Optional: package-lock.json if you're using npm
+# package-lock.json
+
+# Plugin managers
+# vim-plug
+# plugged/
+# dein.vim
+# .cache/dein/
+# packer.nvim
+# Optional: Ignore the directory where Packer clones plugins
+# site/pack/packer/start/
+# site/pack/packer/opt/
+
+# Local configuration overrides
+# Any local config files you don't want to share
+config_local.lua
+
+# Log files and directories
+logs/
+*.log
+
+# If using TypeScript or compiling JavaScript
+# Compiled JavaScript files
+*.js.map
+*.js
+# TypeScript declaration files
+*.d.ts
