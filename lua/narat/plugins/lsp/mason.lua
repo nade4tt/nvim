@@ -27,10 +27,6 @@ return {
     mason_lspconfig.setup {
       -- list of servers for mason to install
       ensure_installed = {
-        -- "cssls ",
-        -- "cssmodules_ls",
-        -- "emmet_ls",
-        -- "html",
         "gopls",
         "jsonls",
         "solc",
@@ -55,8 +51,6 @@ return {
         "prettierd",
         "stylua",
         "typescript-language-server",
-        -- "js-debug-adapter",
-        -- "node-debug2-adapter",
         "rust-analyzer",
         "clang-format",
         "gofumpt",

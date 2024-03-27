@@ -47,3 +47,4 @@ logs/
 *.js
 # TypeScript declaration files
 *.d.ts
+lazy-lock.json
