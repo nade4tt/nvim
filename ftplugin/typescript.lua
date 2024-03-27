@@ -1,0 +1,7 @@
+-- Automatically convert TypeScript to JavaScript on save
+-- vim.api.nvim_exec([[
+--   augroup typescript
+--     autocmd!
+--     autocmd BufWritePost *.ts,*.tsx !tsc % > /dev/null
+--   augroup END
+-- ]], false)
