@@ -1,22 +1,16 @@
 -- ignore files
 vim.opt.wildignore = {
-  "*.pyc",
-  "*_build/*",
-  "**/coverage/*",
-  "**/node_modules/*",
-  "**/android/*",
-  "**/ios/*",
-  "**/.git/*",
+	"*.pyc",
+	"*_build/*",
+	"**/coverage/*",
+	"**/node_modules/*",
+	"**/android/*",
+	"**/ios/*",
+	"**/.git/*",
 }
 
-vim.cmd "au BufRead,BufNewFile *.ejs setfiletype html"
-
-vim.cmd "set t_ut="
-
--- Windows
--- if vim.fn.has "win32" or vim.fn.has "win64" then
---   vim.opt.shell = "powershell.exe"
--- end
+vim.cmd("au BufRead,BufNewFile *.ejs setfiletype html")
+vim.cmd("set t_ut=")
 
 -- Essential
 vim.opt.clipboard = "unnamedplus"
@@ -26,11 +20,10 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.api.nvim_set_option("wildoptions", "pum")
-vim.api.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
 -- Enable filetypes
 vim.g.do_filetype_lua = 0
--- vim.g.did_load_filetypes = 0
 
 -- Indents
 vim.opt.tabstop = 2
@@ -64,10 +57,10 @@ vim.opt.spelllang = "en_us"
 vim.opt.colorcolumn = "80"
 
 -- TMUX
-if vim.fn.empty "TMUX" then
-  if vim.fn.has "nvim" then
-    vim.cmd "let NVIM_TUI_ENABLE_TRUE_COLOR = 1"
-  elseif vim.fn.has "termguicolors" then
-    vim.opt.termguicolors = true
-  end
+if vim.fn.empty("TMUX") then
+	if vim.fn.has("nvim") then
+		vim.cmd("let NVIM_TUI_ENABLE_TRUE_COLOR = 1")
+	elseif vim.fn.has("termguicolors") then
+		vim.opt.termguicolors = true
+	end
 end
