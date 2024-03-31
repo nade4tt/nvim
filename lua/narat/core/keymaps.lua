@@ -41,3 +41,10 @@ local opts = { noremap = true, silent = true }
 -- Move to previous/next
 vim.api.nvim_set_keymap("n", "<leader>.", "<Cmd>BufferNext<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>", opts)
+
+-- Dap
+vim.keymap.set("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", { noremap = true })

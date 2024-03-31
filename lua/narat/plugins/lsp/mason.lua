@@ -54,6 +54,8 @@ return {
 				"rust-analyzer",
 				"clang-format",
 				"gofumpt",
+				"go-debug-adapter",
+				"delve",
 			},
 		})
 	end,
