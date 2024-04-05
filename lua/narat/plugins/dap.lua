@@ -19,6 +19,7 @@ return {
 				showLog = false,
 				program = "${file}",
 				dlvToolPath = vim.fn.exepath(os.getenv("HOME") .. "/.local/share/nvim/mason/packages/delve/dlv"),
+        args = {}
 			},
 		}
 		-- visual
