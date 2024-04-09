@@ -2,6 +2,11 @@ return {
 	"mfussenegger/nvim-dap",
 
 	config = function()
+		-- check if current operating system is windows and return empty
+		if vim.fn.has("win32") == 1 then
+			return
+		end
+
 		local dap = require("dap")
 		dap.adapters.go = {
 			type = "executable",
