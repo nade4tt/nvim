@@ -54,8 +54,10 @@ return {
 				"rust-analyzer",
 				"clang-format",
 				"gofumpt",
+        "cpptools",
 				"go-debug-adapter",
 				"delve",
+        "codelldb",
 			},
 		})
 	end,

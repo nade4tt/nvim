@@ -19,9 +19,32 @@ return {
 				showLog = false,
 				program = "${file}",
 				dlvToolPath = vim.fn.exepath(os.getenv("HOME") .. "/.local/share/nvim/mason/packages/delve/dlv"),
-        args = {}
+				args = {},
 			},
 		}
+
+		dap.adapters.cpp = {
+			id = "cppdbg",
+			type = "executable",
+			command = vim.fn.exepath(
+				os.getenv("HOME")
+					.. "/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"
+			),
+		}
+
+		dap.configurations.cpp = {
+			{
+				name = "Launch",
+				type = "cpp",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				args = {},
+			},
+		}
+
 		-- visual
 		vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "DapBreakpoint" })
 		vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "DapBreakpoint" })
