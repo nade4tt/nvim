@@ -1,2 +1,1 @@
-vim.keymap.set("n", "<leader>R", "<cmd>!clang++ --debug test.cpp -o out<CR>", { noremap = true })
-
+vim.keymap.set("n", "<leader>R", "<cmd>!clang++ --debug % -o out && ./out<CR>", { noremap = true })
