@@ -70,10 +70,10 @@ return {
           require("formatter.filetypes.rust").rustfmt,
         },
         cpp = {
-          require("formatter.filetypes.cpp").clang_format,
+          require("formatter.filetypes.cpp").clangformat,
         },
         c = {
-          require("formatter.filetypes.c").clang_format,
+          require("formatter.filetypes.c").clangformat,
         },
         python = {
           require("formatter.filetypes.python").autopep8,
