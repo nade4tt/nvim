@@ -1,5 +1,11 @@
 if vim.fn.has("win32") then
-	vim.keymap.set("n", "<leader>R", "<cmd>!g++ -std=c++17 --debug % -o out && out.exe<CR>", { noremap = true })
+  -- Compile (Fast)
+  vim.keymap.set("n", "<F8>", "<cmd>!clang++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result -Wunused-variable % -o out.exe<CR>", { noremap = true })
+  -- Build (Slow but safe)
+  vim.keymap.set("n", "<F9>", "<cmd>!clang++ -std=c++17 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG % -o out.exe<CR>", { noremap = true })
 else
-	vim.keymap.set("n", "<leader>R", "<cmd>!clang++ -std=c++17 --debug % -o out && ./out<CR>", { noremap = true })
+  -- Compile (Fast)
+  vim.keymap.set("n", "<F8>", "<cmd>!clang++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result % -o out<CR>", { noremap = true })
+  -- Build (Slow but safe)
+  vim.keymap.set("n", "<F9>", "<cmd>!clang++ -std=c++17 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG % -o out<CR>", { noremap = true })
 end
