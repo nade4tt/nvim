@@ -207,6 +207,12 @@ return {
 			on_attach = on_attach,
 		})
 
+    -- configure cmake server
+    lspconfig["cmake"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
 		-- configure svelte server
 		lspconfig["svelte"].setup({
 			capabilities = capabilities,
