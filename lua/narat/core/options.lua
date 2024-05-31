@@ -19,7 +19,6 @@ vim.opt.syntax = "on"
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.scrolloff = 8
-vim.api.nvim_set_option("wildoptions", "pum")
 vim.opt.signcolumn = "yes"
 
 -- Enable filetypes
@@ -64,3 +63,10 @@ if vim.fn.empty("TMUX") then
 		vim.opt.termguicolors = true
 	end
 end
+
+-- Tagbar
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("TagbarOpen")
+  end
+})

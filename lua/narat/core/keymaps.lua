@@ -49,3 +49,6 @@ vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", { nore
 vim.keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true })
 -- vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.close()<CR>", { noremap = true })
+
+-- Tagbar
+vim.keymap.set("n", "<F2>", "<cmd>TagbarToggle<CR>", { noremap = true })
