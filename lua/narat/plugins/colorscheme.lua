@@ -12,5 +12,6 @@ return {
     vim.cmd "set guicursor=a:blinkon40"
     vim.cmd("highlight LineNr guifg=#ffffff")
     vim.cmd("highlight CursorLineNr guifg=#00ffff")
+    vim.cmd("highlight Pmenu guibg=NONE")
   end,
 }
