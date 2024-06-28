@@ -23,12 +23,14 @@ return {
 	"mtdl9/vim-log-highlighting",
 	"nvim-lualine/lualine.nvim",
 	"romgrk/barbar.nvim",
-  "preservim/tagbar",
+	"preservim/tagbar",
+
 	-- Themes
-	"folke/tokyonight.nvim",
 	"morhetz/gruvbox",
 	"sainnhe/gruvbox-material",
 	"joshdick/onedark.vim",
+	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
 	-- quickfix list
 	"romainl/vim-qf",
