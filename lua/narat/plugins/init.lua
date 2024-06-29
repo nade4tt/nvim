@@ -31,6 +31,7 @@ return {
 	"joshdick/onedark.vim",
 	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "rose-pine/neovim", name = "rose-pine", priority = 1000 },
 
 	-- quickfix list
 	"romainl/vim-qf",

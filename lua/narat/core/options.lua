@@ -65,8 +65,8 @@ if vim.fn.empty("TMUX") then
 end
 
 -- Tagbar
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.cmd("TagbarOpen")
-  end
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     vim.cmd("TagbarOpen")
+--   end
+-- })
