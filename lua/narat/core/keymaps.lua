@@ -33,6 +33,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("x", "<leader>p", '"_dP')
 
 --copilot
+vim.keymap.set("n", "<F3>", "<CMD>CopilotToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)", { silent = true })
 vim.keymap.set("i", "<C-p>", "<Plug>(copilot-previous)", { silent = true })
 vim.keymap.set("i", "<C-\\>", "<Plug>(copilot-dismiss)", { silent = true })
