@@ -53,3 +53,6 @@ vim.keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.close()<CR>", { noremap
 
 -- Tagbar
 vim.keymap.set("n", "<F2>", "<cmd>TagbarToggle<CR>", { noremap = true })
+
+-- Search without jumping
+vim.api.nvim_set_keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>", { noremap = true, silent = true })
