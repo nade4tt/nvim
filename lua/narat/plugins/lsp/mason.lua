@@ -39,8 +39,9 @@ return {
 				"clangd",
 				"vimls",
 				"jsonls",
-        "cmake",
-        "cssls"
+				"cmake",
+				"cssls",
+				"html",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -56,10 +57,10 @@ return {
 				"rust-analyzer",
 				"clang-format",
 				"gofumpt",
-        "cpptools",
+				"cpptools",
 				"go-debug-adapter",
 				"delve",
-        "codelldb",
+				"codelldb",
 			},
 		})
 	end,

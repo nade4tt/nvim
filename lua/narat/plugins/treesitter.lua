@@ -12,7 +12,7 @@ return {
       local treesitter = require "nvim-treesitter.configs"
 
       -- configure treesitter
-      treesitter.setup { -- enable syntax highlighting
+      require("nvim-ts-autotag").setup { -- enable syntax highlighting
         highlight = {
           enable = true,
         },

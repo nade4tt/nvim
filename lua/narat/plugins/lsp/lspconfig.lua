@@ -172,7 +172,6 @@ return {
 				},
 			},
 		})
-
 		-- configure bash server
 		lspconfig["bashls"].setup({
 			capabilities = capabilities,
