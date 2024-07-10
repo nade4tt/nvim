@@ -61,6 +61,7 @@ return {
 				"go-debug-adapter",
 				"delve",
 				"codelldb",
+				"autopep8",
 			},
 		})
 	end,
