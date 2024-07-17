@@ -6,15 +6,14 @@ return {
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"windwp/nvim-ts-autotag",
+			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 		config = function()
-			-- import nvim-treesitter plugin
-			-- local treesitter = require "nvim-treesitter.configs"
-			require("nvim-ts-autotag").setup({
-				filetypes = {
-					"html",
-					"xml",
-					"react",
+			-- configure commentstring
+			require("ts_context_commentstring").setup({
+				enable_autocmd = false,
+				languages = {
+					typescript = "// %s",
 				},
 			})
 
@@ -25,27 +24,7 @@ return {
 				},
 				-- enable indentation
 				indent = { enable = true },
-				-- enable autotagging (w/ nvim-ts-autotag plugin)
-				autotag = {
-					enable = true,
-					filetypes = {
-						-- "html",
-						"javascript",
-						"typescript",
-						"javascriptreact",
-						"typescriptreact",
-						"svelte",
-						"vue",
-						"tsx",
-						"jsx",
-						"rescript",
-						"css",
-						"lua",
-						"xml",
-						"php",
-						"markdown",
-					},
-				},
+
 				-- ensure these language parsers are installed
 				ensure_installed = {
 					"bash",
@@ -79,10 +58,25 @@ return {
 						node_decremental = "<bs>",
 					},
 				},
-				-- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-				context_commentstring = {
-					enable = true,
-					enable_autocmd = false,
+			})
+
+			require("nvim-ts-autotag").setup({
+				opts = {
+					-- Defaults
+					enable_close = true, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+				per_filetype = {
+					["html"] = {
+						enable_close = true,
+					},
+					["javascript"] = {
+						enable_close = true,
+					},
+					["typescript"] = {
+						enable_close = true,
+					},
 				},
 			})
 		end,
