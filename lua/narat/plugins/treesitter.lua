@@ -21,6 +21,7 @@ return {
 			require("nvim-treesitter.configs").setup({
 				highlight = {
 					enable = true,
+          additional_vim_regex_highlighting = false,
 				},
 				-- enable indentation
 				indent = { enable = true },
@@ -29,6 +30,7 @@ return {
 				ensure_installed = {
 					"bash",
 					"cpp",
+					"c",
 					"css",
 					"dockerfile",
 					"gitignore",
