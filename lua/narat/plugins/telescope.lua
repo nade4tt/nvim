@@ -23,7 +23,7 @@ return {
 				layout_strategy = "horizontal",
 				layout_config = { height = 0.95 },
 				initial_mode = "insert",
-				file_ignore_patterns = { "node%_modules/.*" },
+				file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json" },
 				mappings = {
 					i = { -- Insert mode
 						["<C-h>"] = "which_key",
