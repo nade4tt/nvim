@@ -41,6 +41,7 @@ return {
 				"jsonls",
 				"cmake",
 				"cssls",
+        "cssmodules_ls",
 				"html",
 			},
 			-- auto-install configured servers (with lspconfig)
