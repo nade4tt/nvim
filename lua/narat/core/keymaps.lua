@@ -11,10 +11,45 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "<leader>y", "^yg_", { noremap = true })
 
 -- split navigations
-vim.keymap.set("n", "<leader>j", "<C-W><C-J>", { noremap = true })
-vim.keymap.set("n", "<leader>k", "<C-W><C-K>", { noremap = true })
-vim.keymap.set("n", "<leader>l", "<C-W><C-L>", { noremap = true })
-vim.keymap.set("n", "<leader>h", "<C-W><C-H>", { noremap = true })
+local function get_total_splits()
+  return vim.fn.winnr('$')
+end
+
+local function get_current_split()
+  return vim.fn.winnr()
+end
+
+local function cycle_split(direction)
+  local current_split = get_current_split()
+  local total_splits = get_total_splits()
+
+  if direction == 'h' or direction == 'l' then
+    if direction == 'h' then
+      if current_split == 1 then
+        vim.cmd(total_splits .. 'wincmd w')
+      else
+        vim.cmd('wincmd h')
+      end
+    elseif direction == 'l' then
+      if current_split == total_splits then
+        vim.cmd('1wincmd w')
+      else
+        vim.cmd('wincmd l')
+      end
+    end
+  elseif direction == 'j' or direction == 'k' then
+    if direction == 'j' then
+      vim.cmd('wincmd j')
+    elseif direction == 'k' then
+      vim.cmd('wincmd k')
+    end
+  end
+end
+
+vim.keymap.set("n", "<leader>h", function() cycle_split('h') end, { noremap = true })
+vim.keymap.set("n", "<leader>j", function() cycle_split('j') end, { noremap = true })
+vim.keymap.set("n", "<leader>k", function() cycle_split('k') end, { noremap = true })
+vim.keymap.set("n", "<leader>l", function() cycle_split('l') end, { noremap = true })
 
 -- nvim-tree
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true })
