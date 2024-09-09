@@ -21,6 +21,9 @@ vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
+-- Disable line breaking
+vim.opt.formatoptions:remove('t')
+
 -- Enable filetypes
 vim.g.do_filetype_lua = 0
 
