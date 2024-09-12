@@ -31,7 +31,7 @@ return {
 				"jsonls",
 				"solc",
 				"tflint",
-				"tsserver",
+				"ts_ls",
 				"yamlls",
 				"bashls",
 				"pyright",
