@@ -76,8 +76,8 @@ return {
 		vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
 		vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
 
-		vim.keymap.set("n", "<leader>fD", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>pD", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>Df", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>Dg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
 
 		local telescope_last = 0
 		function TelescopeResume()
