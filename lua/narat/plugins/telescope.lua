@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-lua/popup.nvim",
+		"princejoogie/dir-telescope.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -51,11 +52,21 @@ return {
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
 					only_sort_tags = true, -- sort the tags only when the filetype is already set to something I like
+					file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json" },
 				},
 			},
 		})
 
 		telescope.load_extension("fzf")
+
+		-- telescope-dir
+		require("dir-telescope").setup({
+			-- these are the default options set
+			hidden = true,
+			no_ignore = false,
+			show_preview = true,
+			follow_symlinks = false,
+		})
 
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
@@ -64,6 +75,9 @@ return {
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
 		vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
 		vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
+
+		vim.keymap.set("n", "<leader>fD", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
+		vim.keymap.set("n", "<leader>pD", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
 
 		local telescope_last = 0
 		function TelescopeResume()
