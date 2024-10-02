@@ -67,6 +67,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 --best remaps ever
 vim.keymap.set("x", "<leader>p", '"_dP')
 
+--buffers
+vim.keymap.set("n", "<leader>cb", ":bd<CR>")
+
 --copilot
 vim.keymap.set("n", "<F3>", "<CMD>CopilotToggle<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)", { silent = true })
