@@ -71,10 +71,10 @@ return {
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy find string in working directory" })
+		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+		vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Grep string under cursor" })
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
 		vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-		vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
 
 		vim.keymap.set("n", "<leader>Df", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<leader>Dg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
