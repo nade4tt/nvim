@@ -50,6 +50,28 @@ return {
 			},
 		}
 
+		dap.adapters["pwa-node"] = {
+			type = "server",
+			host = "localhost",
+			port = 8123,
+			executable = {
+				command = "js-debug-adapter",
+			},
+		}
+
+		for _, language in ipairs({ "typescript", "javascript" }) do
+			dap.configurations[language] = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					runtimeExecutable = "node",
+				},
+			}
+		end
+
 		-- visual
 		vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "DapBreakpoint" })
 		vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "DapBreakpoint" })

@@ -63,6 +63,7 @@ return {
 				"delve",
 				"codelldb",
 				"autopep8",
+				"js-debug-adapter",
 			},
 		})
 	end,
