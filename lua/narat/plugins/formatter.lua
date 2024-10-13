@@ -75,6 +75,10 @@ return {
         c = {
           require("formatter.filetypes.c").clangformat,
         },
+        -- C# 
+        cs = {
+          require("formatter.filetypes.cs").csharpier,
+        },
         python = {
           require("formatter.filetypes.python").autopep8,
 

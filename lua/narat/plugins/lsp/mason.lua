@@ -65,6 +65,7 @@ return {
 				"codelldb",
 				"autopep8",
 				"js-debug-adapter",
+				"csharpier",
 			},
 		})
 	end,
