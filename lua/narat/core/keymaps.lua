@@ -28,6 +28,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", keymap_options)
 -- buffers
 keymap("n", "<leader>.", "<Cmd>BufferNext<CR>", keymap_options)
 keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>", keymap_options)
+keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", keymap_options)
+keymap("n", "<leader>ba", "<Cmd>BufferCloseAllButVisible<CR>", keymap_options)
 
 -- indentations
 keymap("v", "<", "<gv", keymap_options)
@@ -48,11 +50,12 @@ keymap("n", "<A-k>", ":m .-2<CR>==", keymap_options)
 
 -- fancy
 keymap("x", "<leader>p", '"_dP', keymap_options)
+-- keymap("x", "p", '"_dP', keymap_options)
 
 --copilot
 keymap("n", "<F3>", "<CMD>CopilotToggle<CR>", keymap_options)
-keymap("i", "<leader>]", "<Plug>(copilot-next)", keymap_options)
-keymap("i", "<leader>[", "<Plug>(copilot-previous)", keymap_options)
+keymap("i", "<C-j>", "<Plug>(copilot-next)", keymap_options)
+keymap("i", "<C-k>", "<Plug>(copilot-previous)", keymap_options)
 keymap("i", "<C-\\>", "<Plug>(copilot-dismiss)", keymap_options)
 
 -- Dap

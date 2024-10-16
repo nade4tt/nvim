@@ -38,7 +38,7 @@ return {
 				cmd = "<cmd>Telescope dir find_files<CR>",
 				keys = { "n", "<leader>Df" },
 			},
-			{
+      {
 				desc = "Telecope dir live_grep",
 				cmd = "<cmd>Telescope dir live_grep<CR>",
 				keys = { "n", "<leader>Dg" },
@@ -59,6 +59,11 @@ return {
 				desc = "My favorite key sequence",
 				cmd = "A brane banane",
 				-- keys = { "n", "<leader>Ac" },
+			},
+			{
+				desc = "Close non visible buffers",
+				cmd = "<cmd>BufferCloseAllButVisible<CR>",
+				keys = { "n", "<leader>ba" },
 			},
 			{
 				-- NOTE: binding lua funciton to a keymap requires nvim >= 0.7
