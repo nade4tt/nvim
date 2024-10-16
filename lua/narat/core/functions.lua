@@ -17,3 +17,9 @@ function SearchWithoutJump()
   vim.fn.setreg("/", pattern)
   vim.cmd("set hlsearch")
 end
+
+-- Print current range
+function PrintRange()
+  local range = vim.fn.getpos("'<") .. "," .. vim.fn.getpos("'>")
+  print(range)
+end

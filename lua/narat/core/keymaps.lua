@@ -1,96 +1,70 @@
 vim.g.mapleader = " "
--- vim.keymap.set("n", "*", "*``", { noremap = true })
-vim.keymap.set("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>", { noremap = true })
-vim.keymap.set("n", "//", ":noh<return>", { noremap = true })
+local keymap = vim.keymap.set
+local keymap_options = { noremap = true, silent = true }
+
+-- keymap("n", "*", "*``", options)
+keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>", keymap_options)
+keymap("n", "//", ":noh<return>", keymap_options)
 
 -- vertical movement
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+keymap("n", "<C-d>", "<C-d>zz", keymap_options)
+keymap("n", "<C-u>", "<C-u>zz", keymap_options)
 
 -- yank
-vim.keymap.set("n", "<leader>y", "^yg_", { noremap = true })
+keymap("n", "<leader>y", "^yg_", keymap_options)
 
 -- split navigations
-local function get_total_splits()
-  return vim.fn.winnr('$')
-end
+keymap("n", "<leader>h", "<C-w>h", keymap_options)
+keymap("n", "<leader>j", "<C-w>j", keymap_options)
+keymap("n", "<leader>k", "<C-w>k", keymap_options)
+keymap("n", "<leader>l", "<C-w>l", keymap_options)
 
-local function get_current_split()
-  return vim.fn.winnr()
-end
+-- split resize
+keymap("n", "<C-Up>", ":resize -2<CR>", keymap_options)
+keymap("n", "<C-Down>", ":resize +2<CR>", keymap_options)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", keymap_options)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", keymap_options)
 
-local function cycle_split(direction)
-  local current_split = get_current_split()
-  local total_splits = get_total_splits()
+-- buffers
+keymap("n", "<leader>.", "<Cmd>BufferNext<CR>", keymap_options)
+keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>", keymap_options)
 
-  if direction == 'h' or direction == 'l' then
-    if direction == 'h' then
-      if current_split == 1 then
-        vim.cmd(total_splits .. 'wincmd w')
-      else
-        vim.cmd('wincmd h')
-      end
-    elseif direction == 'l' then
-      if current_split == total_splits then
-        vim.cmd('1wincmd w')
-      else
-        vim.cmd('wincmd l')
-      end
-    end
-  elseif direction == 'j' or direction == 'k' then
-    if direction == 'j' then
-      vim.cmd('wincmd j')
-    elseif direction == 'k' then
-      vim.cmd('wincmd k')
-    end
-  end
-end
-
-vim.keymap.set("n", "<leader>h", function() cycle_split('h') end, { noremap = true })
-vim.keymap.set("n", "<leader>j", function() cycle_split('j') end, { noremap = true })
-vim.keymap.set("n", "<leader>k", function() cycle_split('k') end, { noremap = true })
-vim.keymap.set("n", "<leader>l", function() cycle_split('l') end, { noremap = true })
+-- indentations
+keymap("v", "<", "<gv", keymap_options)
+keymap("v", ">", ">gv", keymap_options)
 
 -- nvim-tree
-vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { noremap = true })
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", keymap_options)
 
 --quickfixlist
-vim.api.nvim_set_keymap("n", "<leader>]", "<cmd>cnext<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>[", "<cmd>cprev<CR>", { noremap = true })
+keymap("n", "<C-]>", "<cmd>cnext<CR>", keymap_options)
+keymap("n", "<C-[>", "<cmd>cprev<CR>", keymap_options)
 
---fancy
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- move text up and down
+keymap("v", "J", ":m '>+1<CR>gv=gv", keymap_options)
+keymap("v", "K", ":m '<-2<CR>gv=gv", keymap_options)
+keymap("n", "<A-j>", ":m .+1<CR>==", keymap_options)
+keymap("n", "<A-k>", ":m .-2<CR>==", keymap_options)
 
---best remaps ever
-vim.keymap.set("x", "<leader>p", '"_dP')
-
---buffers
-vim.keymap.set("n", "<leader>cb", ":bd<CR>")
+-- fancy
+keymap("x", "<leader>p", '"_dP', keymap_options)
 
 --copilot
-vim.keymap.set("n", "<F3>", "<CMD>CopilotToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)", { silent = true })
-vim.keymap.set("i", "<C-p>", "<Plug>(copilot-previous)", { silent = true })
-vim.keymap.set("i", "<C-\\>", "<Plug>(copilot-dismiss)", { silent = true })
-
-local opts = { noremap = true, silent = true }
--- Move to previous/next
-vim.api.nvim_set_keymap("n", "<leader>.", "<Cmd>BufferNext<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>", opts)
+keymap("n", "<F3>", "<CMD>CopilotToggle<CR>", keymap_options)
+keymap("i", "<leader>]", "<Plug>(copilot-next)", keymap_options)
+keymap("i", "<leader>[", "<Plug>(copilot-previous)", keymap_options)
+keymap("i", "<C-\\>", "<Plug>(copilot-dismiss)", keymap_options)
 
 -- Dap
-vim.keymap.set("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true })
--- vim.keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>ds", "<cmd>lua require'dap'.close()<CR>", { noremap = true })
+keymap("n", "<leader>dt", "<cmd>lua require'dapui'.toggle()<CR>", keymap_options)
+keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", keymap_options)
+keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<CR>", keymap_options)
+keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<CR>", keymap_options)
+keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<CR>", keymap_options)
+keymap("n", "<leader>ds", "<cmd>lua require'dap'.close()<CR>", keymap_options)
 
 -- Tagbar
-vim.keymap.set("n", "<F2>", "<cmd>TagbarToggle<CR>", { noremap = true })
+keymap("n", "<F2>", "<cmd>TagbarToggle<CR>", keymap_options)
 
--- Search without jumping
-vim.api.nvim_set_keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>", { noremap = true, silent = true })
+-- Functions
+keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>", keymap_options)

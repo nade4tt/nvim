@@ -62,7 +62,6 @@ return {
 	"mtdl9/vim-log-highlighting",
 	"nvim-lualine/lualine.nvim",
 	"romgrk/barbar.nvim",
-	"preservim/tagbar",
 
 	-- Themes
 	"morhetz/gruvbox",

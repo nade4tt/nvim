@@ -5,7 +5,6 @@ return {
 	},
 	keys = {
 		{ "<leader>:", "<CMD>Telescope commander<CR>", mode = "n" },
-		-- { "<leader>fc", "<CMD>Telescope commander<CR>", mode = "n" },
 	},
 	config = function()
 		local commander = require("commander")
