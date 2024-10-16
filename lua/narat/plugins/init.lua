@@ -85,6 +85,9 @@ return {
 	"hrsh7th/cmp-path", -- source for file in system paths
 	"L3MON4D3/LuaSnip", -- snippet engine
 
+  -- tagbar
+  "preservim/tagbar",
+
 	-- Markdown
 	"mzlogin/vim-markdown-toc",
 }
