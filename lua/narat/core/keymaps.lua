@@ -39,8 +39,8 @@ keymap("v", ">", ">gv", keymap_options)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", keymap_options)
 
 --quickfixlist
-keymap("n", "<C-]>", "<cmd>cnext<CR>", keymap_options)
-keymap("n", "<C-[>", "<cmd>cprev<CR>", keymap_options)
+keymap("n", "<leader>]", "<cmd>cnext<CR>", keymap_options)
+keymap("n", "<leader>[", "<cmd>cprev<CR>", keymap_options)
 
 -- move text up and down
 keymap("v", "J", ":m '>+1<CR>gv=gv", keymap_options)
