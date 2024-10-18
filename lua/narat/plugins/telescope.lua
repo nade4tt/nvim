@@ -15,6 +15,7 @@ return {
 	config = function()
 		local actions = require("telescope.actions")
 		local telescope = require("telescope")
+    local file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj" }
 
 		telescope.setup({
 			defaults = {
@@ -24,7 +25,7 @@ return {
         layout_strategy = "horizontal",
 				layout_config = { height = 0.95 },
 				initial_mode = "insert",
-				file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json" },
+				file_ignore_patterns = file_ignore_patterns,
 				mappings = {
 					i = { -- Insert mode
 						["<C-h>"] = "which_key",
@@ -52,7 +53,7 @@ return {
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
 					only_sort_tags = true, -- sort the tags only when the filetype is already set to something I like
-					file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json" },
+					file_ignore_patterns = file_ignore_patterns,
 				},
 			},
 		})
