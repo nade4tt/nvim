@@ -43,7 +43,7 @@ return {
 				"cssls",
 				"cssmodules_ls",
 				"html",
-				"csharp_ls",
+				"omnisharp",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -66,6 +66,7 @@ return {
 				"autopep8",
 				"js-debug-adapter",
 				"csharpier",
+                "netcoredbg"
 			},
 		})
 	end,

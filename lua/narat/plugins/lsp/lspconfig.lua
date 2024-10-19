@@ -126,11 +126,12 @@ return {
 			on_attach = on_attach,
 		})
 
-    -- configure csharp server
-    lspconfig["csharp_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+		-- configure csharp server
+		lspconfig["omnisharp"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+            cmd = { "omnisharp", "--languageserver" },
+		})
 
 		-- configure typescript server with plugin
 		lspconfig["ts_ls"].setup({
@@ -144,11 +145,11 @@ return {
 			on_attach = on_attach,
 		})
 
-    -- configure cssmodules server
-    lspconfig["cssmodules_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+		-- configure cssmodules server
+		lspconfig["cssmodules_ls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- configure rust server
 		lspconfig["rust_analyzer"].setup({
@@ -218,11 +219,11 @@ return {
 			on_attach = on_attach,
 		})
 
-    -- configure cmake server
-    lspconfig["cmake"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+		-- configure cmake server
+		lspconfig["cmake"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- configure svelte server
 		lspconfig["svelte"].setup({
