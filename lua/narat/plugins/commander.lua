@@ -66,12 +66,9 @@ return {
 				keys = { "n", "<leader>ba" },
 			},
 			{
-				-- NOTE: binding lua funciton to a keymap requires nvim >= 0.7
-				desc = "Run lua function",
-				cmd = function()
-					print("ANONYMOUS LUA FUNCTION")
-				end,
-				-- keys = { "n", "<leader>alf" },
+				desc = "Sibau",
+				cmd = "<CMD>lua FixSibau()<CR>",
+        -- keys = { "n", "<leader>alf" },
 			},
 		})
 	end,
