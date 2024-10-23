@@ -35,19 +35,10 @@ function FixSibau()
 end
 
 
-function reverse_selected_lines()
-  local start_line, _, end_line, _ = unpack(vim.fn.getpos("'<"))
-  local lines = vim.fn.getline(start_line, end_line)
-  
-  -- Reverse the lines
-  local reversed_lines = {}
-  for i = #lines, 1, -1 do
-    table.insert(reversed_lines, lines[i])
-  end
-
-  -- Replace the original lines with reversed lines
-  vim.fn.setline(start_line, reversed_lines)
+-- Telescope current buffer grep
+function TelescopeCurrentBufferGrep()
+  require("telescope.builtin").live_grep({
+    search_dirs = { vim.fn.expand("%:p") },
+  })
 end
 
--- Call this function after selecting lines in visual mode
-vim.api.nvim_set_keymap('v', '<leader>r', ':lua reverse_selected_lines()<CR>', { noremap = true, silent = true })

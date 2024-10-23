@@ -15,14 +15,14 @@ return {
 	config = function()
 		local actions = require("telescope.actions")
 		local telescope = require("telescope")
-    local file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj" }
+		local file_ignore_patterns = { "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj" }
 
 		telescope.setup({
 			defaults = {
 				smart_case = true,
-        prompt_prefix = " >",
-        color_devicons = true,
-        layout_strategy = "horizontal",
+				prompt_prefix = " >",
+				color_devicons = true,
+				layout_strategy = "horizontal",
 				layout_config = { height = 0.95 },
 				initial_mode = "insert",
 				file_ignore_patterns = file_ignore_patterns,
@@ -73,9 +73,10 @@ return {
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
 		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
-		vim.keymap.set("n", "<leader>fs", builtin.grep_string, { desc = "Grep string under cursor" })
+		vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Grep string under cursor" })
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
 		vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
+		vim.keymap.set("n", "<leader>fc", "<cmd>lua TelescopeCurrentBufferGrep()<CR>", { desc = "Live grep current file" })
 
 		vim.keymap.set("n", "<leader>Df", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<leader>Dg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })

@@ -38,27 +38,28 @@ return {
 				cmd = "<cmd>Telescope dir find_files<CR>",
 				keys = { "n", "<leader>Df" },
 			},
-      {
+			{
 				desc = "Telecope dir live_grep",
 				cmd = "<cmd>Telescope dir live_grep<CR>",
 				keys = { "n", "<leader>Dg" },
 			},
 			{
-				desc = "Search inside current buffer",
+				desc = "Search inside current buffer fuzzy",
 				cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
 				keys = { "n", "<leader>fl" },
 			},
 			{
+				desc = "Search inside current buffer grep",
+				cmd = "<CMD>lua TelescopeCurrentBufferGrep()<CR>",
+				keys = { "n", "<leader>fc" },
+			},
+			{
 				desc = "Show document symbols",
 				cmd = "<CMD>Telescope lsp_document_symbols<CR>",
-				-- keys = {
-				-- 	{ "n", "<leader>ss", { noremap = true } },
-				-- },
 			},
 			{
 				desc = "My favorite key sequence",
 				cmd = "A brane banane",
-				-- keys = { "n", "<leader>Ac" },
 			},
 			{
 				desc = "Close non visible buffers",
@@ -68,7 +69,6 @@ return {
 			{
 				desc = "Sibau",
 				cmd = "<CMD>lua FixSibau()<CR>",
-        -- keys = { "n", "<leader>alf" },
 			},
 		})
 	end,
