@@ -8,7 +8,7 @@ return {
     vim.keymap.set({'n', 'x', 'o'}, 'gs', '<Plug>(leap-from-window)')
     vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Normal' })
 
-    -- leap.opts.safe_labels = {}
+    leap.opts.safe_labels = {}
     leap.opts.preview_filter = function () return false end
 	end,
 }
