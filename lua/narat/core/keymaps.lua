@@ -32,8 +32,8 @@ keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>", keymap_options)
 keymap("n", "<leader>ba", "<Cmd>BufferCloseAllButVisible<CR>", keymap_options)
 
 -- indentations
-keymap("v", "<", "<gv", keymap_options)
-keymap("v", ">", ">gv", keymap_options)
+-- keymap("v", "<", "<gv", keymap_options)
+-- keymap("v", ">", ">gv", keymap_options)
 
 -- nvim-tree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", keymap_options)
@@ -45,8 +45,8 @@ keymap("n", "<leader>[", "<cmd>cprev<CR>", keymap_options)
 -- move text up and down
 keymap("v", "J", ":m '>+1<CR>gv=gv", keymap_options)
 keymap("v", "K", ":m '<-2<CR>gv=gv", keymap_options)
-keymap("n", "<A-j>", ":m .+1<CR>==", keymap_options)
-keymap("n", "<A-k>", ":m .-2<CR>==", keymap_options)
+-- keymap("n", "<A-j>", ":m .+1<CR>==", keymap_options)
+-- keymap("n", "<A-k>", ":m .-2<CR>==", keymap_options)
 
 -- fancy
 keymap("x", "<leader>p", '"_dP', keymap_options)
