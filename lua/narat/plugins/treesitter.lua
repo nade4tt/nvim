@@ -51,6 +51,7 @@ return {
 					"yaml",
 					"go",
 					"c_sharp",
+					"mermaid",
 				},
 				incremental_selection = {
 					enable = true,
