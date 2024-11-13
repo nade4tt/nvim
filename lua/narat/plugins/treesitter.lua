@@ -52,6 +52,8 @@ return {
 					"go",
 					"c_sharp",
 					"mermaid",
+					"sql",
+					"scss",
 				},
 				incremental_selection = {
 					enable = true,

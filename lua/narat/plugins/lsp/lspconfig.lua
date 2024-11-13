@@ -130,7 +130,7 @@ return {
 		lspconfig["omnisharp"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-            cmd = { "omnisharp", "--languageserver" },
+			cmd = { "omnisharp", "--languageserver" },
 		})
 
 		-- configure typescript server with plugin
@@ -143,6 +143,7 @@ return {
 		lspconfig["cssls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "css", "scss", "less" },
 		})
 
 		-- configure cssmodules server
@@ -221,6 +222,12 @@ return {
 
 		-- configure cmake server
 		lspconfig["cmake"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		-- configure sql server
+		lspconfig["sqls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
