@@ -43,11 +43,5 @@ end
 
 -- Telescope grep for files
 function TelescopeGrepFiles()
-	require("telescope.builtin").grep_string({
-		search = vim.fn.input("Grep For > "),
-		use_regex = true,
-		additional_args = function()
-			return { "-l" }
-		end,
-	})
+	require("telescope.builtin").live_grep({ additional_args = { "-l" } })
 end
