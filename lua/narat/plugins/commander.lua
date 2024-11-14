@@ -49,9 +49,13 @@ return {
 				keys = { "n", "<leader>fl" },
 			},
 			{
-				desc = "Search inside current buffer grep",
+				desc = "Grep current file",
 				cmd = "<CMD>lua TelescopeCurrentBufferGrep()<CR>",
 				keys = { "n", "<leader>fc" },
+			},
+			{
+				desc = "Grep for files",
+				cmd = "<CMD>lua TelescopeGrepFiles()<CR>",
 			},
 			{
 				desc = "Show document symbols",
