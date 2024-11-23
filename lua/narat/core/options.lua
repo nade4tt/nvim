@@ -70,6 +70,6 @@ end
 -- Tagbar
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    vim.cmd("TagbarOpen")
+    vim.cmd("TagbarClose")
   end
 })
