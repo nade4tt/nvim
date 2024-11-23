@@ -140,11 +140,10 @@ return {
 		})
 
 		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			filetypes = { "css", "scss", "less" },
-		})
+    lspconfig["cssls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
 		-- configure cssmodules server
 		lspconfig["cssmodules_ls"].setup({
