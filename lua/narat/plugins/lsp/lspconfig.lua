@@ -73,32 +73,24 @@ return {
 
 		-- configure python server
 		-- creat if statement if the current platform is windows
-		if vim.fn.has("win32") == 1 then
-			lspconfig["pyright"].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = {
-					python = {
-						analysis = {
-							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
-							extraPaths = {
-								"C:\\development\\cruise\\src",
-								"C:\\development\\act\\src",
-								"C:\\development\\common\\src",
-								"C:\\development\\generators\\src",
-							},
+		lspconfig["pyright"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						extraPaths = {
+							-- "C:\\development\\cruise\\src",
+							-- "C:\\development\\act\\src",
+							-- "C:\\development\\common\\src",
+							-- "C:\\development\\generators\\src",
 						},
 					},
 				},
-			})
-		else
-			lspconfig["pyright"].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-		end
-
+			},
+		})
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
@@ -140,10 +132,10 @@ return {
 		})
 
 		-- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+		lspconfig["cssls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- configure cssmodules server
 		lspconfig["cssmodules_ls"].setup({

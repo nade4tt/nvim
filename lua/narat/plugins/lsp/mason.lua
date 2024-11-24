@@ -64,11 +64,11 @@ return {
 				"go-debug-adapter",
 				"delve",
 				"codelldb",
-				"autopep8",
 				"js-debug-adapter",
 				"csharpier",
         "netcoredbg",
         "sqlfmt",
+        "ruff",  -- autopep8 replacement
 			},
 		})
 	end,
