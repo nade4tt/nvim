@@ -43,7 +43,6 @@ return {
 				"cssls",
 				"cssmodules_ls",
 				"html",
-				"omnisharp",
         "sqls"
 			},
 			-- auto-install configured servers (with lspconfig)
