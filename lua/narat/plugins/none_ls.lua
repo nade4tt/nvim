@@ -10,7 +10,6 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.completion.spell,
-				null_ls.builtins.completion.clang_format,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.csharpier,
@@ -19,6 +18,7 @@ return {
 				lspconfig.ruff.setup({}),
 			},
 		})
+
 		vim.keymap.set("n", "<F5>", vim.lsp.buf.format, { desc = "Format buffer" })
 	end,
 }
