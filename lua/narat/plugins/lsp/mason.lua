@@ -43,7 +43,7 @@ return {
 				"cssls",
 				"cssmodules_ls",
 				"html",
-        "sqls"
+				"sqls",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -65,9 +65,10 @@ return {
 				"codelldb",
 				"js-debug-adapter",
 				"csharpier",
-        "netcoredbg",
-        "sqlfmt",
-        "ruff",  -- autopep8 replacement
+				"netcoredbg",
+				"sqlfmt",
+				"isort",
+				"black",
 			},
 		})
 	end,

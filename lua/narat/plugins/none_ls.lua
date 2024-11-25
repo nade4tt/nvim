@@ -5,7 +5,6 @@ return {
 	},
 	config = function()
 		local null_ls = require("null-ls")
-		local lspconfig = require("lspconfig")
 
 		null_ls.setup({
 			sources = {
@@ -14,8 +13,10 @@ return {
 				null_ls.builtins.formatting.prettier,
 				null_ls.builtins.formatting.csharpier,
 				null_ls.builtins.formatting.isort,
+				null_ls.builtins.formatting.black.with({
+					extra_args = { "--line-length", "200" },
+				}),
 				require("none-ls.diagnostics.eslint"),
-				lspconfig.ruff.setup({}),
 			},
 		})
 
