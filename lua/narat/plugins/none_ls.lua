@@ -16,7 +16,7 @@ return {
 				null_ls.builtins.formatting.black.with({
 					extra_args = { "--line-length", "200" },
 				}),
-				require("none-ls.diagnostics.eslint"),
+        null_ls.builtins.diagnostics.eslint_d
 			},
 		})
 
