@@ -8,12 +8,14 @@ return {
 
     null_ls.setup({
       sources = {
+        require("none-ls.diagnostics.cpplint"),
+        require("none-ls.formatting.jq"),
+        require("none-ls.code_actions.eslint"),
         null_ls.builtins.completion.spell,
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.csharpier,
         null_ls.builtins.formatting.isort,
-        null_ls.builtins.formatting.eslint_lsp,
         null_ls.builtins.formatting.black.with({
           extra_args = { "--line-length", "200" },
         }),
