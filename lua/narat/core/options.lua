@@ -73,3 +73,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.cmd("TagbarClose")
   end
 })
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    callback = function()
+        print "InsertLeave"
+        local cursor_pos = vim.api.nvim_win_get_cursor(0)
+        vim.defer_fn(function()
+            vim.api.nvim_win_set_cursor(0, cursor_pos)
+        end, 10)
+    end,
+})
