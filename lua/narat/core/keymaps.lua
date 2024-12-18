@@ -71,3 +71,6 @@ keymap("n", "<F2>", "<cmd>TagbarToggle<CR>", keymap_options)
 
 -- Functions
 keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>", keymap_options)
+
+-- Terminal
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>")
