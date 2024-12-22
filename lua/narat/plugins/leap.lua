@@ -19,6 +19,7 @@ return {
 		end
 
 		-- Disable graying out the search area
-		vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'None' })
+		-- vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'None' })
+    vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' })
 	end,
 }
