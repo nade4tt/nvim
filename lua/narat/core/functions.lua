@@ -74,12 +74,13 @@ vim.keymap.set("n", "<leader>rr", function()
 		vim.cmd.term()
 		job_id = vim.bo.channel
 
-		vim.fn.chansend(job_id, "powershell" .. "\n")
+    -- for windows
+		vim.fn.chansend(job_id, "powershell" .. "\r")
 
 		if input then
-			vim.fn.chansend(job_id, "rr " .. filename .. " " .. input .. "\n")
+			vim.fn.chansend(job_id, "rr " .. filename .. " " .. input .. "\r")
 		else
-			vim.fn.chansend(job_id, "rr " .. filename .. "\n")
+			vim.fn.chansend(job_id, "rr " .. filename .. "\r")
 		end
 	end)
 end)
