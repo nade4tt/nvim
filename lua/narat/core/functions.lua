@@ -74,7 +74,7 @@ vim.keymap.set("n", "<leader>rr", function()
 		vim.cmd.term()
 		job_id = vim.bo.channel
 
-    -- for windows
+		-- for windows
 		vim.fn.chansend(job_id, "powershell" .. "\r")
 
 		if input then
@@ -83,4 +83,20 @@ vim.keymap.set("n", "<leader>rr", function()
 			vim.fn.chansend(job_id, "rr " .. filename .. "\r")
 		end
 	end)
+end)
+
+-- Toggle checkbox
+vim.keymap.set("n", "<CR>", function()
+	local current_line = vim.api.nvim_get_current_line()
+	local pattern = "^([%s-]*%[)([x%s]+)(%].*)$"
+
+	local prefix, status, sufix = current_line:match(pattern)
+
+  -- If the line doesn't match the pattern, return
+	if not status then
+		return
+	end
+
+	local new_status = (status == " ") and "x" or " "
+	vim.api.nvim_set_current_line(prefix .. new_status .. sufix)
 end)
