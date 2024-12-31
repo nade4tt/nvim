@@ -143,11 +143,11 @@ return {
 			on_attach = on_attach,
 		})
 
-    -- configure tailwindcss server
-    lspconfig["tailwindcss"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- -- configure tailwindcss server
+    -- lspconfig["tailwindcss"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
 		-- configure rust server
 		lspconfig["rust_analyzer"].setup({
