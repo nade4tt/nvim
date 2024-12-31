@@ -6,19 +6,6 @@ return {
     local t = ls.text_node
     local i = ls.insert_node
 
-    vim.keymap.set("i", "<C-j>", function()
-      ls.jump(1)
-    end)
-    vim.keymap.set("s", "<C-j>", function()
-      ls.jump(1)
-    end)
-    vim.keymap.set("i", "<C-k>", function()
-      ls.jump(-1)
-    end)
-    vim.keymap.set("s", "<C-k>", function()
-      ls.jump(-1)
-    end)
-
     ls.add_snippets("python", {
       s("!step", {
         t({ "with pytest.xray.step(step=" }),
@@ -29,12 +16,14 @@ return {
         t({ "    " }),
         i(3),
       }),
-      s("!import_helper", {
+
+      s("!helper", {
         t({ "import uitestsuite.cruisem.helpers.helpers as helper" }),
         t({ "", "import uitestsuite.cruisem.helpers.helpers_home as hh" }),
         t({ "", "import uitestsuite.cruisem.helpers.helpers_gui_testing as guit" }),
         t({ "", "import uitestsuite.cruisem.tools.stress_test_editors as ss" }),
       }),
+
       s("!select", {
         t({ "am.category.elemtree.select('" }),
         i(1),
@@ -89,7 +78,6 @@ return {
         i(2),
         t({ " |" }),
       }),
-
       s("r3", {
         t({ "| " }),
         i(1),
