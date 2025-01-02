@@ -9,4 +9,9 @@ vim.opt.textwidth = 80
 
 -- Hide markups
 vim.opt.conceallevel = 3
-vim.opt.concealcursor = "nc" -- Conceals in normal and command-line modes
+vim.opt.concealcursor = "" -- Conceals in normal and command-line modes
+
+vim.keymap.set("n", "<F12>", function()
+	local conceal_level = vim.api.nvim_get_option_value("conceallevel", {})
+	vim.opt.conceallevel = conceal_level == 0 and 3 or 0
+end)
