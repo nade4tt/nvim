@@ -62,6 +62,10 @@ return {
 				cmd = "<CMD>Telescope lsp_document_symbols<CR>",
 			},
 			{
+				desc = "Telescope file browser",
+				cmd = "<CMD>Telescope file_browser<CR>",
+			},
+			{
 				desc = "My favorite key sequence",
 				cmd = "A brane banane",
 			},

@@ -4,8 +4,8 @@ vim.opt.wrap = false
 vim.wo.spell = true
 vim.opt.spelllang = { "en_us", "sl" }
 
--- vim.opt.fo = "want"
-vim.opt.tw = 80
+vim.opt.fo = "want"
+vim.opt.textwidth = 80
 
 -- Hide markups
 vim.opt.conceallevel = 3
