@@ -39,7 +39,6 @@ return {
         "clangd",
         "vimls",
         "jsonls",
-        "cmake",
         "cssls",
         "cssmodules_ls",
         "html",

@@ -22,7 +22,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 -- Disable line breaking
-vim.opt.formatoptions:remove('t')
+vim.opt.formatoptions:remove("t")
 
 -- Enable filetypes
 vim.g.do_filetype_lua = 0
@@ -69,7 +69,7 @@ end
 
 -- Tagbar
 vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.cmd("TagbarClose")
-  end
+	callback = function()
+		vim.cmd("TagbarClose")
+	end,
 })
