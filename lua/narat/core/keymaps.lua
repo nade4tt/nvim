@@ -7,8 +7,8 @@ keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>", keymap_options)
 keymap("n", "//", ":noh<return>", keymap_options)
 
 -- vertical movement
-keymap("n", "<C-d>", "15jzz", keymap_options)
-keymap("n", "<C-u>", "15kzz", keymap_options)
+keymap({ "n", "v" }, "<C-d>", "15jzz", keymap_options)
+keymap({ "n", "v" }, "<C-u>", "15kzz", keymap_options)
 
 -- yank
 keymap("n", "<leader>y", "^yg_", keymap_options)
