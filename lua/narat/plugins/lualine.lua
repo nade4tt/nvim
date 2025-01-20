@@ -1,7 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
-    require("lualine").setup {
+    require("lualine").setup({
       options = {
         icons_enabled = true,
         theme = "tokyonight",
@@ -13,7 +13,7 @@ return {
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
           statusline = 1000,
           tabline = 1000,
@@ -40,6 +40,6 @@ return {
       winbar = {},
       inactive_winbar = {},
       extensions = {},
-    }
+    })
   end,
 }
