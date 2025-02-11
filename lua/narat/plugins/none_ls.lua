@@ -21,6 +21,9 @@ return {
 				null_ls.builtins.formatting.black.with({
 					extra_args = { "--line-length", "200" },
 				}),
+				null_ls.builtins.formatting.clang_format.with({
+					extra_args = { "--style={IndentAccessModifiers: AfterClass, AccessModifierOffset: 1}" },
+				}),
 			},
 			-- format on save
 			on_attach = function(client, bufnr)
