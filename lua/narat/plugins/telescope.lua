@@ -17,7 +17,7 @@ return {
     local telescope = require("telescope")
     local action_state = require("telescope.actions.state")
     local file_ignore_patterns =
-    { "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf" }
+    { "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf", ".git/*" }
 
     telescope.setup({
       defaults = {
@@ -77,6 +77,7 @@ return {
               -- your custom normal mode mappings
             },
           },
+          file_ignore_patterns = file_ignore_patterns,
         },
       },
     })
