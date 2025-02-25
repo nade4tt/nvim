@@ -67,13 +67,6 @@ if vim.fn.empty("TMUX") then
   end
 end
 
--- Tagbar
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	callback = function()
--- 		vim.cmd("TagbarClose")
--- 	end,
--- })
-
 -- Folding
 function _G.custom_foldtext()
   local line = vim.fn.getline(vim.v.foldstart)     -- Get the first line of the fold
