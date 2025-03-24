@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 	},
+
 	config = function()
 		local null_ls = require("null-ls")
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -25,23 +26,31 @@ return {
 					extra_args = { "--style={IndentAccessModifiers: AfterClass, AccessModifierOffset: 1}" },
 				}),
 			},
+
 			-- format on save
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
 					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+
+					local filetype = vim.bo[bufnr].filetype
+					local is_windows = vim.fn.has("win32")
+
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,
 						buffer = bufnr,
+
 						callback = function()
-							-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-							-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-							vim.lsp.buf.format()
+							if is_windows and filetype == "python" then
+								print("Formatting on save disabled for python on Windows")
+								return
+							end
+							vim.lsp.buf.format({ timeout_ms = 2000 })
 						end,
 					})
 				end
 			end,
 		})
 
-		vim.keymap.set("n", "<F5>", vim.lsp.buf.format, { desc = "Format buffer" })
+		vim.keymap.set({ "n", "v" }, "<F5>", vim.lsp.buf.format, { desc = "Format buffer" })
 	end,
 }
