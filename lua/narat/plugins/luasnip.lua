@@ -55,7 +55,7 @@ return {
       }),
 
       s("!get", {
-        t({ "am.home.elements.detail" }),
+        t({ "am.category.elemtree.detail" }),
         i(1),
       }),
       s("!am", {
