@@ -1,5 +1,6 @@
 return {
   "FeiyouG/commander.nvim",
+
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
@@ -82,6 +83,20 @@ return {
         desc = "Markdown reference file",
         cmd = "<CMD>lua CreateMdReferenceFile()<CR>",
       },
+      {
+        desc = "Insert current file PATH at cursor",
+        cmd = function()
+          local filepath = vim.fn.expand('%')
+          vim.api.nvim_put({ filepath }, '', false, true)
+        end,
+      },
+      {
+        desc = "Insert current file NAME at cursor",
+        cmd = function()
+          local filename = vim.fn.expand('%:t')
+          vim.api.nvim_put({ filename }, '', false, true)
+        end,
+      }
     })
   end,
 }

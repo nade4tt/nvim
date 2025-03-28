@@ -30,7 +30,6 @@ Dm
 Samanta
 Maco
 lifecycle
-When an instance of a component is being created and inserted into the DOM. This only happens once.
 Unmounting
 memoized
 SoulBond
@@ -72,3 +71,6 @@ hotspot
 RHCP
 Hendrik
 fretboard
+Versioning
+toolchain
+runtime
