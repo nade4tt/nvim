@@ -45,7 +45,7 @@ return {
 					typescriptreact = { "prettier" },
 					json = { "jq" },
 					csharp = { "csharpier" },
-					markdown = { "markdownlint" },
+					markdown = { "prettier" },
 					cpp = {
 						{
 							"clang_format",
