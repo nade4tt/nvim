@@ -32,12 +32,28 @@ return {
 		config = function()
 			local conform = require("conform")
 
+			local is_windows = vim.fn.has("win32") == 1
+
 			conform.setup({
+				formatters = {
+					black = {
+						command = "black",
+						args = { "--line-length", "200", "--quiet", "-" },
+					},
+					clang_format = {
+						command = "clang-format",
+						args = { "--style={IndentAccessModifiers: AfterClass, AccessModifierOffset: 1}" },
+					},
+					isort = {
+						command = "isort",
+						args = { "-" },
+					},
+				},
 				formatters_by_ft = {
 					lua = { "stylua" },
 					python = {
-						{ "black", extra_args = { "--line-length", "200" } },
 						"isort",
+						"black",
 					},
 					javascript = { "prettier" },
 					javascriptreact = { "prettier" },
@@ -47,18 +63,20 @@ return {
 					csharp = { "csharpier" },
 					markdown = { "prettier" },
 					cpp = {
-						{
-							"clang_format",
-							extra_args = { "--style={IndentAccessModifiers: AfterClass, AccessModifierOffset: 1}" },
-						},
+						"clang_format",
 					},
 					css = { "rustywind" },
-					rust = { "rustywind " },
+					rust = { "rustywind" },
 				},
-				format_on_save = {
-					timeout_ms = 500,
+				-- Disable format on save
+				format_on_save = not is_windows and {
+					timeout_ms = 2000,
 					lsp_fallback = true,
-				},
+				} or nil,
+				-- Add this if you want to stop after the first formatter that succeeds
+				-- format_after_save = {
+				-- 	stop_after_first = false,
+				-- },
 			})
 
 			-- Keymap for manual formatting
