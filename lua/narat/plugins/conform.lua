@@ -48,6 +48,14 @@ return {
 						command = "isort",
 						args = { "-" },
 					},
+					stylua = {
+						command = "stylua",
+						args = { "-" },
+					},
+					rustywind = {
+						command = "rustywind",
+						args = { "-" },
+					},
 				},
 				formatters_by_ft = {
 					lua = { "stylua" },
@@ -66,7 +74,6 @@ return {
 						"clang_format",
 					},
 					css = { "rustywind" },
-					rust = { "rustywind" },
 				},
 				-- Disable format on save
 				format_on_save = not is_windows and {
