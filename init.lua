@@ -1,2 +1,2 @@
-require "narat.core"
-require "narat.lazy"
+require("narat.core")
+require("narat.lazy")

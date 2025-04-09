@@ -8,6 +8,8 @@ return {
 		end
 
 		local dap = require("dap")
+
+		-- Go
 		dap.adapters.go = {
 			type = "executable",
 			command = "node",
@@ -28,28 +30,30 @@ return {
 			},
 		}
 
-		dap.adapters.cpp = {
-			id = "cppdbg",
-			type = "executable",
-			command = vim.fn.exepath(
-				os.getenv("HOME")
-					.. "/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"
-			),
-		}
+		-- Cpp
+		-- dap.adapters.cpp = {
+		-- 	id = "cppdbg",
+		-- 	type = "executable",
+		-- 	command = vim.fn.exepath(
+		-- 		os.getenv("HOME")
+		-- 			.. "/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"
+		-- 	),
+		-- }
 
-		dap.configurations.cpp = {
-			{
-				name = "Launch",
-				type = "cpp",
-				request = "launch",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				cwd = "${workspaceFolder}",
-				args = {},
-			},
-		}
+		-- dap.configurations.cpp = {
+		-- 	{
+		-- 		name = "Launch",
+		-- 		type = "cpp",
+		-- 		request = "launch",
+		-- 		program = function()
+		-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		-- 		end,
+		-- 		cwd = "${workspaceFolder}",
+		-- 		args = {},
+		-- 	},
+		-- }
 
+		-- JavaScript
 		dap.adapters["pwa-node"] = {
 			type = "server",
 			host = "localhost",
@@ -72,45 +76,54 @@ return {
 			}
 		end
 
+		vim.diagnostic.config({
+			signs = {
+				active = true,
+				values = {
+					{ name = "DapBreakpoint", text = "" },
+					{ name = "DapBreakpointCondition", text = "ﳁ" },
+					{ name = "DapBreakpointRejected", text = "" },
+					{ name = "DapLogPoint", text = "" },
+					{ name = "DapStopped", text = "" },
+				},
+			},
+		})
+
 		-- visual
-		-- vim.diagnostic.define_sign({
-		-- 	name = "DapBreakpoint",
-		-- 	text = "",
-		-- 	texthl = "DapBreakpoint",
-		-- 	linehl = "DapBreakpoint",
-		-- 	numhl = "DapBreakpoint",
-		-- })
+		-- DAP Breakpoint signs
+		vim.fn.sign_define("DapBreakpoint", {
+			text = "",
+			texthl = "DapBreakpoint",
+			linehl = "DapBreakpoint",
+			numhl = "DapBreakpoint",
+		})
 
-		-- vim.diagnostic.define_sign({
-		-- 	name = "DapBreakpointCondition",
-		-- 	text = "ﳁ",
-		-- 	texthl = "DapBreakpoint",
-		-- 	linehl = "DapBreakpoint",
-		-- 	numhl = "DapBreakpoint",
-		-- })
+		vim.fn.sign_define("DapBreakpointCondition", {
+			text = "ﳁ",
+			texthl = "DapBreakpoint",
+			linehl = "DapBreakpoint",
+			numhl = "DapBreakpoint",
+		})
 
-		-- vim.diagnostic.define_sign({
-		-- 	name = "DapBreakpointRejected",
-		-- 	text = "",
-		-- 	texthl = "DapBreakpoint",
-		-- 	linehl = "DapBreakpoint",
-		-- 	numhl = "DapBreakpoint",
-		-- })
+		vim.fn.sign_define("DapBreakpointRejected", {
+			text = "",
+			texthl = "DapBreakpoint",
+			linehl = "DapBreakpoint",
+			numhl = "DapBreakpoint",
+		})
 
-		-- vim.diagnostic.define_sign({
-		-- 	name = "DapLogPoint",
-		-- 	text = "",
-		-- 	texthl = "DapLogPoint",
-		-- 	linehl = "DapLogPoint",
-		-- 	numhl = "DapLogPoint",
-		-- })
+		vim.fn.sign_define("DapLogPoint", {
+			text = "",
+			texthl = "DapLogPoint",
+			linehl = "DapLogPoint",
+			numhl = "DapLogPoint",
+		})
 
-		-- vim.diagnostic.define_sign({
-		-- 	name = "DapStopped",
-		-- 	text = "",
-		-- 	texthl = "DapStopped",
-		-- 	linehl = "DapStopped",
-		-- 	numhl = "DapStopped",
-		-- })
+		vim.fn.sign_define("DapStopped", {
+			text = "",
+			texthl = "DapStopped",
+			linehl = "DapStopped",
+			numhl = "DapStopped",
+		})
 	end,
 }

@@ -25,7 +25,6 @@ return {
 	-- Utils
 	"tpope/vim-surround",
 	"tpope/vim-commentary",
-	"github/copilot.vim",
 	"tpope/vim-repeat",
 	"vim-utils/vim-man",
 	"jiangmiao/auto-pairs",
@@ -50,6 +49,9 @@ return {
 			})
 		end,
 	},
+
+	-- Copilot
+	"github/copilot.vim",
 
 	-- Git
 	"tpope/vim-fugitive",

@@ -29,7 +29,6 @@ return {
 			ensure_installed = {
 				"gopls",
 				"jsonls",
-				"solc",
 				"tflint",
 				"ts_ls",
 				"yamlls",

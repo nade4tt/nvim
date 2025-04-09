@@ -52,6 +52,9 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", keymap_options)
 keymap("x", "<leader>p", '"_dP', keymap_options)
 -- keymap("x", "p", '"_dP', keymap_options)
 
+--undotree
+keymap("n", "<leader>u", vim.cmd.UndotreeToggle, keymap_options)
+
 --copilot
 keymap("n", "<F3>", "<CMD>CopilotToggle<CR>", keymap_options)
 keymap("i", "<C-j>", "<Plug>(copilot-next)", keymap_options)

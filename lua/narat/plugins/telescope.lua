@@ -4,6 +4,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-lua/popup.nvim",
 		"princejoogie/dir-telescope.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -157,7 +158,7 @@ return {
 			require("telescope.builtin").find_files({
 				cwd = vim.fn.expand("%:p:h"), -- Start from current file's directory
 				prompt_title = "Files (Relative Path)",
-				path_display = function(opts, path)
+				path_display = function(_, path)
 					-- Strip the leading path components
 					local relpath = vim.fn.fnamemodify(path, ":.")
 					-- Handle files in current directory

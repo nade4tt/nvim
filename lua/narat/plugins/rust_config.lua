@@ -5,8 +5,11 @@ return {
 		local rt = require("rust-tools")
 
 		rt.setup({
+			-- capabilities = {
+			-- 	positionEncodings = { "utf-16" }, -- Explicit capability declaration
+			-- },
 			server = {
-				on_attach = function(_, bufnr)
+				on_attach = function(client, bufnr)
 					-- Hover actions
 					vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
 					-- Code action groups

@@ -9,16 +9,6 @@ local border = {
 	{ "│", "CmpBorder" },
 }
 
-local lsp = vim.lsp
-
-lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
-	border = border,
-})
-
-vim.diagnostic.config({
-	float = { border = border },
-})
-
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter", -- Plugin only loads when we enter insert mode
