@@ -25,31 +25,31 @@ return {
 	-- Utils
 	"tpope/vim-surround",
 	"tpope/vim-commentary",
-  "github/copilot.vim",
-  "tpope/vim-repeat",
-  "vim-utils/vim-man",
-  "jiangmiao/auto-pairs",
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup({
-        opts = {
-          -- Defaults
-          enable_close = true, -- Auto close tags
-          enable_rename = true, -- Auto rename pairs of tags
-          enable_close_on_slash = false, -- Auto close on trailing </
-        },
-        -- Also override individual filetype configs, these take priority.
-        -- Empty by default, useful if one of the "opts" global settings
-        -- doesn't work well in a specific filetype
-        per_filetype = {
-          ["html"] = {
-            enable_close = false,
-          },
-        },
-      })
-    end,
-  },
+	"github/copilot.vim",
+	"tpope/vim-repeat",
+	"vim-utils/vim-man",
+	"jiangmiao/auto-pairs",
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				opts = {
+					-- Defaults
+					enable_close = true, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+				-- Also override individual filetype configs, these take priority.
+				-- Empty by default, useful if one of the "opts" global settings
+				-- doesn't work well in a specific filetype
+				per_filetype = {
+					["html"] = {
+						enable_close = false,
+					},
+				},
+			})
+		end,
+	},
 
 	-- Git
 	"tpope/vim-fugitive",
@@ -62,10 +62,14 @@ return {
 	"mtdl9/vim-log-highlighting",
 	"nvim-lualine/lualine.nvim",
 	"romgrk/barbar.nvim",
+	"brenoprata10/nvim-highlight-colors",
+	"kwkarlwang/bufresize.nvim",
+	"folke/todo-comments.nvim",
 
 	-- Themes
 	"morhetz/gruvbox",
 	"sainnhe/gruvbox-material",
+	"shaunsingh/nord.nvim",
 	"joshdick/onedark.vim",
 	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -85,9 +89,15 @@ return {
 	"hrsh7th/cmp-path", -- source for file in system paths
 	"L3MON4D3/LuaSnip", -- snippet engine
 
-  -- tagbar
-  "preservim/tagbar",
+	-- tagbar
+	"preservim/tagbar",
+
+	-- oil
+	"stevearc/oil.nvim",
 
 	-- Markdown
 	"mzlogin/vim-markdown-toc",
+
+	-- Undotree
+	"mbbill/undotree",
 }
