@@ -4,12 +4,55 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		-- Shared setup
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local keymap = vim.keymap
+		local mason_lspconfig = require("mason-lspconfig")
+
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(ev)
+				local mappings = {
+					["gR"] = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
+					["gD"] = { vim.lsp.buf.declaration, "Go to declaration" },
+					["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Show LSP definitions" },
+					["gi"] = { "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations" },
+					["gt"] = { "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
+					["<leader>ca"] = { vim.lsp.buf.code_action, "See available code actions", mode = { "n", "v" } },
+					["<leader>rn"] = { vim.lsp.buf.rename, "Smart rename" },
+					["<leader>D"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
+					["<leader>d"] = { vim.diagnostic.open_float, "Show line diagnostics" },
+					["K"] = { vim.lsp.buf.hover, "Show documentation" },
+					["<leader>rs"] = { ":LspRestart<CR>", "Restart LSP" },
+					["<leader>do"] = { vim.diagnostic.open_float, "Open diagnostics" },
+					["]d"] = {
+						function()
+							vim.diagnostic.jump({ count = 1, float = true })
+						end,
+						"Go to next diagnostic",
+					},
+					["[d"] = {
+						function()
+							vim.diagnostic.jump({ count = -1, float = true })
+						end,
+						"Go to previous diagnostic",
+					},
+				}
+
+				local opts = { noremap = true, silent = false, buffer = ev.buf }
+
+				for keys, mapping in pairs(mappings) do
+					local mode = mapping.mode or "n"
+					opts.desc = mapping[2]
+					vim.keymap.set(mode, keys, mapping[1], opts)
+				end
+			end,
+		})
+
+		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		-- Diagnostic signs
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
@@ -18,49 +61,14 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- Keymaps
-		local on_attach = function(_, bufnr)
-			local opts = { noremap = true, silent = true, buffer = bufnr }
-
-			local mappings = {
-				["gR"] = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
-				["gD"] = { vim.lsp.buf.declaration, "Go to declaration" },
-				["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Show LSP definitions" },
-				["gi"] = { "<cmd>Telescope lsp_implementations<CR>", "Show LSP implementations" },
-				["gt"] = { "<cmd>Telescope lsp_type_definitions<CR>", "Show LSP type definitions" },
-				["<leader>ca"] = { vim.lsp.buf.code_action, "See available code actions", mode = { "n", "v" } },
-				["<leader>rn"] = { vim.lsp.buf.rename, "Smart rename" },
-				["<leader>D"] = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Show buffer diagnostics" },
-				["<leader>d"] = { vim.diagnostic.open_float, "Show line diagnostics" },
-				["K"] = { vim.lsp.buf.hover, "Show documentation" },
-				["<leader>rs"] = { ":LspRestart<CR>", "Restart LSP" },
-				["<leader>do"] = { vim.diagnostic.open_float, "Open diagnostics" },
-				["]d"] = {
-					function()
-						vim.diagnostic.jump({ count = 1, float = true })
-					end,
-					"Go to next diagnostic",
-				},
-				["[d"] = {
-					function()
-						vim.diagnostic.jump({ count = -1, float = true })
-					end,
-					"Go to previous diagnostic",
-				},
-			}
-
-			for keys, mapping in pairs(mappings) do
-				local mode = mapping.mode or "n"
-				opts.desc = mapping[2]
-				keymap.set(mode, keys, mapping[1], opts)
-			end
-		end
-
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		-- Server configurations
-		local servers = {
-			pyright = {
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end,
+			lspconfig["pyright"].setup({
+				capabilities = capabilities,
 				settings = {
 					python = {
 						analysis = {
@@ -70,8 +78,9 @@ return {
 						},
 					},
 				},
-			},
-			lua_ls = {
+			}),
+			lspconfig["lua_ls"].setup({
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = { globals = { "vim" } },
@@ -83,9 +92,13 @@ return {
 						},
 					},
 				},
-			},
-			omnisharp = { cmd = { "omnisharp", "--languageserver" } },
-			gopls = {
+			}),
+			lspconfig["omnisharp"].setup({
+				capabilities = capabilities,
+				cmd = { "omnisharp", "--languageserver" },
+			}),
+			lspconfig["gopls"].setup({
+				capabilities = capabilities,
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
 				settings = {
@@ -95,54 +108,14 @@ return {
 						analyses = { unusedparams = true },
 					},
 				},
-			},
-			clangd = {
+			}),
+			lspconfig["clangd"].setup({
+				capabilities = capabilities,
 				filetypes = { "c", "cpp", "objc", "objcpp" },
 				root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
 				settings = { clangd = { fallbackFlags = { "-std=c++17" } } },
 				flags = { debounce_text_changes = 150 },
-			},
-			svelte = {
-				on_attach = function(client, bufnr)
-					on_attach(client, bufnr)
-					vim.api.nvim_create_autocmd("BufWritePost", {
-						pattern = { "*.js", "*.ts" },
-						callback = function(ctx)
-							if client.name == "svelte" then
-								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-							end
-						end,
-					})
-				end,
-			},
-		}
-
-		-- Basic servers without special configuration
-		local basic_servers = {
-			"html",
-			"ts_ls",
-			"cssls",
-			"cssmodules_ls",
-			"tailwindcss",
-			"rust_analyzer",
-			"jsonls",
-			"bashls",
-			"vimls",
-			"sqls",
-		}
-
-		-- Setup all servers
-		for server, config in pairs(servers) do
-			config.capabilities = capabilities
-			config.on_attach = config.on_attach or on_attach
-			lspconfig[server].setup(config)
-		end
-
-		for _, server in ipairs(basic_servers) do
-			lspconfig[server].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-		end
+			}),
+		})
 	end,
 }

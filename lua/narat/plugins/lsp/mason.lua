@@ -5,15 +5,10 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-		-- import mason
 		local mason = require("mason")
-
-		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
-
 		local mason_tool_installer = require("mason-tool-installer")
 
-		-- enable mason and configure icons
 		mason.setup({
 			ui = {
 				icons = {
@@ -25,53 +20,53 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
 			ensure_installed = {
-				"gopls",
-				"jsonls",
-				"tflint",
-				"ts_ls",
-				"yamlls",
 				"bashls",
-				"pyright",
-				"lua_ls",
 				"clangd",
-				"vimls",
-				"jsonls",
 				"cssls",
 				"cssmodules_ls",
+				"gopls",
 				"html",
+				"graphql",
+				"jsonls",
+				"jsonls",
+				"lua_ls",
+				"pyright",
+				"rust_analyzer",
 				"sqls",
 				"tailwindcss",
+				"tflint",
+				"ts_ls",
+				"vimls",
+				"yamlls",
 			},
-			-- auto-install configured servers (with lspconfig)
-			automatic_installation = true, -- not the same as ensure_installed
+			automatic_installation = true,
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"eslint-lsp",
+				"black",
+				"clang-format",
+				"codelldb",
 				"cpplint",
+				"cpptools",
+				"csharpier",
+				"delve",
+				"eslint-lsp",
+				"go-debug-adapter",
+				"gofumpt",
+				"isort",
+				"js-debug-adapter",
+				"markdownlint",
+				"netcoredbg",
 				"prettier",
 				"prettierd",
+				"rustywind",
+				"sqlfmt",
 				"stylua",
 				"typescript-language-server",
-				"rust-analyzer",
-				"clang-format",
-				"rustywind",
-				"gofumpt",
-				"cpptools",
-				"go-debug-adapter",
-				"delve",
-				"codelldb",
-				"js-debug-adapter",
-				"csharpier",
-				"netcoredbg",
-				"sqlfmt",
-				"isort",
-				"black",
-				"markdownlint",
 			},
+			automatic_installation = true,
 		})
 	end,
 }
