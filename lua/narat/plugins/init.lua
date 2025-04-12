@@ -9,9 +9,6 @@ return {
 	"vim-utils/vim-man",
 	"jiangmiao/auto-pairs",
 
-	-- Copilot
-	"github/copilot.vim",
-
 	-- Git
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
@@ -48,9 +45,6 @@ return {
 	"hrsh7th/cmp-buffer", -- source for text in buffer
 	"hrsh7th/cmp-path", -- source for file in system paths
 	"L3MON4D3/LuaSnip", -- snippet engine
-
-	-- tagbar
-	"preservim/tagbar",
 
 	-- oil
 	"stevearc/oil.nvim",

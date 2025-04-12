@@ -1,8 +1,20 @@
 return {
 	"mfussenegger/nvim-dap",
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+	},
 
 	config = function()
-		-- local dap = require("dap")
+		local dap = require("dap")
+		local dapui = require("dapui")
+
+		local keymap = require("narat.core.utils").keymap
+		keymap("n", "<leader>dt", dapui.toggle)
+		keymap("n", "<leader>db", dap.toggle_breakpoint)
+		keymap("n", "<leader>dc", dap.continue)
+		keymap("n", "<leader>di", dap.step_into)
+		keymap("n", "<leader>do", dap.step_over)
+		keymap("n", "<leader>ds", dap.close)
 
 		-- -- Go
 		-- dap.adapters.go = {
@@ -25,7 +37,6 @@ return {
 		-- 	},
 		-- }
 
-		-- visual
 		-- DAP Breakpoint signs
 		vim.fn.sign_define("DapBreakpoint", {
 			text = "🔴",
