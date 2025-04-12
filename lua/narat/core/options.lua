@@ -1,14 +1,4 @@
 -- ignore files
-vim.opt.wildignore = {
-	"*.pyc",
-	"*_build/*",
-	"**/coverage/*",
-	"**/node_modules/*",
-	"**/android/*",
-	"**/ios/*",
-	"**/.git/*",
-}
-
 vim.cmd("au BufRead,BufNewFile *.ejs setfiletype html")
 vim.cmd("set t_ut=")
 

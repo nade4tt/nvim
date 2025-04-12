@@ -48,6 +48,8 @@ return {
 				{ name = "path" },
 			},
 			formatting = {
+				fields = { "kind", "abbr", "menu" },
+				expandable_indicator = false,
 				format = lspkind.cmp_format({
 					maxwidth = 50,
 					ellipsis_char = "...",
@@ -56,7 +58,7 @@ return {
 			window = {
 				completion = { -- rounded border; thin-style scrollbar
 					border = border,
-					scrollbar = "║",
+					scrollbar = true,
 				},
 				documentation = { -- rounded border; thin-style scrollbar
 					border = border,

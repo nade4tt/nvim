@@ -42,8 +42,10 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 keymap("x", "<leader>p", '"_dP')
 -- km.keymap("x", "p", '"_dP')
 
--- Custom Functions
+-- CUSTOM FUNCTIONS
+
+-- Search without jumping
 keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>")
 
--- Exit terminal
+-- Exit terminal with double ESC
 keymap("t", "<esc><esc>", "<C-\\><C-n>")

@@ -3,10 +3,9 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local substitute = require("substitute")
-
 		substitute.setup()
-		local keymap = vim.keymap.set
 
+		local keymap = require("narat.core.utils").keymap
 		keymap("n", "s", substitute.operator, { desc = "Substitute with motion" })
 		keymap("n", "ss", substitute.line, { desc = "Substitute line" })
 		keymap("n", "S", substitute.eol, { desc = "Substitute to end of line" })

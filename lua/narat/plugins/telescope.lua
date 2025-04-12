@@ -126,21 +126,17 @@ return {
 		})
 
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
-		vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "Grep string under cursor" })
-		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
-		vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-		vim.keymap.set(
-			"n",
-			"<leader>fc",
-			"<cmd>lua TelescopeCurrentBufferGrep()<CR>",
-			{ desc = "Live grep current file" }
-		)
+		local keymap = require("narat.core.utils").keymap
+		keymap("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
+		keymap("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
+		keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+		keymap("n", "<leader>fw", builtin.grep_string, { desc = "Grep string under cursor" })
+		keymap("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
+		keymap("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
+		keymap("n", "<leader>fc", "<cmd>lua TelescopeCurrentBufferGrep()<CR>", { desc = "Live grep current file" })
 
-		vim.keymap.set("n", "<leader>Ff", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
-		vim.keymap.set("n", "<leader>Fg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
+		keymap("n", "<leader>Ff", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
+		keymap("n", "<leader>Fg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
 
 		local telescope_last = 0
 		function TelescopeResume()
@@ -151,8 +147,7 @@ return {
 				builtin.resume()
 			end
 		end
-
-		vim.keymap.set("n", "<leader>fh", TelescopeResume)
+		keymap("n", "<leader>fh", TelescopeResume)
 
 		local function find_files_relpath()
 			require("telescope.builtin").find_files({
@@ -171,6 +166,6 @@ return {
 		end
 
 		-- Key mapping example
-		vim.keymap.set("n", "<leader>fr", find_files_relpath, { desc = "[F]ind files [R]elative path" })
+		keymap("n", "<leader>fr", find_files_relpath, { desc = "[F]ind files [R]elative path" })
 	end,
 }

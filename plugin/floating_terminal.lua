@@ -48,4 +48,4 @@ local toggle_floating_terminal = function()
 end
 
 vim.api.nvim_create_user_command("FloatingTerminal", toggle_floating_terminal, {})
-vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_floating_terminal)
+require("narat.core.utils").keymap({ "n", "t" }, "<leader>tt", toggle_floating_terminal)

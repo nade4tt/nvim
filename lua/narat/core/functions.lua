@@ -1,3 +1,5 @@
+local keymap = require("narat.core.utils").keymap
+
 -- Toggle copilot
 local copilot_on = true
 vim.api.nvim_create_user_command("CopilotToggle", function()
@@ -49,7 +51,7 @@ end
 -- Terminal
 local job_id = 0
 
-vim.keymap.set("n", "<leader>st", function()
+keymap("n", "<leader>st", function()
 	local file_path = vim.fn.expand("%:p")
 	local file_extension = vim.fn.expand("%:e")
 
@@ -65,7 +67,7 @@ vim.keymap.set("n", "<leader>st", function()
 end)
 
 -- Toggle checkbox
-vim.keymap.set("n", "<CR>", function()
+keymap("n", "<CR>", function()
 	local current_line = vim.api.nvim_get_current_line()
 	local pattern = "^([%s-]*%[)([x%s]+)(%].*)$"
 

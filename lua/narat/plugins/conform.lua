@@ -32,6 +32,11 @@ return {
 		config = function()
 			local conform = require("conform")
 
+			-- Keymap for manual formatting
+			require("narat.core.utils").keymap("n", "<F5>", function()
+				conform.format({ async = true, lsp_fallback = true })
+			end, { desc = "Format buffer" })
+
 			local is_windows = vim.fn.has("win32") == 1
 
 			conform.setup({
@@ -85,11 +90,6 @@ return {
 				-- 	stop_after_first = false,
 				-- },
 			})
-
-			-- Keymap for manual formatting
-			vim.keymap.set("n", "<F5>", function()
-				conform.format({ async = true, lsp_fallback = true })
-			end, { desc = "Format buffer" })
 		end,
 	},
 }
