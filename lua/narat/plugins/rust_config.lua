@@ -12,11 +12,11 @@ return {
 				-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 				on_attach = function(_, bufnr)
 					local keymap = require("narat.core.utils").keymap
-					keymap("n", "K", function()
+					keymap("n", "<Leader>k", function()
 						print("HOVERING RUST")
 						rt.hover_actions.hover_actions()
 					end, { buffer = bufnr })
-					keymap("n", "<Leader>ca", rt.code_action_group.code_action_group, { buffer = bufnr })
+					keymap("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
 				end,
 			},
 			tools = {

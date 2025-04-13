@@ -56,13 +56,13 @@ return {
 				}),
 			},
 			window = {
-				completion = { -- rounded border; thin-style scrollbar
+				completion = {
 					border = border,
 					scrollbar = true,
 				},
-				documentation = { -- rounded border; thin-style scrollbar
+				documentation = {
 					border = border,
-					scrollbar = "║",
+					scrollbar = true,
 				},
 			},
 		})
