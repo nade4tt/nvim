@@ -7,6 +7,7 @@ return {
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
+		local mason_registry = require("mason-registry")
 
 		local keymap = require("narat.core.utils").keymap
 		keymap("n", "<leader>dt", dapui.toggle)
@@ -16,26 +17,49 @@ return {
 		keymap("n", "<leader>do", dap.step_over)
 		keymap("n", "<leader>ds", dap.close)
 
-		-- -- Go
-		-- dap.adapters.go = {
-		-- 	type = "executable",
-		-- 	command = "node",
-		-- 	args = {
-		-- 		os.getenv("HOME")
-		-- 			.. "/.local/share/nvim/mason/packages/go-debug-adapter/extension/dist/debugAdapter.js",
-		-- 	},
-		-- }
-		-- dap.configurations.go = {
-		-- 	{
-		-- 		type = "go",
-		-- 		name = "Debug",
-		-- 		request = "launch",
-		-- 		showLog = false,
-		-- 		program = "${file}",
-		-- 		dlvToolPath = vim.fn.exepath(os.getenv("HOME") .. "/.local/share/nvim/mason/packages/delve/dlv"),
-		-- 		args = {},
-		-- 	},
-		-- }
+		-- Go
+		dap.adapters.go = {
+			type = "executable",
+			command = "node",
+			args = {
+				os.getenv("HOME")
+					.. "/.local/share/nvim/mason/packages/go-debug-adapter/extension/dist/debugAdapter.js",
+			},
+		}
+		dap.configurations.go = {
+			{
+				type = "go",
+				name = "Debug",
+				request = "launch",
+				showLog = false,
+				program = "${file}",
+				dlvToolPath = vim.fn.exepath(os.getenv("HOME") .. "/.local/share/nvim/mason/packages/delve/dlv"),
+				args = {},
+			},
+		}
+
+		-- Rust
+		local codelldb = mason_registry.get_package("codelldb")
+		local extension_path = codelldb:get_install_path() .. "/extension/"
+		local codelldb_path = extension_path .. "adapter/codelldb"
+
+		dap.adapters.lldb = {
+			type = "executable",
+			command = codelldb_path,
+			name = "lldb",
+		}
+		dap.configurations.rust = {
+			{
+				name = "ants",
+				type = "lldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+			},
+		}
 
 		-- DAP Breakpoint signs
 		vim.fn.sign_define("DapBreakpoint", {
