@@ -54,4 +54,7 @@ return {
 
 	-- Undotree
 	"mbbill/undotree",
+
+	-- Copilot
+	"github/copilot.vim",
 }

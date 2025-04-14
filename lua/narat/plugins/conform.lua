@@ -12,7 +12,7 @@ return {
 				javascriptreact = { "eslint_d" },
 				typescript = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
-				python = { "flake8" }, -- or 'pylint'
+				python = { "pylint" }, -- or 'pylint'
 				markdown = { "markdownlint" },
 			}
 

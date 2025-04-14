@@ -17,6 +17,7 @@ keymap("n", "<leader>h", "<C-w>h")
 keymap("n", "<leader>j", "<C-w>j")
 keymap("n", "<leader>k", "<C-w>k")
 keymap("n", "<leader>l", "<C-w>l")
+keymap("n", "cl", "s")
 
 -- split resize
 keymap("n", "<C-Up>", ":resize -2<CR>")
@@ -49,3 +50,12 @@ keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>")
 
 -- Exit terminal with double ESC
 keymap("t", "<esc><esc>", "<C-\\><C-n>")
+
+-- Undotree
+keymap("n", "<leader>u", "<CMD>UndotreeToggle<CR>")
+
+-- Copilot
+keymap({ "n", "i" }, "<F3>", "<CMD>CopilotToggle<CR>")
+keymap("i", "<C-j>", "<Plug>(copilot-next)")
+keymap("i", "<C-k>", "<Plug>(copilot-previous)")
+keymap("i", "<C-\\>", "<Plug>(copilot-dismiss)")

@@ -50,6 +50,7 @@ return {
 				"clang-format",
 				"codelldb",
 				"cpplint",
+				"pylint",
 				"cpptools",
 				"csharpier",
 				"delve",
