@@ -38,6 +38,16 @@ return {
 				t({ "", "import uitestsuite.cruisem.tools.stress_test_editors as ss" }),
 			}),
 
+			s("!results_one", {
+				t({ 'table_manip = am.results.dataview.switch_to_tab("table 1")' }),
+				t({ "", "data = [float(row[1]) for row in am.get_value(table_manip)]" }),
+			}),
+
+			s("!results_all", {
+				t({ "", 'table_manip = am.results.dataview.switch_to_tab("table 1")' }),
+				t({ "", "data = [[float(col) for col in row[1:]] for row in am.get_value(table_manip)]" }),
+			}),
+
 			s("!select", {
 				t({ 'am.category.elemtree.select("' }),
 				i(1),

@@ -85,7 +85,7 @@ return {
 						analysis = {
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							extraPaths = {},
+							extraPaths = { "C:\\github\\platform-sdt-test" },
 						},
 					},
 				},
