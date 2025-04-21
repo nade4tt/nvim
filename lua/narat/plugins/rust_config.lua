@@ -13,7 +13,6 @@ return {
 				on_attach = function(_, bufnr)
 					local keymap = require("narat.core.utils").keymap
 					keymap("n", "<Leader>k", function()
-						print("HOVERING RUST")
 						rt.hover_actions.hover_actions()
 					end, { buffer = bufnr })
 					keymap("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
