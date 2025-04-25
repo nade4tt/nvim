@@ -126,3 +126,5 @@ growable
 UTF-8
 tac
 unicode
+django
+dev
