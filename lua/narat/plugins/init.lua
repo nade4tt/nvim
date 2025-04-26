@@ -21,7 +21,6 @@ return {
 	"romgrk/barbar.nvim",
 	"brenoprata10/nvim-highlight-colors",
 	"kwkarlwang/bufresize.nvim",
-	"folke/todo-comments.nvim",
 
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
