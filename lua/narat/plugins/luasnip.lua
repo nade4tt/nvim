@@ -22,6 +22,14 @@ return {
 		end, { silent = true })
 
 		ls.add_snippets("python", {
+			s("!results_one", {
+        t({'table_manip = am.results.dataview.switch_to_tab("table 1")'}),
+        t({"", 'data = [float(row[1]) for row in am.get_value(table_manip)]'})
+			}),
+			s("!results_all", {
+        t({"", 'table_manip = am.results.dataview.switch_to_tab("table 1")'}),
+        t({"", 'data = [[float(col) for col in row[1:]] for row in am.get_value(table_manip)]'})
+			}),
 			s("!step", {
 				t({ "with pytest.xray.step(step=" }),
 				i(1),
@@ -70,12 +78,8 @@ return {
 				t({ "am.category.elemtree.detail" }),
 				i(1),
 			}),
-			s("!am", {
-				t({ "from uitest.script import app_manip as am" }),
-			}),
 			s("!test", {
 				t({ "import pytest" }),
-				t({ "", "from uitest.script import app_manip as am" }),
 				t({ "", "from uitestsuite.cruisem.helpers import helpers as helper" }),
 				t({ "", "" }),
 				t({ "", "def test_CMTEST_" }),
