@@ -8,10 +8,11 @@ return {
 
 			lint.linters_by_ft = {
 				cpp = { "cpplint" },
-				javascript = { "eslint_d" },
-				javascriptreact = { "eslint_d" },
-				typescript = { "eslint_d" },
-				typescriptreact = { "eslint_d" },
+				-- javascript = { "eslint_d" },
+				-- javascriptreact = { "eslint_d" },
+				-- typescript = { "eslint_d" },
+				-- typescriptreact = { "eslint_d" },
+				css = { "stylelint" },
 				-- python = { "pylint" }, -- or 'pylint'
 				markdown = { "markdownlint" },
 			}
@@ -74,11 +75,11 @@ return {
 					typescriptreact = { "prettier" },
 					json = { "jq" },
 					csharp = { "csharpier" },
+					css = { "prettier" },
 					markdown = { "prettier" },
 					cpp = {
 						"clang_format",
 					},
-					css = { "rustywind" },
 				},
 				-- Disable format on save
 				format_on_save = not is_windows and {

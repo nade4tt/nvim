@@ -47,6 +47,7 @@ return {
 			ensure_installed = {
 				"black",
 				"eslint_d",
+				"stylelint",
 				"clang-format",
 				"codelldb",
 				"cpplint",

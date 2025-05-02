@@ -104,6 +104,22 @@ return {
 					},
 				},
 			}),
+			["tailwindcss"] = function()
+				lspconfig.tailwindcss.setup({
+					filetypes = {
+						"html",
+						"javascriptreact",
+						"typescriptreact",
+						-- "css" -- Explicitly omit CSS if you want only React processing
+					},
+					init_options = {
+						userLanguages = {
+							eelixir = "html-eex",
+							eruby = "erb",
+						},
+					},
+				})
+			end,
 			lspconfig["omnisharp"].setup({
 				capabilities = capabilities,
 				cmd = { "omnisharp", "--languageserver" },
