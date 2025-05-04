@@ -15,6 +15,7 @@ return {
 				css = { "stylelint" },
 				-- python = { "pylint" }, -- or 'pylint'
 				markdown = { "markdownlint" },
+				tailwindcss = { "tailwindcss" },
 			}
 
 			-- Set up autocmd to lint on save
