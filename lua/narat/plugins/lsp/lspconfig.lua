@@ -15,6 +15,33 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
+				-- Configure floating window borders (ONLY ONCE, outside the autocmd)
+				local border = {
+					{ "╭", "FloatBorder" },
+					{ "─", "FloatBorder" },
+					{ "╮", "FloatBorder" },
+					{ "│", "FloatBorder" },
+					{ "╯", "FloatBorder" },
+					{ "─", "FloatBorder" },
+					{ "╰", "FloatBorder" },
+					{ "│", "FloatBorder" },
+				}
+
+				-- Set highlight for the border
+				vim.api.nvim_set_hl(0, "FloatBorder", {
+					fg = "#928374", -- Grey color, adjust to match your theme
+					bg = "NONE",
+				})
+
+				-- Override the function only if not already overridden
+				if not vim.lsp.util._orig_open_floating_preview then
+					vim.lsp.util._orig_open_floating_preview = vim.lsp.util.open_floating_preview
+					vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
+						opts = opts or {}
+						opts.border = opts.border or border
+						return vim.lsp.util._orig_open_floating_preview(contents, syntax, opts, ...)
+					end
+				end
 				local mappings = {
 					["gR"] = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
 					["gD"] = { vim.lsp.buf.declaration, "Go to declaration" },
