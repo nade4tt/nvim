@@ -61,12 +61,10 @@ return {
 			window = {
 				completion = {
 					border = border,
-					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
 					scrollbar = true,
 				},
 				documentation = {
 					border = border,
-					winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
 					scrollbar = true,
 				},
 			},

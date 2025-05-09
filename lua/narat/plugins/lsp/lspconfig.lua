@@ -30,7 +30,7 @@ return {
 				-- Set highlight for the border
 				vim.api.nvim_set_hl(0, "FloatBorder", {
 					fg = "#928374", -- Grey color, adjust to match your theme
-					bg = "NONE",
+					bg = "#282828", -- Background color, adjust to match your theme
 				})
 
 				-- Override the function only if not already overridden
