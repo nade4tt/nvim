@@ -16,5 +16,6 @@ require("lazy").setup({
 	{ import = "narat.plugins.lsp" },
 	{ import = "narat.plugins.treesitter" },
 	{ import = "narat.plugins.debugger" },
+	{ import = "narat.plugins.git" },
 	checker = { enabled = false },
 })

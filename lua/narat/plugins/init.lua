@@ -9,10 +9,6 @@ return {
 	"vim-utils/vim-man",
 	"jiangmiao/auto-pairs",
 
-	-- Git
-	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
-
 	-- Visual
 	"lukas-reineke/indent-blankline.nvim",
 	"nvim-tree/nvim-web-devicons",

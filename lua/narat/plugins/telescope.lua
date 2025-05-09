@@ -18,7 +18,7 @@ return {
 		local telescope = require("telescope")
 		local action_state = require("telescope.actions.state")
 		local file_ignore_patterns =
-			{ "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf", ".git/*" }
+			{ "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf" }
 
 		local insert_mode_mappings = {
 			["<C-k>"] = actions.move_selection_previous,
