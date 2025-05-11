@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 
 keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>")
 keymap("n", "//", ":noh<return>")
+keymap("n", "cl", "s")
 
 -- vertical movement
 keymap({ "n", "v" }, "<C-d>", "15jzz")
@@ -13,11 +14,10 @@ keymap({ "n", "v" }, "<C-u>", "15kzz")
 keymap("n", "<leader>y", "^yg_")
 
 -- split navigations
-keymap("n", "<leader>h", "<C-w>h")
-keymap("n", "<leader>j", "<C-w>j")
-keymap("n", "<leader>k", "<C-w>k")
-keymap("n", "<leader>l", "<C-w>l")
-keymap("n", "cl", "s")
+-- keymap("n", "<leader>h", "<C-w>h")
+-- keymap("n", "<leader>j", "<C-w>j")
+-- keymap("n", "<leader>k", "<C-w>k")
+-- keymap("n", "<leader>l", "<C-w>l")
 
 -- split resize
 keymap("n", "<C-Up>", ":resize -2<CR>")
