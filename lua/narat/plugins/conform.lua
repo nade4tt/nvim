@@ -75,7 +75,7 @@ return {
 					typescript = { "prettier" },
 					typescriptreact = { "prettier" },
 					json = { "jq" },
-					csharp = { "csharpier" },
+					-- csharp = { "csharpier" },
 					css = { "prettier" },
 					markdown = { "prettier" },
 					cpp = {

@@ -53,7 +53,7 @@ return {
 				"cpplint",
 				"pylint",
 				"cpptools",
-				"csharpier",
+				-- "csharpier",
 				"delve",
 				"eslint-lsp",
 				"go-debug-adapter",

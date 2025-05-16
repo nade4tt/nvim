@@ -99,77 +99,70 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			lspconfig["pyright"].setup({
-				capabilities = capabilities,
-				settings = {
-					python = {
-						analysis = {
-							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
-							extraPaths = { "C:\\github\\platform-sdt-test" },
+		vim.lsp.config("lua_ls", {
+			settings = {
+				Lua = {
+					diagnostics = { globals = { "vim" } },
+					workspace = {
+						library = {
+							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+							[vim.fn.stdpath("config") .. "/lua"] = true,
 						},
 					},
 				},
-			}),
-			lspconfig["lua_ls"].setup({
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
-						workspace = {
-							library = {
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.stdpath("config") .. "/lua"] = true,
-							},
-						},
+			},
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("pyright", {
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						extraPaths = { "C:\\github\\platform-sdt-test" },
 					},
 				},
-			}),
-			["tailwindcss"] = function()
-				lspconfig.tailwindcss.setup({
-					filetypes = {
-						"html",
-						"javascriptreact",
-						"typescriptreact",
-						-- "css" -- Explicitly omit CSS if you want only React processing
-					},
-					init_options = {
-						userLanguages = {
-							eelixir = "html-eex",
-							eruby = "erb",
-						},
-					},
-				})
-			end,
-			lspconfig["omnisharp"].setup({
-				capabilities = capabilities,
-				cmd = { "omnisharp", "--languageserver" },
-			}),
-			lspconfig["gopls"].setup({
-				capabilities = capabilities,
-				filetypes = { "go", "gomod", "gowork", "gotmpl" },
-				root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
-				settings = {
-					gopls = {
-						completeUnimported = true,
-						usePlaceholders = true,
-						analyses = { unusedparams = true },
-					},
+			},
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("tailwindcss", {
+			filetypes = {
+				"html",
+				"javascriptreact",
+				"typescriptreact",
+				-- "css" -- Explicitly omit CSS if you want only React processing
+			},
+			init_options = {
+				userLanguages = {
+					eelixir = "html-eex",
+					eruby = "erb",
 				},
-			}),
-			lspconfig["clangd"].setup({
-				capabilities = capabilities,
-				filetypes = { "c", "cpp", "objc", "objcpp" },
-				root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
-				settings = { clangd = { fallbackFlags = { "-std=c++17" } } },
-				flags = { debounce_text_changes = 150 },
-			}),
+			},
+		})
+		vim.lsp.config("omnisharp", {
+			capabilities = capabilities,
+			cmd = { "omnisharp", "--languageserver" },
+		})
+		vim.lsp.config("gopls", {
+			capabilities = capabilities,
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					usePlaceholders = true,
+					analyses = { unusedparams = true },
+				},
+			},
+		})
+		vim.lsp.config("clangd", {
+			capabilities = capabilities,
+			filetypes = { "c", "cpp", "objc", "objcpp" },
+			root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
+			settings = { clangd = { fallbackFlags = { "-std=c++17" } } },
+			flags = { debounce_text_changes = 150 },
 		})
 	end,
 }
