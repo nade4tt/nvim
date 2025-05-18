@@ -39,8 +39,7 @@ return {
 		}
 
 		-- Rust
-		local extension_path = vim.fn.exepath("codelldb") .. "/extension/"
-		local codelldb_path = extension_path .. "adapter/codelldb"
+		local codelldb_path = mason_registry.get_package("codelldb"):get_install_path() .. "/codelldb"
 
 		dap.adapters.lldb = {
 			type = "executable",

@@ -138,6 +138,18 @@ return {
 		keymap("n", "<leader>Ff", "<cmd>Telescope dir find_files<CR>", { noremap = true, silent = true })
 		keymap("n", "<leader>Fg", "<cmd>Telescope dir live_grep<CR>", { noremap = true, silent = true })
 
+		keymap("n", "<leader>fs", function()
+			builtin.lsp_document_symbols({
+				-- symbols = {
+				-- 	"Class",
+				-- 	"Function",
+				-- 	"Method",
+				-- 	"Component",
+				-- 	"Hook",
+				-- },
+			})
+		end, { desc = "Find Symbols" })
+
 		local telescope_last = 0
 		function TelescopeResume()
 			if telescope_last == 0 then

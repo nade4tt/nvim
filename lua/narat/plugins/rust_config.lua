@@ -15,7 +15,7 @@ return {
 					keymap("n", "<Leader>k", function()
 						rt.hover_actions.hover_actions()
 					end, { buffer = bufnr })
-					keymap("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+					-- keymap("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
 				end,
 			},
 			tools = {
