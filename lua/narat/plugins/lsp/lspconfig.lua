@@ -7,7 +7,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- Shared setup
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local mason_lspconfig = require("mason-lspconfig")
@@ -15,7 +14,6 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				-- Configure floating window borders (ONLY ONCE, outside the autocmd)
 				local border = {
 					{ "╭", "FloatBorder" },
 					{ "─", "FloatBorder" },
@@ -27,13 +25,11 @@ return {
 					{ "│", "FloatBorder" },
 				}
 
-				-- Set highlight for the border
 				vim.api.nvim_set_hl(0, "FloatBorder", {
-					fg = "#928374", -- Grey color, adjust to match your theme
-					bg = "#282828", -- Background color, adjust to match your theme
+					fg = "#928374",
+					bg = "#282828",
 				})
 
-				-- Override the function only if not already overridden
 				if not vim.lsp.util._orig_open_floating_preview then
 					vim.lsp.util._orig_open_floating_preview = vim.lsp.util.open_floating_preview
 					vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
@@ -42,6 +38,7 @@ return {
 						return vim.lsp.util._orig_open_floating_preview(contents, syntax, opts, ...)
 					end
 				end
+
 				local mappings = {
 					["gR"] = { "<cmd>Telescope lsp_references<CR>", "Show LSP references" },
 					["gD"] = { vim.lsp.buf.declaration, "Go to declaration" },
@@ -81,7 +78,6 @@ return {
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- Diagnostic signs
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -99,7 +95,39 @@ return {
 			},
 		})
 
-		vim.lsp.config("lua_ls", {
+		-- Default handler for all except pyright
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				if server_name ~= "pyright" then -- Exclude pyright
+					lspconfig[server_name].setup({
+						capabilities = capabilities,
+					})
+				end
+			end,
+		})
+
+		-- Explicit pyright config with extraPaths
+		lspconfig["pyright"].setup({
+			capabilities = capabilities,
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "workspace",
+						extraPaths = {
+							"C:\\github\\platform-sdt-test",
+							"C:\\git01\\act\\src\\python",
+							"C:\\git01\\stfw\\src",
+						},
+					},
+				},
+			},
+		})
+
+		-- Lua config
+		lspconfig["lua_ls"].setup({
+			capabilities = capabilities,
 			settings = {
 				Lua = {
 					diagnostics = { globals = { "vim" } },
@@ -111,28 +139,15 @@ return {
 					},
 				},
 			},
-			capabilities = capabilities,
 		})
 
-		vim.lsp.config("pyright", {
-			settings = {
-				python = {
-					analysis = {
-						autoSearchPaths = true,
-						useLibraryCodeForTypes = true,
-						extraPaths = { "C:\\github\\platform-sdt-test" },
-					},
-				},
-			},
+		-- Tailwind config
+		lspconfig["tailwindcss"].setup({
 			capabilities = capabilities,
-		})
-
-		vim.lsp.config("tailwindcss", {
 			filetypes = {
 				"html",
 				"javascriptreact",
 				"typescriptreact",
-				-- "css" -- Explicitly omit CSS if you want only React processing
 			},
 			init_options = {
 				userLanguages = {
@@ -141,11 +156,15 @@ return {
 				},
 			},
 		})
-		vim.lsp.config("omnisharp", {
+
+		-- Omnisharp config
+		lspconfig["omnisharp"].setup({
 			capabilities = capabilities,
 			cmd = { "omnisharp", "--languageserver" },
 		})
-		vim.lsp.config("gopls", {
+
+		-- Gopls config
+		lspconfig["gopls"].setup({
 			capabilities = capabilities,
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
 			root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
@@ -157,11 +176,17 @@ return {
 				},
 			},
 		})
-		vim.lsp.config("clangd", {
+
+		-- Clangd config
+		lspconfig["clangd"].setup({
 			capabilities = capabilities,
 			filetypes = { "c", "cpp", "objc", "objcpp" },
 			root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
-			settings = { clangd = { fallbackFlags = { "-std=c++17" } } },
+			settings = {
+				clangd = {
+					fallbackFlags = { "-std=c++17" },
+				},
+			},
 			flags = { debounce_text_changes = 150 },
 		})
 	end,
