@@ -82,10 +82,6 @@ return {
 				keys = { "n", "<leader>ba" },
 			},
 			{
-				desc = "Sibau",
-				cmd = "<CMD>lua FixSibau()<CR>",
-			},
-			{
 				desc = "Markdown reference file",
 				cmd = "<CMD>lua CreateMdReferenceFile()<CR>",
 			},

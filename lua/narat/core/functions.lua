@@ -20,22 +20,6 @@ function SearchWithoutJump()
 	vim.cmd("set hlsearch")
 end
 
--- Print current range
-function PrintRange()
-	local range = vim.fn.getpos("'<") .. "," .. vim.fn.getpos("'>")
-	print(range)
-end
-
--- Fix sibaus auto formatting
-function FixSibau()
-	-- Brackets
-	vim.cmd([[%g/(\n/norm Jx]])
-	-- Commas
-	vim.cmd([[%g/,\n/norm Jx]])
-	-- Square brackets
-	vim.cmd([[%g/\[\n/norm Jx]])
-end
-
 -- Telescope current buffer grep
 function TelescopeCurrentBufferGrep()
 	require("telescope.builtin").live_grep({
