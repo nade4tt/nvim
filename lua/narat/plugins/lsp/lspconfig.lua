@@ -96,14 +96,16 @@ return {
 		})
 
 		-- Default handler for all except pyright
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				if server_name ~= "pyright" then -- Exclude pyright
-					lspconfig[server_name].setup({
-						capabilities = capabilities,
-					})
-				end
-			end,
+		mason_lspconfig.setup({
+			automatic_enable = {
+				exclude = {
+					"pyright",
+					"lua_ls",
+					"gopls",
+					"clangd",
+					"tailwindcss",
+				},
+			},
 		})
 
 		-- Explicit pyright config with extraPaths
