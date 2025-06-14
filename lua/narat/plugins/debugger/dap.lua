@@ -2,6 +2,7 @@ return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
+		"theHamsta/nvim-dap-virtual-text",
 	},
 
 	config = function()
@@ -49,7 +50,7 @@ return {
 		}
 		dap.configurations.rust = {
 			{
-				name = "ants",
+				name = "Launch",
 				type = "lldb",
 				request = "launch",
 				program = function()
