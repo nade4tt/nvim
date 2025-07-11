@@ -20,11 +20,9 @@ return {
 
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
-	{ "morhetz/gruvbox", name = "tokyonight", priority = 1000 },
-	{ "sainnhe/gruvbox-material", name = "tokyonight", priority = 1000 },
-	{ "shaunsingh/nord.nvim", name = "tokyonight", priority = 1000 },
-	{ "joshdick/onedark.vim", name = "tokyonight", priority = 1000 },
-	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },
+	{ "sainnhe/gruvbox-material", name = "gruvbox", priority = 1000 },
+	{ "shaunsingh/nord.nvim", name = "nord", priority = 1000 },
+	{ "joshdick/onedark.vim", name = "onedark", priority = 1000 },
 	{ "rose-pine/neovim", name = "rose-pine", priority = 1000 },
 
 	-- quickfix list

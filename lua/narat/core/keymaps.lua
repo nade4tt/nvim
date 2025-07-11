@@ -59,3 +59,6 @@ keymap({ "n", "i" }, "<F3>", "<CMD>CopilotToggle<CR>")
 keymap("i", "<C-j>", "<Plug>(copilot-next)")
 keymap("i", "<C-k>", "<Plug>(copilot-previous)")
 keymap("i", "<C-\\>", "<Plug>(copilot-dismiss)")
+
+-- Tagbar
+keymap("n", "<F2>", "<CMD>TagbarToggle<CR>")
