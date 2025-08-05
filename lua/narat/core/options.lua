@@ -17,6 +17,19 @@ vim.opt.formatoptions:remove("t")
 -- Enable filetypes
 vim.g.do_filetype_lua = 0
 
+vim.g.clipboard = {
+	name = "win32yank-wsl",
+	copy = {
+		["+"] = { "win32yank.exe", "-i", "--crlf" },
+		["*"] = { "win32yank.exe", "-i", "--crlf" },
+	},
+	paste = {
+		["+"] = { "win32yank.exe", "-o", "--lf" },
+		["*"] = { "win32yank.exe", "-o", "--lf" },
+	},
+	cache_enabled = true,
+}
+
 -- Indents
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2

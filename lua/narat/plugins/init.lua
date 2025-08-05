@@ -39,9 +39,6 @@ return {
 	"hrsh7th/cmp-path", -- source for file in system paths
 	"L3MON4D3/LuaSnip", -- snippet engine
 
-	-- oil
-	"stevearc/oil.nvim",
-
 	-- Markdown
 	"mzlogin/vim-markdown-toc",
 
