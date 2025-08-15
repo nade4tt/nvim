@@ -129,7 +129,11 @@ return {
 		local keymap = require("narat.core.utils").keymap
 		keymap("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
 		keymap("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy find buffers" })
-		keymap("n", "<leader>fB", "<cmd>Telescope file_browser<CR>", { desc = "File Browser" })
+		keymap("n", "<leader>fB", function()
+			require("telescope").extensions.file_browser.file_browser({
+				cwd = vim.fn.expand("%:p:h"),
+			})
+		end, { desc = "File browser (current buffer dir)" })
 		keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
 		keymap("n", "<leader>fw", builtin.grep_string, { desc = "Grep string under cursor" })
 		keymap("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
