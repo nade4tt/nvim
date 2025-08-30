@@ -18,7 +18,7 @@ return {
 		local telescope = require("telescope")
 		local action_state = require("telescope.actions.state")
 		local file_ignore_patterns =
-			{ "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf" }
+			{ "node%_modules/.*", "package.json", "package%-lock.json", "%.csproj", "%.png", "%.ttf", "%.lock" }
 
 		local insert_mode_mappings = {
 			["<C-k>"] = actions.move_selection_previous,
@@ -110,6 +110,12 @@ return {
 					},
 					file_ignore_patterns = file_ignore_patterns,
 				},
+				telescope_dir = {
+					hidden = false, -- Show hidden files
+					follow_symlinks = false, -- Do not follow symlinks
+					file_ignore_patterns = file_ignore_patterns, -- Ignore patterns for files
+					show_preview = true, -- Disable preview
+				},
 			},
 		})
 
@@ -117,13 +123,14 @@ return {
 		telescope.load_extension("file_browser")
 
 		-- telescope-dir
-		require("dir-telescope").setup({
-			-- these are the default options set
-			hidden = true,
-			no_ignore = false,
-			show_preview = true,
-			follow_symlinks = false,
-		})
+		-- require("dir-telescope").setup({
+		-- 	-- these are the default options set
+		-- 	hidden = true,
+		-- 	-- no_ignore = false,
+		-- 	show_preview = false,
+		-- 	follow_symlinks = false,
+		-- 	file_ignore_patterns = file_ignore_patterns,
+		-- })
 
 		local builtin = require("telescope.builtin")
 		local keymap = require("narat.core.utils").keymap
