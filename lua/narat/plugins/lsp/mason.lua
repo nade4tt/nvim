@@ -21,6 +21,7 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
+				-- "pyright",
 				"bashls",
 				"clangd",
 				"cssls",
@@ -31,8 +32,8 @@ return {
 				"jsonls",
 				"jsonls",
 				"lua_ls",
-				"pyright",
 				"rust_analyzer",
+				"pylsp",
 				"sqls",
 				"tailwindcss",
 				"tflint",
@@ -40,7 +41,12 @@ return {
 				"vimls",
 				"yamlls",
 			},
-			automatic_installation = true,
+			automatic_enable = {
+				exclude = {
+					"pylsp", -- Disable automatic setup for pylsp
+					"lua_ls", -- Disable automatic setup for lua_ls
+				},
+			},
 		})
 
 		mason_tool_installer.setup({
@@ -51,7 +57,7 @@ return {
 				"clang-format",
 				"codelldb",
 				"cpplint",
-				"pylint",
+				-- "pylint",
 				"cpptools",
 				-- "csharpier",
 				"delve",
@@ -69,7 +75,6 @@ return {
 				"stylua",
 				"typescript-language-server",
 			},
-			automatic_installation = true,
 		})
 	end,
 }

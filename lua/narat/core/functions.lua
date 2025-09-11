@@ -100,3 +100,24 @@ function CreateMdReferenceFile()
 	vim.cmd("write")
 	vim.cmd("edit " .. new_file_path)
 end
+
+function GetPythonPath()
+	-- check if a venv is active (VIRTUAL_ENV)
+	local venv = os.getenv("VIRTUAL_ENV")
+	if venv then
+		if vim.loop.os_uname().sysname == "Windows" then
+			return venv .. "\\Scripts\\python.exe"
+		else
+			return venv .. "/bin/python"
+		end
+	end
+
+	-- fallback: look for ./venv in project root
+	local cwd = vim.fn.getcwd()
+	local local_venv = cwd .. "/venv/bin/python"
+	if vim.fn.filereadable(local_venv) == 1 then
+		return local_venv
+	end
+
+	return nil
+end

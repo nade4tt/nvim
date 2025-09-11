@@ -9,7 +9,6 @@ return {
 	config = function()
 		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local mason_lspconfig = require("mason-lspconfig")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -95,65 +94,18 @@ return {
 			},
 		})
 
-		-- Default handler for all except pyright
-		mason_lspconfig.setup({
-			automatic_enable = {
-				exclude = {
-					"pyright",
-					"lua_ls",
-					"gopls",
-					"clangd",
-					"tailwindcss",
-				},
-			},
-		})
+		local python_path = GetPythonPath()
 
-		vim.lsp.config("pyright", {
-			handlers = {
-				-- Override the default rename handler to remove the `annotationId` from edits.
-				--
-				-- Pyright is being non-compliant here by returning `annotationId` in the edits, but not
-				-- populating the `changeAnnotations` field in the `WorkspaceEdit`. This causes Neovim to
-				-- throw an error when applying the workspace edit.
-				--
-				-- See:
-				-- - https://github.com/neovim/neovim/issues/34731
-				-- - https://github.com/microsoft/pyright/issues/10671
-				[vim.lsp.protocol.Methods.textDocument_rename] = function(err, result, ctx)
-					if err then
-						vim.notify("Pyright rename failed: " .. err.message, vim.log.levels.ERROR)
-						return
-					end
-
-					---@cast result lsp.WorkspaceEdit
-					for _, change in ipairs(result.documentChanges or {}) do
-						for _, edit in ipairs(change.edits or {}) do
-							if edit.annotationId then
-								edit.annotationId = nil
-							end
-						end
-					end
-
-					local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
-					vim.lsp.util.apply_workspace_edit(result, client.offset_encoding)
-				end,
-			},
-		})
-
-		-- Explicit pyright config with extraPaths
-		lspconfig["pyright"].setup({
+		lspconfig["pylsp"].setup({
+			cmd = python_path and { python_path, "-m", "pylsp" } or nil,
 			capabilities = capabilities,
+			filetypes = { "python" },
 			settings = {
-				python = {
-					analysis = {
-						autoSearchPaths = true,
-						useLibraryCodeForTypes = true,
-						diagnosticMode = "workspace",
-						extraPaths = {
-							-- "C:\\github\\platform-sdt-test",
-							-- "C:\\git01\\act\\src\\python",
-							-- "C:\\git01\\stfw\\src",
-						},
+				pylsp = {
+					plugins = {
+						pyflakes = { enabled = true },
+						pycodestyle = { enabled = false },
+						pylint = { enabled = true, args = { "--max-line-length=200" } },
 					},
 				},
 			},
@@ -175,29 +127,6 @@ return {
 			},
 		})
 
-		-- Tailwind config
-		lspconfig["tailwindcss"].setup({
-			capabilities = capabilities,
-			filetypes = {
-				"html",
-				"javascriptreact",
-				"typescriptreact",
-			},
-			init_options = {
-				userLanguages = {
-					eelixir = "html-eex",
-					eruby = "erb",
-				},
-			},
-		})
-
-		-- Omnisharp config
-		lspconfig["omnisharp"].setup({
-			capabilities = capabilities,
-			cmd = { "omnisharp", "--languageserver" },
-		})
-
-		-- Gopls config
 		lspconfig["gopls"].setup({
 			capabilities = capabilities,
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -211,7 +140,6 @@ return {
 			},
 		})
 
-		-- Clangd config
 		lspconfig["clangd"].setup({
 			capabilities = capabilities,
 			filetypes = { "c", "cpp", "objc", "objcpp" },
