@@ -13,29 +13,29 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.textwidth = 0
 
-local job_id = 0
-local keymap = require("narat.core.utils").keymap
+-- local job_id = 0
+-- local keymap = require("narat.core.utils").keymap
 
-if vim.fn.has("win32") == 1 then
-	keymap("n", "<leader>rr", function()
-		local filename = vim.fn.expand("%:t")
+-- if vim.fn.has("win32") == 1 then
+-- 	keymap("n", "<leader>rr", function()
+-- 		local filename = vim.fn.expand("%:t")
 
-		vim.ui.input({ prompt = "Test Execution: " }, function(input)
-			vim.cmd.vnew()
-			vim.cmd.wincmd("L")
-			vim.cmd.term()
-			job_id = vim.bo.channel
+-- 		vim.ui.input({ prompt = "Test Execution: " }, function(input)
+-- 			vim.cmd.vnew()
+-- 			vim.cmd.wincmd("L")
+-- 			vim.cmd.term()
+-- 			job_id = vim.bo.channel
 
-			-- for windows
-			vim.fn.chansend(job_id, "powershell" .. "\r")
+-- 			-- for windows
+-- 			vim.fn.chansend(job_id, "powershell" .. "\r")
 
-			if input then
-				vim.fn.chansend(job_id, "rr " .. filename .. " " .. input .. "\r")
-			else
-				vim.fn.chansend(job_id, "rr " .. filename .. "\r")
-			end
-		end)
-	end)
-else
-	keymap("n", "<leader>rr", ":!python %<CR>", { noremap = true })
-end
+-- 			if input then
+-- 				vim.fn.chansend(job_id, "rr " .. filename .. " " .. input .. "\r")
+-- 			else
+-- 				vim.fn.chansend(job_id, "rr " .. filename .. "\r")
+-- 			end
+-- 		end)
+-- 	end)
+-- else
+-- 	keymap("n", "<leader>rr", ":!python %<CR>", { noremap = true })
+-- end

@@ -21,14 +21,26 @@ return {
 			end
 		end, { silent = true })
 
+		ls.add_snippets("lua", {
+			s("!plugin", {
+				t({ "return {", "\t" }),
+				i(1, "i(1)"),
+				t({ ",", "\tconfig = function()", '\t\trequire("' }),
+				i(2, "module_name"),
+				t({ '").setup({', "\t\t\t" }),
+				i(3),
+				t({ ",", "\t\t})", "\tend,", "}" }),
+			}),
+		})
+
 		ls.add_snippets("python", {
 			s("!results_one", {
-        t({'table_manip = am.results.dataview.switch_to_tab("table 1")'}),
-        t({"", 'data = [float(row[1]) for row in am.get_value(table_manip)]'})
+				t({ 'table_manip = am.results.dataview.switch_to_tab("table 1")' }),
+				t({ "", "data = [float(row[1]) for row in am.get_value(table_manip)]" }),
 			}),
 			s("!results_all", {
-        t({"", 'table_manip = am.results.dataview.switch_to_tab("table 1")'}),
-        t({"", 'data = [[float(col) for col in row[1:]] for row in am.get_value(table_manip)]'})
+				t({ "", 'table_manip = am.results.dataview.switch_to_tab("table 1")' }),
+				t({ "", "data = [[float(col) for col in row[1:]] for row in am.get_value(table_manip)]" }),
 			}),
 			s("!step", {
 				t({ "with pytest.xray.step(step=" }),

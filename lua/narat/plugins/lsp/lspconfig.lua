@@ -94,10 +94,11 @@ return {
 			},
 		})
 
+		-- local python_path = GetPythonPath()
 		local python_path = GetPythonPath()
 
 		lspconfig["pylsp"].setup({
-			cmd = python_path and { python_path, "-m", "pylsp" } or nil,
+			-- cmd = python_path and { python_path, "-m", "pylsp" } or {},
 			capabilities = capabilities,
 			filetypes = { "python" },
 			settings = {
@@ -105,7 +106,14 @@ return {
 					plugins = {
 						pyflakes = { enabled = true },
 						pycodestyle = { enabled = false },
-						pylint = { enabled = true, args = { "--max-line-length=200" } },
+						pylint = {
+							enabled = true,
+							args = { "--max-line-length=200", "--disable=C0114", "--disable=C0116" },
+						},
+						preload = {
+							modules = { "numpy", "pandas", "matplotlib" },
+						},
+						jedi = { environment = python_path, jedi_completion = true },
 					},
 				},
 			},
