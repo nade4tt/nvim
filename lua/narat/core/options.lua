@@ -32,7 +32,7 @@ if vim.fn.has("win32") == 0 and vim.fn.executable("win32yank.exe") == 1 then
 		cache_enabled = true,
 	}
 else
-  vim.g.clipboard = "unnamedplus"
+	vim.g.clipboard = "unnamedplus"
 end
 
 -- Indents
@@ -65,6 +65,9 @@ vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying me
 vim.opt.updatetime = 50 -- faster completion (4000ms default)
 vim.opt.spelllang = "en_us"
 vim.opt.colorcolumn = "80"
+
+-- Special
+vim.opt.winborder = "rounded"
 
 -- TMUX
 if vim.fn.empty("TMUX") then
