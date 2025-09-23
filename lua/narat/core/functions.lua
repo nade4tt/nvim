@@ -121,3 +121,11 @@ function GetPythonPath()
 
 	return nil
 end
+
+function GetRootPattern(...)
+	local patterns = { ... }
+	return function(bufnr)
+		local found = vim.fs.find(patterns, { upward = true, path = vim.api.nvim_buf_get_name(bufnr) })[1]
+		return found and vim.fs.dirname(found) or vim.loop.cwd()
+	end
+end

@@ -7,9 +7,6 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -75,8 +72,6 @@ return {
 			end,
 		})
 
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -94,70 +89,11 @@ return {
 			},
 		})
 
-		-- local python_path = GetPythonPath()
-		local python_path = GetPythonPath()
-
-		lspconfig["pylsp"].setup({
-			-- cmd = python_path and { python_path, "-m", "pylsp" } or {},
-			capabilities = capabilities,
-			filetypes = { "python" },
-			settings = {
-				pylsp = {
-					plugins = {
-						pyflakes = { enabled = true },
-						pycodestyle = { enabled = false },
-						pylint = {
-							enabled = true,
-							args = { "--max-line-length=200", "--disable=C0114", "--disable=C0116" },
-						},
-						preload = {
-							modules = { "numpy", "pandas", "matplotlib" },
-						},
-						jedi = { environment = python_path, jedi_completion = true },
-					},
-				},
-			},
-		})
-
-		-- Lua config
-		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = { globals = { "vim" } },
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
-					},
-				},
-			},
-		})
-
-		lspconfig["gopls"].setup({
-			capabilities = capabilities,
-			filetypes = { "go", "gomod", "gowork", "gotmpl" },
-			root_dir = lspconfig.util.root_pattern("go.mod", ".git", "go.work"),
-			settings = {
-				gopls = {
-					completeUnimported = true,
-					usePlaceholders = true,
-					analyses = { unusedparams = true },
-				},
-			},
-		})
-
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			filetypes = { "c", "cpp", "objc", "objcpp" },
-			root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git"),
-			settings = {
-				clangd = {
-					fallbackFlags = { "-std=c++17" },
-				},
-			},
-			flags = { debounce_text_changes = 150 },
+		vim.lsp.enable({
+			"python_ls",
+			"lua_ls",
+			"go_ls",
+			"cpp_ls",
 		})
 	end,
 }
