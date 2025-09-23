@@ -17,8 +17,8 @@ vim.opt.formatoptions:remove("t")
 -- Enable filetypes
 vim.g.do_filetype_lua = 0
 
--- WSL
-if vim.fn.executable("win32yank.exe") == 1 then
+-- Clipboard for WSL
+if vim.fn.has("win32") == 0 and vim.fn.executable("win32yank.exe") == 1 then
 	vim.g.clipboard = {
 		name = "win32yank-wsl",
 		copy = {
@@ -31,6 +31,8 @@ if vim.fn.executable("win32yank.exe") == 1 then
 		},
 		cache_enabled = true,
 	}
+else
+  vim.g.clipboard = "unnamedplus"
 end
 
 -- Indents
