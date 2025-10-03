@@ -3,7 +3,7 @@ return {
 	"tree-sitter/tree-sitter-embedded-template",
 
 	-- Utils
-	"tpope/vim-surround",
+	"kylechui/nvim-surround",
 	"tpope/vim-commentary",
 	"tpope/vim-repeat",
 	"vim-utils/vim-man",
@@ -17,6 +17,7 @@ return {
 	"romgrk/barbar.nvim",
 	"brenoprata10/nvim-highlight-colors",
 	"kwkarlwang/bufresize.nvim",
+	"norcalli/nvim-colorizer.lua",
 
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", name = "tokyonight", priority = 1000 },

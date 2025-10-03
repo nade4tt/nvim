@@ -62,6 +62,11 @@ return {
 					[vim.diagnostic.severity.INFO] = "",
 				},
 			},
+
+			virtual_lines = {
+				-- Only show virtual line diagnostics for the current cursor line
+				current_line = true,
+			},
 		})
 
 		vim.lsp.enable({
@@ -69,6 +74,7 @@ return {
 			"lua_ls",
 			"go_ls",
 			"cpp_ls",
+			"rust_ls",
 		})
 	end,
 }

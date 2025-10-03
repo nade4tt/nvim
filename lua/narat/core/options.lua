@@ -31,8 +31,6 @@ if vim.fn.has("win32") == 0 and vim.fn.executable("win32yank.exe") == 1 then
 		},
 		cache_enabled = true,
 	}
-else
-	vim.g.clipboard = "unnamedplus"
 end
 
 -- Indents

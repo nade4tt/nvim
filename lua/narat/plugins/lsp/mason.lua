@@ -21,7 +21,6 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
-				-- "pyright",
 				"bashls",
 				"clangd",
 				"cssls",
@@ -54,8 +53,6 @@ return {
 				"clang-format",
 				"codelldb",
 				"cpplint",
-				-- "pylint",
-				-- "netcoredbg",
 				"cpptools",
 				"delve",
 				"eslint-lsp",

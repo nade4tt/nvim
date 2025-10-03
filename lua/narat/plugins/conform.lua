@@ -82,11 +82,11 @@ return {
 					},
 				},
 				-- Disable format on save
-				format_on_save = nil,
-				-- format_on_save = not is_windows and {
-				-- 	timeout_ms = 2000,
-				-- 	lsp_fallback = true,
-				-- } or nil,
+				-- format_on_save = nil,
+				format_on_save = not is_windows and {
+					timeout_ms = 2000,
+					lsp_fallback = true,
+				} or nil,
 				-- Add this if you want to stop after the first formatter that succeeds
 				-- format_after_save = {
 				-- 	stop_after_first = false,
