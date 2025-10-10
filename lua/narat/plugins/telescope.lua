@@ -122,16 +122,6 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("file_browser")
 
-		-- telescope-dir
-		-- require("dir-telescope").setup({
-		-- 	-- these are the default options set
-		-- 	hidden = true,
-		-- 	-- no_ignore = false,
-		-- 	show_preview = false,
-		-- 	follow_symlinks = false,
-		-- 	file_ignore_patterns = file_ignore_patterns,
-		-- })
-
 		local builtin = require("telescope.builtin")
 		local keymap = require("narat.core.utils").keymap
 		keymap("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in working directory" })
@@ -141,7 +131,7 @@ return {
 				cwd = vim.fn.expand("%:p:h"),
 			})
 		end, { desc = "File browser (current buffer dir)" })
-		keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+		-- keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
 		keymap("n", "<leader>fw", builtin.grep_string, { desc = "Grep string under cursor" })
 		keymap("n", "<leader>fd", builtin.diagnostics, { desc = "Fuzzy find diagnostics" })
 		keymap("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
