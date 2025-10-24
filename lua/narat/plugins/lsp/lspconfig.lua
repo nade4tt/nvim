@@ -64,20 +64,7 @@ return {
 					[vim.diagnostic.severity.INFO] = "",
 				},
 			},
-
-			virtual_lines = {
-				-- Only show virtual line diagnostics for the current cursor line
-				current_line = false,
-			},
 		})
-		keymap("n", "<F4>", function()
-			local config = vim.diagnostic.config
-			local current = config().virtual_lines
-			config({
-				virtual_lines = not current,
-			})
-		end, { desc = "Toggle virtual lines" })
-
 		vim.lsp.enable({
 			"python_ls",
 			"lua_ls",

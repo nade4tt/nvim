@@ -6,4 +6,4 @@ local function save_to_avl_pc(opts)
 end
 
 vim.api.nvim_create_user_command("SaveToAvlPC", save_to_avl_pc, {})
-require("narat.core.utils").keymap({ "n", "t" }, "<F9>", save_to_avl_pc)
+-- require("narat.core.utils").keymap({ "n", "t" }, "<F9>", save_to_avl_pc)
