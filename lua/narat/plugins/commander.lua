@@ -5,7 +5,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 	},
 	keys = {
-		{ "<leader>:", "<CMD>Telescope commander<CR>", mode = { "n", "i" } },
+		{ "<leader>:", "<CMD>Telescope commander<CR>", mode = { "n" } },
 	},
 	config = function()
 		local commander = require("commander")
