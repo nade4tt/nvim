@@ -40,7 +40,7 @@ return {
 			},
 			automatic_enable = {
 				exclude = {
-          "pyright"
+          "pyright",
 					-- "pylsp", -- Disable automatic setup for pylsp
 					"lua_ls", -- Disable automatic setup for lua_ls
 				},
