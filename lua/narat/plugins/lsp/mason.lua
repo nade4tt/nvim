@@ -30,7 +30,8 @@ return {
 				"jsonls",
 				"lua_ls",
 				"rust_analyzer",
-				"pylsp",
+				"pyright",
+        -- "pylsp",
 				"sqls",
 				"tflint",
 				"ts_ls",
@@ -39,7 +40,8 @@ return {
 			},
 			automatic_enable = {
 				exclude = {
-					"pylsp", -- Disable automatic setup for pylsp
+          "pyright"
+					-- "pylsp", -- Disable automatic setup for pylsp
 					"lua_ls", -- Disable automatic setup for lua_ls
 				},
 			},
