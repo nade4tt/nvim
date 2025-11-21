@@ -1,18 +1,20 @@
 local python_path = GetPythonPath()
 
 return {
-	cmd = { "pyright-langserver", "--stdio" }, -- changed from pylsp
+	cmd = { "pyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = { ".git", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" }, -- typical Pyright roots
+	root_markers = { ".git", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt" },
+
 	settings = {
 		python = {
 			pythonPath = python_path,
+			venvPath = vim.fn.getcwd(),
+			venv = "venv",
 			analysis = {
 				autoSearchPaths = true,
 				useLibraryCodeForTypes = true,
 				diagnosticMode = "workspace",
 				typeCheckingMode = "basic",
-				extraPaths = { "numpy", "pandas", "matplotlib" },
 			},
 		},
 	},
