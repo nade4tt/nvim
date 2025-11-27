@@ -15,6 +15,7 @@ return {
 				css = { "stylelint" },
 				-- python = { "pylint" }, -- or 'pylint'
 				markdown = { "markdownlint" },
+				sh = { "shellcheck" }, -- changed
 			}
 
 			-- Set up autocmd to lint on save
@@ -80,6 +81,8 @@ return {
 					cpp = {
 						"clang_format",
 					},
+					sh = { "shfmt" },
+					bash = { "shfmt" },
 				},
 				-- Disable format on save
 				-- format_on_save = nil,

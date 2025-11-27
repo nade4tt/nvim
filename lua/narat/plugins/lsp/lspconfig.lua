@@ -71,6 +71,7 @@ return {
 			"go_ls",
 			"cpp_ls",
 			"rust_ls",
+			"bash_lsp",
 		})
 	end,
 }

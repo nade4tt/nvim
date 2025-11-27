@@ -21,6 +21,7 @@ return {
 
 		mason_lspconfig.setup({
 			ensure_installed = {
+				"fish_lsp",
 				"bashls",
 				"clangd",
 				"cssls",
@@ -31,7 +32,6 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"pyright",
-        -- "pylsp",
 				"sqls",
 				"tflint",
 				"ts_ls",
@@ -40,9 +40,12 @@ return {
 			},
 			automatic_enable = {
 				exclude = {
-          "pyright",
-					-- "pylsp", -- Disable automatic setup for pylsp
-					"lua_ls", -- Disable automatic setup for lua_ls
+					"python_ls",
+					"lua_ls",
+					"go_ls",
+					"cpp_ls",
+					"rust_ls",
+					"bash_lsp",
 				},
 			},
 		})
@@ -69,6 +72,8 @@ return {
 				"sqlfmt",
 				"stylua",
 				"typescript-language-server",
+				"shellcheck",
+				"shfmt",
 			},
 		})
 	end,
