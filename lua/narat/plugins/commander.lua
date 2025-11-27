@@ -83,6 +83,20 @@ return {
 				cmd = "<CMD>lua CreateMdReferenceFile()<CR>",
 			},
 			{
+				desc = " Git Branches",
+				cmd = "<Cmd>Telescope git_branches<CR>",
+				keys = { "n", "<leader>gb" },
+			},
+			{
+				desc = " Git Commits",
+				cmd = "<Cmd>Telescope git_commits<CR>",
+				keys = { "n", "<leader>gc" },
+			},
+			{
+				desc = " Git Buffer Commits",
+				cmd = "<Cmd>Telescope git_bcommits<CR>",
+			},
+			{
 				desc = "Insert current file PATH at cursor",
 				cmd = function()
 					local filepath = vim.fn.expand("%")
