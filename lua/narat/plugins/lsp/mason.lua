@@ -44,7 +44,7 @@ return {
 					"lua_ls",
 					"go_ls",
 					"cpp_ls",
-					"rust_ls",
+					"rust_analyzer",
 					"bash_lsp",
 				},
 			},

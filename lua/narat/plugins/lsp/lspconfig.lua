@@ -70,8 +70,7 @@ return {
 			"lua_ls",
 			"go_ls",
 			"cpp_ls",
-			"rust_ls",
-			"bash_lsp",
+			"bash_ls",
 		})
 	end,
 }
