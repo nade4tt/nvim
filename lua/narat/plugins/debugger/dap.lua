@@ -8,7 +8,6 @@ return {
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
-		local mason_registry = require("mason-registry")
 
 		local keymap = require("narat.core.utils").keymap
 		keymap("n", "<leader>dt", dapui.toggle)

@@ -47,5 +47,9 @@ return {
 	"mbbill/undotree",
 
 	-- Copilot
-	"github/copilot.vim",
+	{
+		"github/copilot.vim",
+		lazy = true,
+		cmd = { "Copilot" },
+	},
 }
