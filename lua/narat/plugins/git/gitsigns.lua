@@ -56,6 +56,43 @@ return {
 		local keymap = require("narat.core.utils").keymap
 		keymap("n", "]h", "<Cmd>Gitsigns next_hunk<CR>")
 		keymap("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>")
-		keymap("n", "<leader>hp", "<Cmd>Gitsigns preview_hunk<CR>")
+
+		keymap("n", "<leader>hs", gitsigns.stage_hunk)
+		keymap("n", "<leader>hr", gitsigns.reset_hunk)
+
+		keymap("v", "<leader>hs", function()
+			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end)
+
+		keymap("v", "<leader>hr", function()
+			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+		end)
+
+		keymap("n", "<leader>hS", gitsigns.stage_buffer)
+		keymap("n", "<leader>hR", gitsigns.reset_buffer)
+		keymap("n", "<leader>hp", gitsigns.preview_hunk)
+		keymap("n", "<leader>hi", gitsigns.preview_hunk_inline)
+
+		keymap("n", "<leader>hb", function()
+			gitsigns.blame_line({ full = true })
+		end)
+
+		keymap("n", "<leader>hd", gitsigns.diffthis)
+
+		keymap("n", "<leader>hD", function()
+			gitsigns.diffthis("~")
+		end)
+
+		keymap("n", "<leader>hQ", function()
+			gitsigns.setqflist("all")
+		end)
+		keymap("n", "<leader>hq", gitsigns.setqflist)
+
+		-- Toggles
+		keymap("n", "<leader>tb", gitsigns.toggle_current_line_blame)
+		keymap("n", "<leader>tw", gitsigns.toggle_word_diff)
+
+		-- Text object
+		keymap({ "o", "x" }, "ih", gitsigns.select_hunk)
 	end,
 }
