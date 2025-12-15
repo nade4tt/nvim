@@ -48,7 +48,14 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- Other
+vim.opt.laststatus = 2
+vim.opt.completeopt = menu, popup
+vim.opt.autoread = true
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.nu = true
