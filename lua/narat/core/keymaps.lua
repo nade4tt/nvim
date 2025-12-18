@@ -3,6 +3,7 @@ local keymap = require("narat.core.utils").keymap
 vim.g.mapleader = " "
 
 keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>")
+keymap("n", "*", [[:let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>]])
 keymap("n", "//", ":noh<return>")
 keymap("n", "cl", "s")
 
@@ -41,6 +42,8 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- fancy
 keymap("x", "<leader>p", '"_dP')
+keymap("n", "<leader>q", "<CMD>q<CR>")
+keymap("n", "<leader>s", "<CMD>w<CR>")
 -- km.keymap("x", "p", '"_dP')
 
 -- CUSTOM FUNCTIONS
