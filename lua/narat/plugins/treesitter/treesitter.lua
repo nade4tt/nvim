@@ -32,16 +32,12 @@ return {
 
 			-- configure treesitter
 			require("nvim-treesitter.configs").setup({
-
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,
 				},
 				-- enable indentation
 				indent = { enable = true },
-
-				-- enable folding
-				fold = { enable = true },
 
 				sync_install = false,
 				auto_install = true,
