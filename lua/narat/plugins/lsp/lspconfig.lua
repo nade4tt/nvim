@@ -49,6 +49,8 @@ return {
 			end,
 		})
 
+		vim.lsp.inlay_hint.enable(true)
+
 		vim.diagnostic.config({
 			signs = {
 				text = {

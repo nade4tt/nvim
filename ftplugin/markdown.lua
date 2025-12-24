@@ -10,7 +10,7 @@ vim.opt.fo = "want"
 vim.opt.textwidth = 80
 
 -- Hide markups
-vim.opt.conceallevel = 3
+vim.opt.conceallevel = 0
 vim.opt.concealcursor = "nc"
 
 keymap("n", "<F12>", function()

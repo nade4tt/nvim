@@ -11,6 +11,8 @@ return {
 				width = 40,
 				height = 20,
 			},
+			skip_confirm_for_simple_edits = true,
+			prompt_save_on_select_new_entry = false,
 		})
 
 		keymap("n", "<leader>o", "<cmd>Oil<CR>", { noremap = true })
