@@ -91,15 +91,3 @@ function _G.custom_foldtext()
 end
 
 vim.api.nvim_set_hl(0, "Folded", { fg = "#FFD700", bg = "#2E3440", italic = true })
-
--- vim.o.foldmethod = "syntax"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.o.foldtext = "v:lua.custom_foldtext()"
--- vim.o.fillchars = "fold: " -- Prevents ugly fold markers (default is `-`)
--- vim.o.foldenable = true
--- vim.g.vim_markdown_folding_level = 2
--- vim.o.foldlevel = 0
-
--- vim.opt.foldmethod = "syntax" -- changed: required by vim-markdown
--- vim.g.vim_markdown_folding_level = 2 -- folds only ##
--- vim.opt.foldlevel = 0 -- start folded
