@@ -49,6 +49,10 @@ return {
 			end,
 		})
 
+		vim.keymap.set({ "n", "i" }, "<F8>", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end, { desc = "Toggle inlay hints" })
+
 		vim.lsp.inlay_hint.enable(true)
 
 		vim.diagnostic.config({

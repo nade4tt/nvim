@@ -14,5 +14,8 @@ return {
 		vim.cmd("highlight LineNrBelow guifg=#ffffff")
 		vim.cmd("highlight CursorLineNr guifg=#00ffff")
 		vim.cmd("highlight Pmenu guibg=NONE")
+
+		-- Bold text in markdown
+		vim.api.nvim_set_hl(0, "@markup.strong", { fg = "#ff9e64", bold = true })
 	end,
 }
