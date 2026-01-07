@@ -17,5 +17,8 @@ return {
 
 		-- Bold text in markdown
 		vim.api.nvim_set_hl(0, "@markup.strong", { fg = "#ff9e64", bold = true })
+
+    -- Color for folded lines
+    vim.api.nvim_set_hl(0, "Folded", { fg = "#FFD700", bg = "#2E3440", italic = true })
 	end,
 }

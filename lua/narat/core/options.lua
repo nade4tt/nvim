@@ -62,6 +62,7 @@ vim.opt.nu = true
 vim.opt.rnu = true
 vim.opt.ruler = true
 vim.opt.lazyredraw = true
+vim.o.ttyfast = true
 vim.opt.wildmenu = true
 vim.opt.history = 1000
 vim.opt.undofile = true
@@ -74,15 +75,6 @@ vim.opt.colorcolumn = "80"
 -- Special
 vim.opt.winborder = "rounded"
 
--- TMUX
-if vim.fn.empty("TMUX") then
-	if vim.fn.has("nvim") then
-		vim.cmd("let NVIM_TUI_ENABLE_TRUE_COLOR = 1")
-	elseif vim.fn.has("termguicolors") then
-		vim.opt.termguicolors = true
-	end
-end
-
 -- Folding
 function _G.custom_foldtext()
 	local line = vim.fn.getline(vim.v.foldstart) -- Get the first line of the fold
@@ -90,4 +82,11 @@ function _G.custom_foldtext()
 	return "➤ " .. line .. " … (" .. count .. " lines)"
 end
 
-vim.api.nvim_set_hl(0, "Folded", { fg = "#FFD700", bg = "#2E3440", italic = true })
+-- Terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+    vim.cmd("syntax off")
+  end,
+})
