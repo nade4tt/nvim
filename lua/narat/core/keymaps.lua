@@ -23,7 +23,7 @@ keymap("n", "<leader>y", "^yg_")
 -- Command mode (Emacs shortcuts)
 keymap("c", "<C-a>", "<Home>")
 keymap("c", "<C-e>", "<End>")
-keymap("c", "<C-f>", "<Right>")
+-- keymap("c", "<C-f>", "<Right>")
 keymap("c", "<C-b>", "<Left>")
 keymap("c", "<C-d>", "<Del>")
 keymap("c", "<A-b>", "<C-Left>")
@@ -52,7 +52,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 -- fancy
 keymap("x", "<leader>p", '"_dP')
 keymap("n", "<leader>q", "<CMD>q<CR>")
-keymap("n", "<leader>s", "<CMD>w<CR>")
+keymap("n", "<leader>ss", "<CMD>w<CR>")
 -- km.keymap("x", "p", '"_dP')
 
 -- CUSTOM FUNCTIONS
