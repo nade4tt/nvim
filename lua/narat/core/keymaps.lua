@@ -20,6 +20,15 @@ keymap("n", "<leader>y", "^yg_")
 -- keymap("n", "<leader>k", "<C-w>k")
 -- keymap("n", "<leader>l", "<C-w>l")
 
+-- Command mode (Emacs shortcuts)
+keymap("c", "<C-a>", "<Home>")
+keymap("c", "<C-e>", "<End>")
+keymap("c", "<C-f>", "<Right>")
+keymap("c", "<C-b>", "<Left>")
+keymap("c", "<C-d>", "<Del>")
+keymap("c", "<A-b>", "<C-Left>")
+keymap("c", "<A-f>", "<C-Right>")
+
 -- split resize
 keymap("n", "<C-Up>", ":resize -2<CR>")
 keymap("n", "<C-Down>", ":resize +2<CR>")

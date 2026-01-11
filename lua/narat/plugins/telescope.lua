@@ -101,12 +101,12 @@ return {
 					file_ignore_patterns = file_ignore_patterns,
 				},
 				file_browser = {
-					theme = "ivy",
+					-- theme = "ivy",
 					-- disables netrw and use telescope-file-browser in its place
 					hijack_netrw = true,
 					mappings = {
-						["i"] = insert_mode_mappings,
-						["n"] = normal_mode_mappings,
+						i = insert_mode_mappings,
+						n = normal_mode_mappings,
 					},
 					file_ignore_patterns = file_ignore_patterns,
 				},

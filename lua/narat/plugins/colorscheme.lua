@@ -2,8 +2,9 @@ return {
 	"catppuccin/nvim",
 	priority = 1000,
 	config = function()
-		vim.cmd([[colorscheme tokyonight-storm]])
-		-- vim.cmd([[colorscheme catppuccin-mocha]])
+		-- vim.cmd([[colorscheme tokyonight-storm]])
+		-- vim.cmd([[colorscheme rose-pine-moon]])
+		vim.cmd([[colorscheme catppuccin-mocha]])
 		vim.opt.background = "dark"
 		vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
@@ -16,9 +17,6 @@ return {
 		vim.cmd("highlight Pmenu guibg=NONE")
 
 		-- Bold text in markdown
-		vim.api.nvim_set_hl(0, "@markup.strong", { fg = "#ff9e64", bold = true })
-
-    -- Color for folded lines
-    vim.api.nvim_set_hl(0, "Folded", { fg = "#FFD700", bg = "#2E3440", italic = true })
+		-- vim.api.nvim_set_hl(0, "@markup.strong", { fg = "#ff9e64", bold = true })
 	end,
 }
