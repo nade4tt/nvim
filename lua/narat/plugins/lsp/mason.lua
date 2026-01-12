@@ -41,6 +41,7 @@ return {
 			automatic_enable = {
 				exclude = {
 					"python_ls",
+					"pyright",
 					"lua_ls",
 					"go_ls",
 					"cpp_ls",
