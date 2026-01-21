@@ -74,3 +74,6 @@ keymap("i", "<C-\\>", "<Plug>(copilot-dismiss)")
 
 -- Tagbar
 keymap("n", "<F2>", "<CMD>TagbarToggle<CR>")
+
+-- ZenMode
+keymap("n", "<leader>z", "<CMD>ZenMode<CR>")

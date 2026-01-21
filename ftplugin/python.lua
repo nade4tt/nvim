@@ -1,5 +1,5 @@
 local keymap = require("narat.core.utils").keymap
---
+
 -- require("nvim-tree").setup {
 --   diagnostics = {
 --     enable = false,
@@ -16,6 +16,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.textwidth = 0
 
+keymap({ "n", "t" }, "<F9>", save_to_avl_pc)
 -- local job_id = 0
 -- local keymap = require("narat.core.utils").keymap
 

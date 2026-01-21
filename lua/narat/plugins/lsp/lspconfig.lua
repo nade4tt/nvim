@@ -6,7 +6,6 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -44,7 +43,7 @@ return {
 				for keys, mapping in pairs(mappings) do
 					local mode = mapping.mode or "n"
 					opts.desc = mapping[2]
-					vim.keymap.set(mode, keys, mapping[1], opts)
+					keymap(mode, keys, mapping[1], opts)
 				end
 			end,
 		})

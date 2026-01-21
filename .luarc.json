@@ -1,5 +1,9 @@
 {
     "diagnostics.disable": [
         "missing-parameter"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "save_to_avl_pc"
     ]
 }
