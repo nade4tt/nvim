@@ -74,6 +74,7 @@ vim.opt.colorcolumn = "80"
 
 -- Special
 vim.opt.winborder = "rounded"
+vim.opt.termguicolors = true
 
 -- Folding
 function _G.custom_foldtext()
@@ -84,9 +85,9 @@ end
 
 -- Terminal
 vim.api.nvim_create_autocmd("TermOpen", {
-  callback = function()
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-    vim.cmd("syntax off")
-  end,
+	callback = function()
+		vim.wo.number = false
+		vim.wo.relativenumber = false
+		vim.cmd("syntax off")
+	end,
 })
