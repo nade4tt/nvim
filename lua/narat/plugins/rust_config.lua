@@ -1,21 +1,27 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^6", -- Recommended
-	lazy = false, -- This plugin is already lazy
-
+	version = "^6",
+	lazy = false,
 	config = function()
 		vim.g.rustaceanvim = {
 			tools = {
 				inlay_hints = {
 					auto = true,
+					show_parameter_hints = true,
 					only_current_line = false,
 				},
 			},
-			lsp = {
-				settings = {
+			server = {
+				on_attach = function(_, _) end,
+				default_settings = {
 					["rust-analyzer"] = {
+						checkOnSave = true,
+						procMacro = {
+							enable = true,
+						},
 						diagnostics = {
-							-- disabled = { "obfuscated_if_else" }, -- disable this warning
+							enable = true,
+							disabled = { "unresolved-proc-macro" }, -- Common annoyance
 						},
 					},
 				},
