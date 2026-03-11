@@ -45,7 +45,7 @@ return {
 				formatters = {
 					black = {
 						command = "black",
-						args = { "--line-length", "80", "--quiet", "-" },
+						args = { "--line-length", "200", "--quiet", "-" },
 					},
 					clang_format = {
 						command = "clang-format",
