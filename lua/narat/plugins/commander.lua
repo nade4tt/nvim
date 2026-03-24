@@ -104,6 +104,18 @@ return {
 				end,
 			},
 			{
+				desc = "Yank filepath",
+				cmd = function()
+					vim.fn.setreg("+", vim.fn.expand("%:p"))
+				end,
+			},
+			{
+				desc = "Yank filename",
+				cmd = function()
+					vim.fn.setreg("+", vim.fn.expand("%:t"))
+				end,
+			},
+			{
 				desc = "Insert current file NAME at cursor",
 				cmd = function()
 					local filename = vim.fn.expand("%:t")
