@@ -109,7 +109,10 @@ end
 function GetRootPattern(...)
 	local patterns = { ... }
 	return function(bufnr)
-		local found = vim.fs.find(patterns, { upward = true, path = vim.api.nvim_buf_get_name(bufnr) })[1]
-		return found and vim.fs.dirname(found) or vim.loop.cwd()
+		local bufname = vim.api.nvim_buf_get_name(bufnr)
+		local dir = vim.fs.dirname(bufname)
+
+		local found = vim.fs.find(patterns, { upward = true, path = dir })[1]
+		return found and vim.fs.dirname(found) or dir
 	end
 end

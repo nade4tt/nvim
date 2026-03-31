@@ -11,7 +11,7 @@ return {
 		},
 		config = function()
 			-- configure commentstring
-			local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+			local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
 			-- Repeat movement with ; and ,
 			-- ensure ; goes forward and , goes backward regardless of the last direction

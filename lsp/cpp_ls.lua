@@ -1,7 +1,7 @@
-local root_pattern = GetRootPattern("go.mod", ".git", "go.work")
+local root_pattern = GetRootPattern("compile_commands.json", ".git")
 
 return {
-	cmd = { "clangd" },
+	cmd = { "clangd", "--compile-commands-dir=build" },
 	filetypes = { "c", "cpp", "objc", "objcpp" },
 	root_dir = root_pattern,
 	settings = {
