@@ -1,2 +1,3 @@
-require("narat.core")
-require("narat.lazy")
+require("config")
+require("utils")
+require("plugins")

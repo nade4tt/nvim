@@ -48,3 +48,4 @@ logs/
 # TypeScript declaration files
 *.d.ts
 lazy-lock.json
+nvim-pack-lock.json
