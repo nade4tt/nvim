@@ -1,4 +1,4 @@
-local root_pattern = GetRootPattern("compile_commands.json", ".git")
+local root_pattern = require("utils").get_root_pattern("compile_commands.json", ".git")
 
 return {
 	cmd = { "clangd", "--compile-commands-dir=build" },

@@ -1,4 +1,4 @@
-local python_path = GetPythonPath()
+local python_path = require("utils").get_python_path()
 
 return {
 	cmd = { "pyright-langserver", "--stdio" }, -- changed from pylsp
@@ -17,7 +17,6 @@ return {
 		},
 	},
 }
-
 -- return {
 -- 	cmd = { "pylsp" },
 -- 	filetypes = { "python" },
