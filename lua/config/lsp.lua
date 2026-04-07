@@ -16,7 +16,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	vim.lsp.enable(server_name)
 end
 
-keymap("n", "gr", "<cmd>telescope lsp_references<cr>")
+keymap("n", "gR", "<cmd>Telescope lsp_references<cr>")
 keymap("n", "gD", vim.lsp.buf.declaration)
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
 keymap("n", "gi", "<cmd>Telescope lsp_implementations<CR>")

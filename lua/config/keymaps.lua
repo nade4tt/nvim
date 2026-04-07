@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 
 keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>")
 keymap("n", "*", [[:let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>]])
-keymap("n", "//", ":noh<return>")
+keymap("n", "<C-l>", ":noh<return>")
 keymap("n", "cl", "s")
 
 -- vertical movement
