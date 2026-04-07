@@ -85,24 +85,89 @@ require("nvim-treesitter-textobjects").setup({
 		},
 		include_surrounding_whitespace = false,
 	},
+	move = {
+		set_jumps = true,
+	},
 })
 
+-- SELECT
+local ts_select = require("nvim-treesitter-textobjects.select").select_textobject
 keymap({ "x", "o" }, "am", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+	ts_select("@function.outer", "textobjects")
 end)
 keymap({ "x", "o" }, "im", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+	ts_select("@function.inner", "textobjects")
 end)
 keymap({ "x", "o" }, "ac", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+	ts_select("@class.outer", "textobjects")
 end)
 keymap({ "x", "o" }, "ic", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+	ts_select("@class.inner", "textobjects")
 end)
 keymap({ "x", "o" }, "as", function()
-	require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+	ts_select("@local.scope", "locals")
 end)
 
+-- SWAP
+local ts_swap = require("nvim-treesitter-textobjects.swap")
+keymap("n", "<leader>a", function()
+	ts_swap.swap_next("@parameter.inner")
+end)
+keymap("n", "<leader>A", function()
+	ts_swap.swap_previous("@parameter.outer")
+end)
+
+-- MOVE
+local ts_move = require("nvim-treesitter-textobjects.move")
+keymap({ "n", "x", "o" }, "]m", function()
+	ts_move.goto_next_start("@function.outer", "textobjects")
+end)
+keymap({ "n", "x", "o" }, "]]", function()
+	ts_move.goto_next_start("@class.outer", "textobjects")
+end)
+-- You can also pass a list to group multiple queries.
+keymap({ "n", "x", "o" }, "]o", function()
+	ts_move.goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects")
+end)
+-- You can also use captures from other query groups like `locals.scm` or `folds.scm`
+keymap({ "n", "x", "o" }, "]s", function()
+	ts_move.goto_next_start("@local.scope", "locals")
+end)
+keymap({ "n", "x", "o" }, "]z", function()
+	ts_move.goto_next_start("@fold", "folds")
+end)
+
+keymap({ "n", "x", "o" }, "]M", function()
+	ts_move.goto_next_end("@function.outer", "textobjects")
+end)
+keymap({ "n", "x", "o" }, "][", function()
+	ts_move.goto_next_end("@class.outer", "textobjects")
+end)
+
+keymap({ "n", "x", "o" }, "[m", function()
+	ts_move.goto_previous_start("@function.outer", "textobjects")
+end)
+keymap({ "n", "x", "o" }, "[[", function()
+	ts_move.goto_previous_start("@class.outer", "textobjects")
+end)
+
+keymap({ "n", "x", "o" }, "[M", function()
+	ts_move.goto_previous_end("@function.outer", "textobjects")
+end)
+keymap({ "n", "x", "o" }, "[]", function()
+	ts_move.goto_previous_end("@class.outer", "textobjects")
+end)
+
+-- Go to either the start or the end, whichever is closer.
+-- Use if you want more granular movements
+keymap({ "n", "x", "o" }, "]d", function()
+	ts_move.goto_next("@conditional.outer", "textobjects")
+end)
+keymap({ "n", "x", "o" }, "[d", function()
+	ts_move.goto_previous("@conditional.outer", "textobjects")
+end)
+
+-- REPEAT MOVE
 local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 -- Repeat movement with ; and ,
 -- ensure ; goes forward and , goes backward regardless of the last direction
