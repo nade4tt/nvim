@@ -28,7 +28,6 @@ keymap("n", "<leader>d", vim.diagnostic.open_float)
 keymap("n", "K", vim.lsp.buf.hover)
 keymap("n", "<leader>rs", ":LspRestart<CR>")
 keymap("n", "<leader>do", vim.diagnostic.open_float)
-
 keymap("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end)
@@ -49,19 +48,11 @@ end)
 -- 		end
 -- 	end,
 -- })
-
--- vim.lsp.config("pyright", {
--- 	filetypes = { "py" },
--- })
-
 -- diagnostics
 -- vim.diagnostic.config({
--- 	-- use the default configuration
--- 	virtual_lines = true,
-
 -- 	-- alternatively, customize specific options
 -- 	virtual_lines = {
 -- 		-- only show virtual line diagnostics for the current cursor line
--- 		current_line = true,
+-- 		current_line = false,
 -- 	},
 -- })

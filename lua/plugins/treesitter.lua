@@ -59,6 +59,7 @@ local parsersToInstall = vim.iter(ensure_installed)
 	:totable()
 require("nvim-treesitter").install(parsersToInstall)
 
+-- context
 require("treesitter-context").setup({
 	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 	max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -74,6 +75,7 @@ require("treesitter-context").setup({
 	on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
 
+-- textobjects
 require("nvim-treesitter-textobjects").setup({
 	select = {
 		enable = true,

@@ -59,5 +59,6 @@ mason_tool_installer.setup({
 
 		-- Markdown
 		"markdownlint",
+		"prettier",
 	},
 })
