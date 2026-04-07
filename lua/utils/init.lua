@@ -9,11 +9,18 @@ end
 M.get_root_pattern = function(...)
 	local patterns = { ... }
 	return function(bufnr)
+		bufnr = bufnr or 0
 		local bufname = vim.api.nvim_buf_get_name(bufnr)
+		if bufname == "" then
+			return vim.fn.getcwd()
+		end
 		local dir = vim.fs.dirname(bufname)
 
 		local found = vim.fs.find(patterns, { upward = true, path = dir })[1]
-		return found and vim.fs.dirname(found) or dir
+		if found then
+			return vim.fn.fnamemodify(vim.fs.dirname(found), ":p")
+		end
+		return dir
 	end
 end
 
