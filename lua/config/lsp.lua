@@ -1,3 +1,22 @@
+vim.lsp.config("*", {
+	root_markers = { ".git" },
+	capabilities = {
+		textDocument = {
+			semanticTokens = { multilineTokenSupport = true },
+		},
+	},
+})
+
+-- local lsp_configs = {}
+
+for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
+	local server_name = vim.fn.fnamemodify(f, ":t:r")
+	local config = dofile(f)
+	vim.lsp.config(server_name, config)
+	vim.lsp.enable(server_name)
+end
+
+-- vim.lsp.enable(lsp_configs)
 -- vim.api.nvim_create_autocmd("LspAttach", {
 -- 	callback = function(ev)
 -- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -10,30 +29,6 @@
 -- 			end)
 -- 		end
 -- 	end,
--- })
-
-local lsp_configs = {}
-
-for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
-	local server_name = vim.fn.fnamemodify(f, ":t:r")
-	table.insert(lsp_configs, server_name)
-end
-
-vim.lsp.enable(lsp_configs)
-
-vim.lsp.config("*", {
-	capabilities = {
-		textDocument = {
-			semanticTokens = {
-				multilineTokenSupport = true,
-			},
-		},
-	},
-	root_markers = { ".git" },
-})
-
--- vim.lsp.config("cpp_ls", {
--- 	filetypes = { "c", "cpp" },
 -- })
 
 -- vim.lsp.config("pyright", {

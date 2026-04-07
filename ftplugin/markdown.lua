@@ -1,4 +1,4 @@
-local keymap = require("narat.core.utils").keymap
+local keymap = require("utils").keymap
 
 vim.opt.linebreak = true
 vim.opt.wrap = false

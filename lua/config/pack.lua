@@ -5,8 +5,8 @@ vim.cmd("packadd nvim.difftool")
 local URL = "https://github.com/"
 
 vim.pack.add({
-	-- {src = URL .. "neovim/nvim-lspconfig"},
-	-- {src = URL .. "nvim-treesitter/nvim-treesitter"},
+	-- Essential
+	{ src = URL .. "nvim-lua/plenary.nvim" },
 
 	-- Utils
 	{ src = URL .. "kylechui/nvim-surround" },
@@ -35,9 +35,6 @@ vim.pack.add({
 
 	-- quickfix list
 	{ src = URL .. "romainl/vim-qf" },
-
-	-- other
-	{ src = URL .. "nvim-lua/plenary.nvim" },
 
 	-- Copilot
 	-- { src = URL .. "github/copilot.vim"},

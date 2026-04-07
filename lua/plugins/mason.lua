@@ -56,5 +56,8 @@ mason_tool_installer.setup({
 		-- Bash
 		"shellcheck",
 		"shfmt",
+
+		-- Markdown
+		"markdownlint",
 	},
 })
