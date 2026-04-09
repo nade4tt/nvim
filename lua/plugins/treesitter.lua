@@ -26,29 +26,30 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local ensure_installed = {
 	"bash",
-	"cpp",
 	"c",
+	"c_sharp",
+	"cpp",
 	"css",
 	"dockerfile",
 	"gitignore",
-	"vimdoc",
+	"go",
 	"html",
 	"javascript",
 	"json",
 	"lua",
 	"markdown",
 	"markdown_inline",
+	"mermaid",
 	"python",
 	"query",
+	"rust",
+	"scss",
+	"sql",
 	"tsx",
 	"typescript",
 	"vim",
+	"vimdoc",
 	"yaml",
-	"go",
-	"c_sharp",
-	"mermaid",
-	"sql",
-	"scss",
 }
 
 local alreadyInstalled = require("nvim-treesitter.config").get_installed()
@@ -162,12 +163,12 @@ end)
 
 -- Go to either the start or the end, whichever is closer.
 -- Use if you want more granular movements
-keymap({ "n", "x", "o" }, "]d", function()
-	ts_move.goto_next("@conditional.outer", "textobjects")
-end)
-keymap({ "n", "x", "o" }, "[d", function()
-	ts_move.goto_previous("@conditional.outer", "textobjects")
-end)
+-- keymap({ "n", "x", "o" }, "]d", function()
+-- 	ts_move.goto_next("@conditional.outer", "textobjects")
+-- end)
+-- keymap({ "n", "x", "o" }, "[d", function()
+-- 	ts_move.goto_previous("@conditional.outer", "textobjects")
+-- end)
 
 -- REPEAT MOVE
 local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")

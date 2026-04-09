@@ -17,9 +17,11 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-				-- disable a keymap from the preset
-				["<C-e>"] = false, -- or {}
+				-- confirm
 				["<C-y>"] = { "accept", "fallback" },
+
+				-- cancel
+				["<C-e>"] = { "hide" },
 
 				-- show with a list of providers
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
