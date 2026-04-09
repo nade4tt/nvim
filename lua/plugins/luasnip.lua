@@ -1,5 +1,5 @@
 vim.pack.add({
-	{ src = "https://github.com/L3MON4D3/LuaSnip", name = "luasnip" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", name = "luasnip", version = "v2.*" },
 	{ src = "https://github.com/rafamadriz/friendly-snippets", name = "friendly-snippets" },
 })
 

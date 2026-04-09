@@ -1,5 +1,5 @@
 vim.pack.add({
-	{ src = "https://github.com/git-conflict.nvim", name = "git-conflict" },
+	{ src = "https://github.com/akinsho/git-conflict.nvim", name = "git-conflict" },
 	{ src = "https://github.com/tpope/vim-fugitive", name = "vim-fugitive" },
 	{ src = "https://github.com/tpope/vim-rhubarb", name = "vim-rhubarb" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim", name = "gitsigns" },

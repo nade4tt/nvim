@@ -9,8 +9,8 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 	callback = function()
 		require("blink.cmp").setup({
 			keymap = {
-				-- set to 'none' to disable the 'default' preset
 				preset = "default",
+				list = { selection = { preselect = false, auto_insert = true } },
 
 				["<C-k>"] = { "select_prev", "fallback" },
 				["<C-j>"] = { "select_next", "fallback" },
@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
+			snippets = { preset = "luasnip" },
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		})
 	end,
