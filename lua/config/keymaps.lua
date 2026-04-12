@@ -51,7 +51,8 @@ keymap("v", "K", ":m '<-2<CR>gv=gv")
 
 -- fancy
 keymap("x", "<leader>p", '"_dP')
-keymap("n", "<leader>q", "<CMD>q!<CR>")
+keymap("n", "<leader>q", "<CMD>q<CR>")
+keymap("n", "<leader>Q", "<CMD>q!<CR>")
 keymap("n", "<leader>ss", "<CMD>w<CR>")
 -- km.keymap("x", "p", '"_dP')
 
