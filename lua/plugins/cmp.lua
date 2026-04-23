@@ -24,7 +24,18 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				["<C-e>"] = { "hide" },
 
 				-- show with a list of providers
-				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-s>"] = {
+					function(cmp)
+						cmp.show({ providers = { "snippets" } })
+					end,
+				},
+
+				["<C-space>"] = {
+					function(cmp)
+						cmp.show({ providers = { "lsp" } })
+					end,
+				},
+				["<C-d>"] = { "show", "show_documentation", "hide_documentation" },
 			},
 			appearance = {
 				nerd_font_variant = "mono",

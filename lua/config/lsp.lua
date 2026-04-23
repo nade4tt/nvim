@@ -35,6 +35,12 @@ keymap("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end)
 
+keymap("n", "<F8>", function()
+	local state = not vim.lsp.inlay_hint.is_enabled()
+	vim.lsp.inlay_hint.enable(state)
+	print("Inlay hints: ", state)
+end, { desc = "Toggle inlay hints" })
+
 -- vim.api.nvim_create_autocmd("lspattach", {
 -- 	callback = function(ev)
 -- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
