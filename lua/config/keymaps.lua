@@ -2,66 +2,55 @@ local keymap = require("utils").keymap
 
 vim.g.mapleader = " "
 
-keymap("n", "*", ":let @/ = '<c-r><c-w>'<CR>:set hlsearch<CR>")
+-- Search: highlight word under cursor without jumping
 keymap("n", "*", [[:let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>]])
 keymap("n", "<C-l>", ":noh<return>")
 keymap("n", "cl", "s")
 
--- vertical movement
+-- Vertical movement
 keymap({ "n", "v" }, "<C-d>", "15jzz")
 keymap({ "n", "v" }, "<C-u>", "15kzz")
 
--- yank
+-- Yank line content (no leading/trailing whitespace)
 keymap("n", "<leader>y", "^yg_")
 
--- split navigations
--- keymap("n", "<leader>h", "<C-w>h")
--- keymap("n", "<leader>j", "<C-w>j")
--- keymap("n", "<leader>k", "<C-w>k")
--- keymap("n", "<leader>l", "<C-w>l")
-
--- Command mode (Emacs shortcuts)
+-- Command mode (Emacs-style shortcuts)
 keymap("c", "<C-a>", "<Home>")
 keymap("c", "<C-e>", "<End>")
--- keymap("c", "<C-f>", "<Right>")
 keymap("c", "<C-b>", "<Left>")
 keymap("c", "<C-d>", "<Del>")
 keymap("c", "<A-b>", "<C-Left>")
 keymap("c", "<A-f>", "<C-Right>")
 
--- split resize
+-- Split resize
 keymap("n", "<C-Up>", ":resize -2<CR>")
 keymap("n", "<C-Down>", ":resize +2<CR>")
 keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
--- buffers
+-- Buffer navigation (barbar)
 keymap("n", "<leader>.", "<Cmd>BufferNext<CR>")
 keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>")
 keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>")
 keymap("n", "<leader>ba", "<Cmd>BufferCloseAllButVisible<CR>")
 
--- inden--quickfixlist
+-- Quickfix list navigation
 keymap("n", "<leader>]", "<cmd>cnext<CR>")
 keymap("n", "<leader>[", "<cmd>cprev<CR>")
 
--- move text up and down
+-- Move selected lines up/down
 keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
 
--- fancy
+-- Paste without overwriting register
 keymap("x", "<leader>p", '"_dP')
+
+-- File operations
 keymap("n", "<leader>q", "<CMD>q<CR>")
 keymap("n", "<leader>Q", "<CMD>q!<CR>")
 keymap("n", "<leader>ss", "<CMD>w<CR>")
--- km.keymap("x", "p", '"_dP')
 
--- CUSTOM FUNCTIONS
-
--- Search without jumping
-keymap("n", "<Leader>/", ":lua SearchWithoutJump()<CR>")
-
--- Exit terminal with double ESC
+-- Terminal: exit with double ESC
 keymap("t", "<esc><esc>", "<C-\\><C-n>")
 
 -- Undotree

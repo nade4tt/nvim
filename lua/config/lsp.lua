@@ -9,6 +9,7 @@ vim.lsp.config("*", {
 	},
 })
 
+-- Auto-load all LSP configs from lsp/*.lua
 for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	local server_name = vim.fn.fnamemodify(f, ":t:r")
 	local config = dofile(f)
@@ -16,6 +17,7 @@ for _, f in pairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
 	vim.lsp.enable(server_name)
 end
 
+-- LSP keymaps
 keymap("n", "gR", "<cmd>Telescope lsp_references<cr>")
 keymap("n", "gD", vim.lsp.buf.declaration)
 keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
@@ -27,7 +29,6 @@ keymap("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>")
 keymap("n", "<leader>d", vim.diagnostic.open_float)
 keymap("n", "K", vim.lsp.buf.hover)
 keymap("n", "<leader>rs", ":LspRestart<CR>")
-keymap("n", "<leader>do", vim.diagnostic.open_float)
 keymap("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end)
@@ -35,30 +36,9 @@ keymap("n", "[d", function()
 	vim.diagnostic.jump({ count = -1, float = true })
 end)
 
+-- Toggle inlay hints
 keymap("n", "<F8>", function()
-	local state = not vim.lsp.inlay_hint.is_enabled()
-	vim.lsp.inlay_hint.enable(state)
-	print("Inlay hints: ", state)
+	local enabled = not vim.lsp.inlay_hint.is_enabled()
+	vim.lsp.inlay_hint.enable(enabled)
+	vim.notify("Inlay hints: " .. (enabled and "on" or "off"))
 end, { desc = "Toggle inlay hints" })
-
--- vim.api.nvim_create_autocmd("lspattach", {
--- 	callback = function(ev)
--- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
--- 		if client and client:supports_method(vim.lsp.protocol.methods.textdocument_completion) then
--- 			vim.opt.completeopt = { "menu", "menuone", "noinsert", "fuzzy", "popup" }
--- 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-
--- 			require("utils").keymap("i", "<c-space>", function()
--- 				vim.lsp.completion.get()
--- 			end)
--- 		end
--- 	end,
--- })
--- diagnostics
--- vim.diagnostic.config({
--- 	-- alternatively, customize specific options
--- 	virtual_lines = {
--- 		-- only show virtual line diagnostics for the current cursor line
--- 		current_line = false,
--- 	},
--- })

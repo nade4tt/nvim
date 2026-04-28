@@ -1,17 +1,14 @@
 -- Essential
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fileencoding = "utf-8"
-vim.opt.syntax = "on"
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
+vim.opt.syntax = "enable"
 
--- Disable line breaking
+-- Disable automatic line breaking
 vim.opt.formatoptions:remove("t")
-
--- Enable filetypes
-vim.g.do_filetype_lua = 0
 
 -- Clipboard for WSL
 if vim.fn.has("win32") == 0 and vim.fn.executable("win32yank.exe") == 1 then
@@ -29,7 +26,7 @@ if vim.fn.has("win32") == 0 and vim.fn.executable("win32yank.exe") == 1 then
 	}
 end
 
--- Indents
+-- Indentation
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
@@ -45,38 +42,27 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Splits
--- vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Other
+-- UI
 vim.opt.laststatus = 2
-vim.opt.completeopt = menu, popup
+vim.opt.completeopt = { "menu", "popup" }
 vim.opt.autoread = true
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
-vim.opt.nu = true
-vim.opt.rnu = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.ruler = true
 vim.opt.lazyredraw = true
-vim.o.ttyfast = true
 vim.opt.wildmenu = true
 vim.opt.history = 1000
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
-vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
-vim.opt.updatetime = 50 -- faster completion (4000ms default)
+vim.opt.cmdheight = 1
+vim.opt.updatetime = 50
 vim.opt.spelllang = "en_us"
 vim.opt.colorcolumn = "80"
 
--- Special
+-- Appearance
 vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
-
--- Terminal
-vim.api.nvim_create_autocmd("TermOpen", {
-	callback = function()
-		vim.wo.number = false
-		vim.wo.relativenumber = false
-		vim.cmd("syntax off")
-	end,
-})

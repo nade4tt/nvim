@@ -1,6 +1,6 @@
--- Built in plugins
-vim.cmd("packadd nvim.undotree")
-vim.cmd("packadd nvim.difftool")
+-- Built-in plugins
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")
 
 local URL = "https://github.com/"
 
@@ -8,7 +8,7 @@ vim.pack.add({
 	-- Essential
 	{ src = URL .. "nvim-lua/plenary.nvim" },
 
-	-- Utils
+	-- Editing utilities
 	{ src = URL .. "kylechui/nvim-surround" },
 	{ src = URL .. "tpope/vim-commentary" },
 	{ src = URL .. "tpope/vim-repeat" },
@@ -33,21 +33,23 @@ vim.pack.add({
 	{ src = URL .. "joshdick/onedark.vim" },
 	{ src = URL .. "rose-pine/neovim" },
 
-	-- quickfix list
+	-- Quickfix list
 	{ src = URL .. "romainl/vim-qf" },
-
-	-- Copilot
-	-- { src = URL .. "github/copilot.vim"},
 })
 
-vim.cmd([[colorscheme catppuccin-mocha]])
+-- Colorscheme
+vim.cmd.colorscheme("catppuccin-mocha")
 vim.opt.background = "dark"
+
+-- Transparent background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.cmd("set guicursor=a:blinkon40")
-vim.cmd("highlight LineNr guifg=#ffffff")
-vim.cmd("highlight LineNrAbove guifg=#ffffff")
-vim.cmd("highlight LineNrBelow guifg=#ffffff")
-vim.cmd("highlight CursorLineNr guifg=#00ffff")
-vim.cmd("highlight Pmenu guibg=NONE")
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
+
+-- Cursor and line number highlights
+vim.opt.guicursor = "a:blinkon40"
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#00ffff" })
