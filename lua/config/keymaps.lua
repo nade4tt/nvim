@@ -72,3 +72,8 @@ keymap("n", "<leader>z", "<CMD>ZenMode<CR>")
 keymap("n", "<leader>=", function()
 	require("utils.scratchpad").toggle()
 end, { desc = "Toggle scratchpad" })
+
+-- Keymap picker
+keymap("n", "<leader>?", function()
+	require("utils.keymaps_picker").show_keymaps()
+end, { desc = "Show all keymaps" })
