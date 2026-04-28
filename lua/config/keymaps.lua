@@ -78,3 +78,8 @@ keymap("n", "<F2>", "<CMD>TagbarToggle<CR>")
 
 -- ZenMode
 keymap("n", "<leader>z", "<CMD>ZenMode<CR>")
+
+-- Scratchpad
+keymap("n", "<leader>=", function()
+	require("utils.scratchpad").toggle()
+end, { desc = "Toggle scratchpad" })
