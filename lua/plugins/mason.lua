@@ -50,6 +50,9 @@ mason_tool_installer.setup({
 		"codelldb",
 		"cpplint",
 
+		-- Python DAP
+		"debugpy",
+
 		-- Lua
 		"stylua",
 
