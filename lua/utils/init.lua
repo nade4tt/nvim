@@ -45,4 +45,22 @@ M.get_python_path = function()
 	return nil
 end
 
+M.center_window = function()
+	vim.cmd("only")
+	local width = vim.o.columns
+	local win_width = math.floor(width * 0.6)
+	local pad = math.floor((width - win_width) / 2)
+	vim.cmd("topleft vsplit")
+	vim.api.nvim_win_set_width(0, pad)
+	vim.cmd("enew")
+	vim.cmd("setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile")
+	vim.cmd("wincmd l")
+	vim.cmd("wincmd l")
+	vim.cmd("vsplit")
+	vim.api.nvim_win_set_width(0, pad)
+	vim.cmd("enew")
+	vim.cmd("setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile")
+	vim.cmd("wincmd h")
+end
+
 return M

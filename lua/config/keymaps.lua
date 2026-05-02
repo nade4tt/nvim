@@ -78,21 +78,10 @@ keymap("n", "<leader>?", function()
 	require("utils.keymaps_picker").show_keymaps()
 end, { desc = "Show all keymaps" })
 
+-- Close all splits except the active one
+keymap("n", "<leader>B", "<CMD>only<CR>", { desc = "Close all other splits" })
+
 -- Focus: close all splits and center the active buffer
 keymap("n", "<leader>M", function()
-	vim.cmd("only")
-	local width = vim.o.columns
-	local win_width = math.floor(width * 0.6)
-	local pad = math.floor((width - win_width) / 2)
-	vim.cmd("topleft vsplit")
-	vim.api.nvim_win_set_width(0, pad)
-	vim.cmd("enew")
-	vim.cmd("setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile")
-	vim.cmd("wincmd l")
-	vim.cmd("wincmd l")
-	vim.cmd("vsplit")
-	vim.api.nvim_win_set_width(0, pad)
-	vim.cmd("enew")
-	vim.cmd("setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile")
-	vim.cmd("wincmd h")
+	require("utils").center_window()
 end, { desc = "Center active split" })
