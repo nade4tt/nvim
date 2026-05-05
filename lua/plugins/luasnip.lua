@@ -1,5 +1,5 @@
 vim.pack.add({
-	{ src = "https://github.com/L3MON4D3/LuaSnip", name = "luasnip", version = "v2.*" },
+	{ src = "https://github.com/L3MON4D3/LuaSnip", name = "luasnip"},
 	{ src = "https://github.com/rafamadriz/friendly-snippets", name = "friendly-snippets" },
 })
 
@@ -36,6 +36,7 @@ ls.add_snippets("lua", {
 		t({ ",", "\t\t})", "\tend,", "}" }),
 	}),
 })
+
 
 ls.add_snippets("python", {
 	s("!results_one", {

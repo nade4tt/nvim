@@ -102,7 +102,7 @@ dap.configurations.rust = {
 local keymap = require("utils").keymap
 
 -- Session control
-keymap("n", "<F5>", dap.continue, { desc = "DAP: continue" })
+keymap("n", "<F6>", dap.continue, { desc = "DAP: continue" })
 keymap("n", "<F10>", dap.step_over, { desc = "DAP: step over" })
 keymap("n", "<F11>", dap.step_into, { desc = "DAP: step into" })
 keymap("n", "<F12>", dap.step_out, { desc = "DAP: step out" })
