@@ -73,6 +73,18 @@ keymap("n", "<leader>=", function()
 	require("utils.scratchpad").toggle()
 end, { desc = "Toggle scratchpad" })
 
+-- Search: highlight all matches without jumping (like / but stays in place)
+keymap("n", "<leader>/", function()
+	local pattern = vim.fn.input("Search: ")
+	if pattern == "" then
+		return
+	end
+	vim.fn.setreg("/", pattern)
+	vim.opt.hlsearch = true
+	-- Trigger the search register update so `n`/`N` work as expected
+	vim.cmd("let &hlsearch = &hlsearch")
+end, { desc = "Highlight pattern without jumping" })
+
 -- Keymap picker
 keymap("n", "<leader>?", function()
 	require("utils.keymaps_picker").show_keymaps()
