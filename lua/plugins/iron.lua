@@ -14,7 +14,14 @@ require("iron").setup({
 				command = { "zsh" },
 			},
 			python = {
-				command = { "ptpython" }, -- or { "ipython", "--no-autoindent" }
+				command = function()
+					local venv = os.getenv("VIRTUAL_ENV")
+					if venv then
+						return { venv .. "/bin/python3" }
+					else
+						return { "ptpython" }
+					end
+				end,
 				-- command = { "python" }, -- or { "ipython", "--no-autoindent" }
 				-- command = { "ipython", "--no-autoindent" },
 				format = common.bracketed_paste_python,
