@@ -3,6 +3,7 @@ vim.pack.add({
 	{ src = "https://github.com/rcarriga/nvim-dap-ui", name = "nvim-dap-ui" },
 	{ src = "https://github.com/nvim-neotest/nvim-nio", name = "nvim-nio" }, -- required by dap-ui
 	{ src = "https://github.com/mfussenegger/nvim-dap-python", name = "nvim-dap-python" },
+	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text", name = "nvim-dap-virtual-text" },
 })
 
 local dap = require("dap")
@@ -39,6 +40,12 @@ dapui.setup({
 dap.listeners.after.event_initialized["dapui_config"] = dapui.open
 dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 dap.listeners.before.event_exited["dapui_config"] = dapui.close
+
+-- ── Virtual text ───────────────────────────────────────────────────────────────
+
+require("nvim-dap-virtual-text").setup({
+	commented = true, -- show value as a comment (e.g. `-- x = 42`)
+})
 
 -- ── Signs ─────────────────────────────────────────────────────────────────────
 
@@ -102,6 +109,18 @@ dap.configurations.rust = {
 local keymap = require("utils").keymap
 
 -- Session control
+keymap("n", "<F7>", function()
+	local pid = tonumber(vim.fn.input("Attach to PID: "))
+	if pid then
+		dap.run({
+			name = "Attach to PID " .. pid,
+			type = "codelldb",
+			request = "attach",
+			pid = pid,
+			cwd = "${workspaceFolder}",
+		})
+	end
+end, { desc = "DAP: attach to PID" })
 keymap("n", "<F6>", dap.continue, { desc = "DAP: continue" })
 keymap("n", "<F10>", dap.step_over, { desc = "DAP: step over" })
 keymap("n", "<F11>", dap.step_into, { desc = "DAP: step into" })

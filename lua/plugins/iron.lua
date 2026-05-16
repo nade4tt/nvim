@@ -17,7 +17,8 @@ require("iron").setup({
 				command = function()
 					local venv = os.getenv("VIRTUAL_ENV")
 					if venv then
-						return { venv .. "/bin/python3" }
+						-- return { venv .. "/bin/python3" }
+						return { "ptpython" }
 					else
 						return { "ptpython" }
 					end
