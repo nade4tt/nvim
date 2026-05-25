@@ -29,10 +29,10 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Buffer navigation (barbar)
-keymap("n", "<leader>.", "<Cmd>BufferNext<CR>")
-keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>")
-keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>")
-keymap("n", "<leader>ba", "<Cmd>BufferCloseAllButVisible<CR>")
+-- keymap("n", "<leader>.", "<Cmd>BufferNext<CR>")
+-- keymap("n", "<leader>,", "<Cmd>BufferPrevious<CR>")
+-- keymap("n", "<leader>bc", "<Cmd>BufferClose<CR>")
+-- keymap("n", "<leader>ba", "<Cmd>BufferCloseAllButVisible<CR>")
 
 -- Quickfix list navigation
 keymap("n", "<leader>]", "<cmd>cnext<CR>")

@@ -51,9 +51,11 @@ local function open_win()
 		title_pos = "center",
 	})
 
-	vim.wo[win].wrap = true
-	vim.wo[win].linebreak = true
+	vim.wo[win].wrap = false
+	vim.wo[win].linebreak = false
 	vim.wo[win].cursorline = true
+	vim.wo[win].number = true
+	vim.wo[win].relativenumber = true
 
 	-- Close the window (not the buffer) with q or <Esc> in normal mode
 	local close = function()

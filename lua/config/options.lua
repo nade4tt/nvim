@@ -1,20 +1,19 @@
 -- Essential
 local os_name = jit.os
 
-
 if os_name == "Windows" then
-  vim.g.clipboard = {
-    name = 'win32yank-silent',
-    copy = {
-      ['+'] = 'win32yank.exe -i --crlf',
-      ['*'] = 'win32yank.exe -i --crlf',
-    },
-    paste = {
-      ['+'] = 'win32yank.exe -o --lf',
-      ['*'] = 'win32yank.exe -o --lf',
-    },
-    cache_enabled = 0,
-  }
+	vim.g.clipboard = {
+		name = "win32yank-silent",
+		copy = {
+			["+"] = "win32yank.exe -i --crlf",
+			["*"] = "win32yank.exe -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank.exe -o --lf",
+			["*"] = "win32yank.exe -o --lf",
+		},
+		cache_enabled = 0,
+	}
 end
 
 vim.opt.clipboard = "unnamedplus"

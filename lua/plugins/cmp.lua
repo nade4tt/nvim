@@ -12,6 +12,10 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				preset = "default",
 				list = { selection = { preselect = false, auto_insert = true } },
 
+				-- disable
+				["<Tab>"] = {},
+				["<S-Tab>"] = {},
+
 				["<C-k>"] = { "select_prev", "fallback" },
 				["<C-j>"] = { "select_next", "fallback" },
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },

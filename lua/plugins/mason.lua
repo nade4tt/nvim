@@ -24,6 +24,7 @@ mason_lspconfig.setup({
 		"pyright", -- Python
 		"lua_ls", -- Lua
 		"bashls", -- Bash
+		"jsonls", -- Json
 	},
 	automatic_enable = {
 		-- exclude = {
@@ -63,5 +64,8 @@ mason_tool_installer.setup({
 		-- Markdown
 		"markdownlint",
 		"prettier",
+
+		-- Json
+		"jq",
 	},
 })
