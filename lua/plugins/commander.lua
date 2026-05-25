@@ -51,11 +51,6 @@ commander.add({
 		cmd = "<CMD>Telescope file_browser<CR>",
 	},
 	{
-		desc = "Close non-visible buffers",
-		cmd = "<cmd>BufferCloseAllButVisible<CR>",
-		keys = { "n", "<leader>ba" },
-	},
-	{
 		desc = "Git Branches",
 		cmd = "<Cmd>Telescope git_branches<CR>",
 		keys = { "n", "<leader>gb" },

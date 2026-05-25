@@ -90,7 +90,15 @@ keymap("n", "<leader>?", function()
 	require("utils.keymaps_picker").show_keymaps()
 end, { desc = "Show all keymaps" })
 
--- Close all splits except the active one
+-- Buffer navigation
+keymap("n", "<leader>.", "<CMD>bnext<CR>", { desc = "Next buffer" })
+keymap("n", "<leader>,", "<CMD>bprevious<CR>", { desc = "Previous buffer" })
+
+-- Close all invisible buffers
+keymap("n", "<leader>ba", function()
+	require("config.functions").close_invisible_buffers()
+end, { desc = "Close all invisible buffers" })
+
 keymap("n", "<leader>B", "<CMD>only<CR>", { desc = "Close all other splits" })
 
 -- Focus: close all splits and center the active buffer
