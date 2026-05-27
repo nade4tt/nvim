@@ -21,9 +21,7 @@ vim.pack.add({
 	{ src = URL .. "mtdl9/vim-log-highlighting" },
 	{ src = URL .. "nvim-lualine/lualine.nvim" },
 	-- { src = URL .. "romgrk/barbar.nvim" },
-	{ src = URL .. "brenoprata10/nvim-highlight-colors" },
 	{ src = URL .. "kwkarlwang/bufresize.nvim" },
-	{ src = URL .. "norcalli/nvim-colorizer.lua" },
 
 	-- Colorschemes
 	{ src = URL .. "catppuccin/nvim" },
