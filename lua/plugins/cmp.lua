@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				-- cancel
 				["<C-e>"] = { "hide" },
 
-				-- show with a list of providers
+				-- show snippets only
 				["<C-s>"] = {
 					function(cmp)
 						cmp.show({ providers = { "snippets" } })
@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				documentation = { auto_show = true },
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "snippets", "path", "buffer" },
 			},
 			snippets = { preset = "luasnip" },
 			fuzzy = { implementation = "prefer_rust_with_warning" },

@@ -91,7 +91,9 @@ telescope.setup({
 			case_mode = "ignore_case",
 		},
 		file_browser = {
+			layout_strategy = "bottom_pane",
 			hijack_netrw = true,
+			-- theme = "ivy",
 			mappings = {
 				i = shared_mappings,
 				n = normal_mappings,
