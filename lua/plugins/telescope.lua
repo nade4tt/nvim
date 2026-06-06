@@ -4,6 +4,7 @@ vim.pack.add({
 	"https://github.com/princejoogie/dir-telescope.nvim",
 	"https://github.com/nvim-telescope/telescope-file-browser.nvim",
 	{
+		"https://github.com/folke/todo-comments.nvim",
 		src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 		name = "fzf",
 	},

@@ -3,6 +3,9 @@ require("oil").setup({
 	view_options = {
 		show_hidden = true,
 	},
+	win_options = {
+		winbar = "%{v:lua.require('oil').get_current_dir()}",
+	},
 	win_config = {
 		width = 40,
 		height = 20,
