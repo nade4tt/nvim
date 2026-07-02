@@ -92,9 +92,7 @@ telescope.setup({
 			case_mode = "ignore_case",
 		},
 		file_browser = {
-			layout_strategy = "bottom_pane",
 			hijack_netrw = true,
-			-- theme = "ivy",
 			mappings = {
 				i = shared_mappings,
 				n = normal_mappings,
@@ -118,7 +116,7 @@ local keymap = require("utils").keymap
 
 keymap("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
 keymap("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
-keymap("n", "<leader>fB", function()
+keymap("n", "<c-e>", function()
 	telescope.extensions.file_browser.file_browser({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "File browser (current dir)" })
 keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })

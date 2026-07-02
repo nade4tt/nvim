@@ -58,15 +58,15 @@ local function open_win()
 	vim.wo[win].relativenumber = true
 
 	-- Close the window (not the buffer) with q or <Esc> in normal mode
-	local close = function()
-		if win and vim.api.nvim_win_is_valid(win) then
-			vim.api.nvim_win_close(win, false)
-			win = nil
-		end
-	end
+	-- local close = function()
+	-- 	if win and vim.api.nvim_win_is_valid(win) then
+	-- 		vim.api.nvim_win_close(win, false)
+	-- 		win = nil
+	-- 	end
+	-- end
 
-	vim.keymap.set("n", "q", close, { buffer = buf, nowait = true, desc = "Scratchpad: close" })
-	vim.keymap.set("n", "<Esc>", close, { buffer = buf, nowait = true, desc = "Scratchpad: close" })
+	-- vim.keymap.set("n", "q", close, { buffer = buf, nowait = true, desc = "Scratchpad: close" })
+	-- vim.keymap.set("n", "<Esc>", close, { buffer = buf, nowait = true, desc = "Scratchpad: close" })
 end
 
 function M.toggle()
