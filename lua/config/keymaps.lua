@@ -11,6 +11,10 @@ keymap("n", "cl", "s")
 keymap({ "n", "v" }, "<C-d>", "15jzz")
 keymap({ "n", "v" }, "<C-u>", "15kzz")
 
+-- Insert mode
+keymap("i", "<C-b>", "<Left>")
+keymap("i", "<C-f>", "<Right>")
+
 -- Yank line content (no leading/trailing whitespace)
 keymap("n", "<leader>y", "^yg_")
 
