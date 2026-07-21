@@ -89,6 +89,8 @@ keymap("n", "<leader>/", function()
 	vim.cmd("let &hlsearch = &hlsearch")
 end, { desc = "Highlight pattern without jumping" })
 
+-- SPECIAL ----------------------
+
 -- Keymap picker
 keymap("n", "<leader>?", function()
 	require("utils.keymaps_picker").show_keymaps()
@@ -109,3 +111,15 @@ keymap("n", "<leader>B", "<CMD>only<CR>", { desc = "Close all other splits" })
 keymap("n", "<leader>M", function()
 	require("utils").center_window()
 end, { desc = "Center active split" })
+
+-- Terminal
+keymap("n", "<leader>tt", function()
+	-- Delete all active terminal buffers
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+	end
+	vim.cmd("term")
+	vim.cmd("startinsert")
+end, { desc = "Open terminal" })
