@@ -23,6 +23,7 @@ vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.syntax = "enable"
+vim.opt.modeline = false
 
 -- Disable automatic line breaking
 vim.opt.formatoptions:remove("t")
