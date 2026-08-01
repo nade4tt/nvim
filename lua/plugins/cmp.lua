@@ -50,6 +50,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			},
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
+				providers = {
+					snippets = { score_offset = 100 },
+				},
 			},
 			snippets = { preset = "luasnip" },
 			fuzzy = { implementation = "prefer_rust_with_warning" },
