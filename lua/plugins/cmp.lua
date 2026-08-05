@@ -50,8 +50,11 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 			},
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
+				per_filetype = {
+					markdown = { "snippets", "lsp", "path", "buffer" },
+				},
 				providers = {
-					snippets = { score_offset = 100 },
+					snippets = { score_offset = 0 },
 				},
 			},
 			snippets = { preset = "luasnip" },

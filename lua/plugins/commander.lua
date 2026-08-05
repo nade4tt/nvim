@@ -31,7 +31,7 @@ commander.add({
 	{
 		desc = "Search current buffer (fuzzy)",
 		cmd = "<CMD>Telescope current_buffer_fuzzy_find<CR>",
-		keys = { "n", "<leader>fl" },
+		keys = { "n", "<leader>f/" },
 	},
 	{
 		desc = "Grep current file",

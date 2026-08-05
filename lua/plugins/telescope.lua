@@ -134,6 +134,19 @@ keymap("n", "<leader>fs", function()
 	})
 end, { desc = "Find symbols" })
 
+-- Search Rust library files in ~/.cargo/registry
+keymap("n", "<leader>fl", function()
+	local cargo_registry = vim.fn.expand("~/.cargo/registry/src")
+	if vim.fn.isdirectory(cargo_registry) == 0 then
+		vim.notify("Rust cargo registry not found: " .. cargo_registry, vim.log.levels.WARN)
+		return
+	end
+	builtin.live_grep({
+		prompt_title = "Grep Rust Library Files",
+		cwd = cargo_registry,
+	})
+end, { desc = "Grep Rust library files" })
+
 -- Resume last telescope picker (or start live_grep on first call)
 local telescope_opened = false
 keymap("n", "<leader>fh", function()
