@@ -136,7 +136,8 @@ end, { desc = "Find symbols" })
 
 -- Search Rust library files in ~/.cargo/registry
 keymap("n", "<leader>fl", function()
-	local cargo_registry = vim.fn.expand("~/.cargo/registry/src")
+	local cargo_home = vim.env.CARGO_HOME or vim.fn.expand("~/.cargo")
+	local cargo_registry = cargo_home .. "/registry/src"
 	if vim.fn.isdirectory(cargo_registry) == 0 then
 		vim.notify("Rust cargo registry not found: " .. cargo_registry, vim.log.levels.WARN)
 		return

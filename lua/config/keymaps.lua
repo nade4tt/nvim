@@ -4,7 +4,11 @@ vim.g.mapleader = " "
 
 -- Search: highlight word under cursor without jumping
 keymap("n", "*", [[:let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>]])
-keymap("n", "<C-l>", ":noh<return>")
+keymap("n", "<C-l>", function()
+	local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+	vim.cmd("noh")
+end)
 keymap("n", "cl", "s")
 
 -- Vertical movement
