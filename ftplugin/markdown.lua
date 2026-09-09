@@ -6,7 +6,13 @@ vim.opt.wrap = false
 vim.wo.spell = true
 vim.opt.spelllang = "en_us,sl"
 
-vim.opt.fo = "want"
+-- want
+-- w: Paragraph continues if line ends with whitespace
+-- a: Auto format paragraph when you type
+-- n: Recognize numbered lists when formatting
+-- t: Auto wrap text
+
+vim.opt.fo = "wn"
 vim.opt.textwidth = 80
 
 -- Hide markups

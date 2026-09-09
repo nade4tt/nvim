@@ -27,15 +27,9 @@ mason_lspconfig.setup({
 		"jsonls", -- Json
 	},
 	automatic_enable = {
-		-- exclude = {
-		--   "python_ls",
-		--   "pyright",
-		--   "lua_ls",
-		--   "go_ls",
-		--   "cpp_ls",
-		--   -- "rust_analyzer",
-		--   "bash_lsp",
-		-- },
+		exclude = {
+			"rust_analyzer", -- managed by rustaceanvim
+		},
 	},
 })
 
