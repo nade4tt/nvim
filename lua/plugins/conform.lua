@@ -51,6 +51,7 @@ conform.setup({
 		c = { "clang_format" },
 		sh = { "shfmt" },
 		bash = { "shfmt" },
+		xml = { "xmlformatter" },
 	},
 	-- Disable format on save
 	-- format_on_save = nil,
