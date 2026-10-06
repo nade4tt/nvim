@@ -49,6 +49,7 @@ conform.setup({
 		markdown = { "prettier" },
 		cpp = { "clang_format" },
 		c = { "clang_format" },
+		arduino = { "clang_format" },
 		sh = { "shfmt" },
 		bash = { "shfmt" },
 		xml = { "xmlformatter" },
