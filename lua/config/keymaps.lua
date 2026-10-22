@@ -23,9 +23,12 @@ keymap("i", "<C-f>", "<Right>")
 keymap("n", "<leader>y", "^yg_")
 
 -- Command mode (Emacs-style shortcuts)
+-- Note: <C-e> is intentionally left unmapped here. 'cedit' (see options.lua)
+-- uses it to open the cmdline-window (history buffer, :h cmdline-window).
+-- Use <End> to jump to the end of the line instead.
 keymap("c", "<C-a>", "<Home>")
-keymap("c", "<C-e>", "<End>")
 keymap("c", "<C-b>", "<Left>")
+keymap("c", "<C-f>", "<Right>")
 keymap("c", "<C-d>", "<Del>")
 keymap("c", "<A-b>", "<C-Left>")
 keymap("c", "<A-f>", "<C-Right>")

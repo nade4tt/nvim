@@ -54,7 +54,13 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 					markdown = { "snippets", "lsp", "path", "buffer" },
 				},
 				providers = {
-					snippets = { score_offset = 0 },
+					snippets = {
+						-- rank snippets above LSP/path/buffer completions in markdown,
+						-- everywhere else they keep blink's default (lower) priority
+						score_offset = function()
+							return vim.bo.filetype == "markdown" and 100 or 0
+						end,
+					},
 				},
 			},
 			snippets = { preset = "luasnip" },

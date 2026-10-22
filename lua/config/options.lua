@@ -81,6 +81,10 @@ vim.opt.updatetime = 50
 vim.opt.spelllang = "en_us"
 vim.opt.colorcolumn = "80"
 
+-- Command-line window: open the history buffer with <C-e> instead of the
+-- default <C-f> (see lua/config/keymaps.lua for the matching cmap change).
+vim.opt.cedit = "<C-e>"
+
 -- Appearance
 vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
