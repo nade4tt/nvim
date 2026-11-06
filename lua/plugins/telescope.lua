@@ -4,15 +4,15 @@ vim.pack.add({
 	"https://github.com/princejoogie/dir-telescope.nvim",
 	"https://github.com/nvim-telescope/telescope-file-browser.nvim",
 	{
-		"https://github.com/folke/todo-comments.nvim",
 		src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 		name = "fzf",
 	},
 })
 
--- Build fzf native if available
+-- Build fzf native once, only when the compiled library is missing
 local fzf_path = vim.fn.stdpath("data") .. "/site/pack/core/opt/fzf"
-if vim.fn.isdirectory(fzf_path) == 1 then
+local fzf_lib = fzf_path .. (vim.fn.has("win32") == 1 and "/build/libfzf.dll" or "/build/libfzf.so")
+if vim.fn.isdirectory(fzf_path) == 1 and vim.fn.filereadable(fzf_lib) == 0 then
 	vim.fn.system({ "make", "-C", fzf_path })
 end
 

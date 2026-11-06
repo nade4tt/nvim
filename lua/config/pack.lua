@@ -9,7 +9,6 @@ vim.pack.add({
 	{ src = URL .. "nvim-lua/plenary.nvim" },
 
 	-- Editing utilities
-	{ src = URL .. "kylechui/nvim-surround" },
 	{ src = URL .. "tpope/vim-commentary" },
 	{ src = URL .. "tpope/vim-repeat" },
 	{ src = URL .. "vim-utils/vim-man" },
@@ -19,7 +18,6 @@ vim.pack.add({
 	{ src = URL .. "lukas-reineke/indent-blankline.nvim" },
 	{ src = URL .. "nvim-tree/nvim-web-devicons" },
 	{ src = URL .. "mtdl9/vim-log-highlighting" },
-	{ src = URL .. "nvim-lualine/lualine.nvim" },
 	-- { src = URL .. "romgrk/barbar.nvim" },
 	{ src = URL .. "kwkarlwang/bufresize.nvim" },
 
