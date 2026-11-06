@@ -34,4 +34,42 @@ function M.close_invisible_buffers()
 	vim.notify("Closed " .. closed .. " invisible buffer(s)", vim.log.levels.INFO)
 end
 
+
+-- Save file to remote (RH9)
+local remote_sync = {
+  host = "simarlw000011",
+  local_root = "C:/github/platform-sdt-test",
+  remote_root = "/home/u23c66/platform-sdt-test",
+}
+
+local function normalize(path)
+  return path:gsub("\\", "/")
+end
+
+function M.save_and_sync()
+  vim.cmd("write")
+
+  local file = normalize(vim.fn.expand("%:p"))
+  local local_root = normalize(remote_sync.local_root)
+
+  if file:sub(1, #local_root) ~= local_root then
+    vim.notify("File not under configured local root, skipping sync", vim.log.levels.WARN)
+    return
+  end
+
+  local rel = file:sub(#local_root + 1):gsub("^/", "")
+  local remote_path = remote_sync.remote_root .. "/" .. rel
+  local cmd = { "scp", file, remote_sync.host .. ":" .. remote_path }
+
+  vim.fn.jobstart(cmd, {
+    on_exit = function(_, code)
+      if code == 0 then
+        vim.notify("Synced to remote", vim.log.levels.INFO)
+      else
+        vim.notify("Remote sync failed (exit " .. code .. ")", vim.log.levels.ERROR)
+      end
+    end,
+  })
+end
+
 return M
